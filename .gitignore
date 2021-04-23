@@ -1,21 +1,5 @@
-.github/
-/node_modules
-/public
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
-.env
-.env.backup
-.phpunit.result.cache
-docker-compose.override.yml
-Homestead.json
-Homestead.yaml
-npm-debug.log
-yarn-error.log
-
-# Created by https://www.toptal.com/developers/gitignore/api/laravel,vue
-# Edit at https://www.toptal.com/developers/gitignore?templates=laravel,vue
+# Created by https://www.toptal.com/developers/gitignore/api/laravel
+# Edit at https://www.toptal.com/developers/gitignore?templates=laravel
 
 ### Laravel ###
 /vendor/
@@ -46,15 +30,42 @@ Homestead.json
 *.meta.*
 _ide_*
 
-### Vue ###
-# gitignore template for Vue.js projects
-#
-# Recommended template: Node.gitignore
+# End of https://www.toptal.com/developers/gitignore/api/laravel
 
-# TODO: where does this rule come from?
-docs/_book
 
-# TODO: where does this rule come from?
-test/
+# ---------------------
+# Original from laravel
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+docker-compose.override.yml
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
 
-# End of https://www.toptal.com/developers/gitignore/api/laravel,vue
+
+# --------
+# My edits
+.github/
+public/
+
+/.github
+/public
+
+/.github/
+/public/
+
+.github/*
+public/*
+
+/.github/*
+/public/*
+
+/public/css
+/public/js
