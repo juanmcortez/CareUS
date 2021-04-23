@@ -3,6 +3,7 @@
 namespace App\Models\Common;
 
 use App\Models\Patients\Patient;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -73,6 +74,33 @@ class Persona extends Model
     protected $casts = [
         'date_time' => 'date',
     ];
+
+
+    /**
+     * Return the formated name of the persona
+     *
+     * @return string
+     */
+    public function getFormatedNameAttribute()
+    {
+        if (!empty($this->middle_name)) {
+            $formated = $this->last_name . ', ' . $this->first_name . ' ' . strtoupper(substr($this->middle_name, 0, 1)) . '.';
+        } else {
+            $formated = $this->last_name . ', ' . $this->first_name;
+        }
+        return $formated;
+    }
+
+
+    /**
+     * Return the curren age of the persona
+     *
+     * @return int
+     */
+    public function getCurrentAgeAttribute()
+    {
+        return Carbon::parse($this->date_of_birth)->diff(Carbon::now())->format('%y yrs');
+    }
 
 
     /**
