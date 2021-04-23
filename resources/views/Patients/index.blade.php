@@ -26,6 +26,7 @@
     {{ __('date_of_birth') }} <span style="font-weight: normal">{{ $persona->date_of_birth->format('M d, Y') }} (
         {{ $persona->current_age }} )</span>
 </p>
+
 <p style="font-weight: bold">
     {{ __('gender') }} <span style="font-weight: normal">{{ $persona->gender }}</span>
 </p>
@@ -77,10 +78,38 @@
 <p style="font-weight: bold">
     {{ __('desease_reason') }} <span style="font-weight: normal">{{ $persona->desease_reason }}</span>
 </p>
+<p style="font-weight: bold">
+    {{ __('updated_at') }} <span style="font-weight: normal">{{ $persona->updated_at->format('M d, Y') }}</span>
+</p>
+
+<p style="font-weight: bold">
+    {{ __('street') }} <span style="font-weight: normal">{{ $persona->address->street }}</span>
+</p>
+<p style="font-weight: bold">
+    {{ __('street_extended') }} <span style="font-weight: normal">{{ $persona->address->street_extended }}</span>
+</p>
+<p style="font-weight: bold">
+    {{ __('city') }} <span style="font-weight: normal">{{ $persona->address->city }}</span>
+</p>
+<p style="font-weight: bold">
+    {{ __('state') }} <span style="font-weight: normal">{{ $persona->address->state }}</span>
+</p>
+<p style="font-weight: bold">
+    {{ __('zip') }} <span style="font-weight: normal">{{ $persona->address->zip }}</span>
+</p>
+<p style="font-weight: bold">
+    {{ __('country') }} <span style="font-weight: normal">{{ $persona->address->country }}</span>
+</p>
+<p style="font-weight: bold">
+    {{ __('updated_at') }} <span
+        style="font-weight: normal">{{ $persona->address->updated_at->format('M d, Y') }}</span>
+</p>
 
 <!--
     <pre>{{ $persona }}</pre>
     <pre>{{ $persona->patient }}</pre>
+    <pre>{{ $persona->address }}</pre>
 -->
+<pre>{{ $persona->phone }}</pre>
 <hr />
 @endforeach

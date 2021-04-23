@@ -2,6 +2,7 @@
 
 namespace App\Models\Common;
 
+use App\Models\Common\Address;
 use App\Models\Patients\Patient;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -110,5 +111,15 @@ class Persona extends Model
     public function patient()
     {
         return $this->belongsTo(Patient::class, 'owner_id', 'patID')->withDefault();
+    }
+
+
+    /**
+     * Persona - Address relationship
+     * Only 1 persona model allowed per patient.
+     */
+    public function address()
+    {
+        return $this->hasOne(Address::class, 'owner_id', 'id')->where('owner_type', 'persona');
     }
 }
