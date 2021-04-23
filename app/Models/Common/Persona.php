@@ -2,7 +2,9 @@
 
 namespace App\Models\Common;
 
+use App\Models\Common\Address;
 use App\Models\Patients\Patient;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -76,11 +78,48 @@ class Persona extends Model
 
 
     /**
+     * Return the formated name of the persona
+     *
+     * @return string
+     */
+    public function getFormatedNameAttribute()
+    {
+        if (!empty($this->middle_name)) {
+            $formated = $this->last_name . ', ' . $this->first_name . ' ' . strtoupper(substr($this->middle_name, 0, 1)) . '.';
+        } else {
+            $formated = $this->last_name . ', ' . $this->first_name;
+        }
+        return $formated;
+    }
+
+
+    /**
+     * Return the curren age of the persona
+     *
+     * @return int
+     */
+    public function getCurrentAgeAttribute()
+    {
+        return Carbon::parse($this->date_of_birth)->diff(Carbon::now())->format('%y yrs');
+    }
+
+
+    /**
      * Persona - Patient relationship
      * Only 1 persona model allowed per patient.
      */
     public function patient()
     {
         return $this->belongsTo(Patient::class, 'owner_id', 'patID')->withDefault();
+    }
+
+
+    /**
+     * Persona - Address relationship
+     * Only 1 persona model allowed per patient.
+     */
+    public function address()
+    {
+        return $this->hasOne(Address::class, 'owner_id', 'id')->where('owner_type', 'persona');
     }
 }

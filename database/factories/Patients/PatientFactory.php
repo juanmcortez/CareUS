@@ -3,6 +3,7 @@
 namespace Database\Factories\Patients;
 
 use App\Models\Patients\Patient;
+use Database\Factories\Common\AddressFactory;
 use Database\Factories\Common\PersonaFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -36,7 +37,7 @@ class PatientFactory extends Factory
     {
         return $this->afterCreating(
             function (Patient $patient) {
-                PersonaFactory::new()->create(['owner_id' => $patient->patID, 'owner_type' => 'patient']);
+                PersonaFactory::new()->createAddressPhone()->create(['owner_id' => $patient->patID, 'owner_type' => 'patient']);
             }
         );
     }
