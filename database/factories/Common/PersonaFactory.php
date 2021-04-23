@@ -31,12 +31,12 @@ class PersonaFactory extends Factory
             'title'             => $this->faker->title($gender),
             'first_name'        => $this->faker->firstName($gender),
             'middle_name'       => $this->faker->firstName($gender),
-            'lasst_name'        => $this->faker->lastName,
-            'email'             => $this->faker->safeEmailDomain,
+            'last_name'        => $this->faker->lastName,
+            'email'             => $this->faker->email,
             'date_of_birth'     => $this->faker->dateTimeBetween('-80 years', '-1 years'),
             'gender'            => $gender,
             'social_security'   => random_int(001, 899) . '-' . random_int(10, 99) . '-' . random_int(0001, 9999),
-            'driver_license'    => $driver . random_int(10000000, 99999999),
+            'driver_license'    => strtoupper($driver . random_int(10000000, 99999999)),
         ];
     }
 }

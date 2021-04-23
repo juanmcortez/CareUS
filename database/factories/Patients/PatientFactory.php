@@ -3,6 +3,7 @@
 namespace Database\Factories\Patients;
 
 use App\Models\Patients\Patient;
+use Database\Factories\Common\PersonaFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PatientFactory extends Factory
@@ -25,5 +26,18 @@ class PatientFactory extends Factory
             'externalID'                => random_int(100000, 999999999999),
             'patient_level_accession'   => $this->faker->randomElement(['', random_int(100000, 999999999999)]),
         ];
+    }
+
+    /**
+     * After creating the patient, create
+     * all of the other relationship models
+     */
+    public function createPatientDemographics()
+    {
+        return $this->afterCreating(
+            function (Patient $patient) {
+                PersonaFactory::new()->create(['owner_id' => $patient->patID, 'owner_type' => 'patient']);
+            }
+        );
     }
 }
