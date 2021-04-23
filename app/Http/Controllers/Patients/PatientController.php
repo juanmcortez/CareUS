@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Patients;
 
 use App\Http\Controllers\Controller;
+use App\Models\Common\Persona;
 use App\Models\Patients\Patient;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return view('Patients.index', ['patients' => Patient::all()]);
+        $personas = Persona::query()->orderBy('last_name')->orderBy('first_name')->paginate(25);
+        return view('Patients.index', compact('personas'));
     }
 
     /**
