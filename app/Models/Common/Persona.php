@@ -3,6 +3,7 @@
 namespace App\Models\Common;
 
 use App\Models\Common\Address;
+use App\Models\Common\Phone;
 use App\Models\Patients\Patient;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -116,10 +117,20 @@ class Persona extends Model
 
     /**
      * Persona - Address relationship
-     * Only 1 persona model allowed per patient.
+     * Only 1 address model allowed per persona.
      */
     public function address()
     {
         return $this->hasOne(Address::class, 'owner_id', 'id')->where('owner_type', 'persona');
+    }
+
+
+    /**
+     * Persona - Phone relationship
+     * Only 2 phone models allowed per persona.
+     */
+    public function phone()
+    {
+        return $this->hasMany(Phone::class, 'owner_id', 'id')->where('owner_type', 'persona');
     }
 }

@@ -3,7 +3,7 @@
 namespace Database\Factories\Common;
 
 use App\Models\Common\Address;
-use App\Models\Patients\Patient;
+use App\Models\Common\Persona;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AddressFactory extends Factory
@@ -24,7 +24,7 @@ class AddressFactory extends Factory
     {
         return [
             'owner_type'        => $this->faker->randomElement(['patient', 'persona', 'contact', 'employment', 'subscriber']),
-            'owner_id'          => Patient::factory(),
+            'owner_id'          => Persona::factory(),
             'street'            => $this->faker->streetAddress,
             'street_extended'   => $this->faker->secondaryAddress,
             'city'              => $this->faker->city,

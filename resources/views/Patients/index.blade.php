@@ -9,6 +9,7 @@
     {{ __('patient_level_accession') }} <span
         style="font-weight: normal">{{ $persona->patient->patient_level_accession }}</span>
 </p>
+<!--
 <p style="font-weight: bold">
     {{ __('created_at') }} <span
         style="font-weight: normal">{{ $persona->patient->created_at->format('M d, Y') }}</span>
@@ -16,23 +17,29 @@
 <p style="font-weight: bold">
     {{ __('title') }} <span style="font-weight: normal">{{ $persona->title }}</span>
 </p>
+-->
 <p style="font-weight: bold">
     {{ __('name') }} <span style="font-weight: normal">{{ $persona->formated_name }}</span>
 </p>
+<!--
 <p style="font-weight: bold">
     {{ __('email') }} <span style="font-weight: normal">{{ $persona->email }}</span>
 </p>
+-->
 <p style="font-weight: bold">
     {{ __('date_of_birth') }} <span style="font-weight: normal">{{ $persona->date_of_birth->format('M d, Y') }} (
         {{ $persona->current_age }} )</span>
 </p>
 
+<!--
 <p style="font-weight: bold">
     {{ __('gender') }} <span style="font-weight: normal">{{ $persona->gender }}</span>
 </p>
+-->
 <p style="font-weight: bold">
     {{ __('social_security') }} <span style="font-weight: normal">{{ $persona->social_security }}</span>
 </p>
+<!--
 <p style="font-weight: bold">
     {{ __('driver_license') }} <span style="font-weight: normal">{{ $persona->driver_license }}</span>
 </p>
@@ -104,12 +111,15 @@
     {{ __('updated_at') }} <span
         style="font-weight: normal">{{ $persona->address->updated_at->format('M d, Y') }}</span>
 </p>
+-->
 
 <!--
     <pre>{{ $persona }}</pre>
     <pre>{{ $persona->patient }}</pre>
     <pre>{{ $persona->address }}</pre>
+    @foreach ($persona->phone as $phone)
+    <pre>{{ $phone }}</pre>
+    @endforeach
 -->
-<pre>{{ $persona->phone }}</pre>
 <hr />
 @endforeach

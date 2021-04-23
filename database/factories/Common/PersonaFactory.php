@@ -3,7 +3,9 @@
 namespace Database\Factories\Common;
 
 use App\Models\Common\Persona;
+use App\Models\Patients\Patient;
 use Database\Factories\Common\AddressFactory;
+use Database\Factories\Common\PhoneFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PersonaFactory extends Factory
@@ -27,7 +29,7 @@ class PersonaFactory extends Factory
 
         return [
             'owner_type'        => $this->faker->randomElement(['patient', 'persona', 'contact', 'employment', 'subscriber']),
-            'owner_id'          => Persona::factory(),
+            'owner_id'          => Patient::factory(),
             'title'             => $this->faker->title($gender),
             'first_name'        => $this->faker->firstName($gender),
             'middle_name'       => $this->faker->firstName($gender),
@@ -49,7 +51,10 @@ class PersonaFactory extends Factory
     {
         return $this->afterCreating(
             function (Persona $persona) {
+                // Only 1 address
                 AddressFactory::new()->create(['owner_id' => $persona->id, 'owner_type' => 'persona']);
+                // Upto 2 phones
+                PhoneFactory::new()->count(2)->create(['owner_id' => $persona->id, 'owner_type' => 'persona']);
             }
         );
     }
