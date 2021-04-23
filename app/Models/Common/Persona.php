@@ -2,6 +2,7 @@
 
 namespace App\Models\Common;
 
+use App\Models\Patients\Patient;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -21,7 +22,7 @@ class Persona extends Model
         'title',
         'first_name',
         'middle_name',
-        'lasst_name',
+        'last_name',
         'email',
         'date_of_birth',
         'gender',
@@ -72,4 +73,14 @@ class Persona extends Model
     protected $casts = [
         'date_time' => 'date',
     ];
+
+
+    /**
+     * Persona - Patient relationship
+     * Only 1 persona model allowed per patient.
+     */
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class, 'owner_id', 'patID')->withDefault();
+    }
 }
