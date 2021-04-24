@@ -58,10 +58,10 @@ class CreatePersonasTable extends Migration
                 ->comment('Use this field only when adding a "contact" persona.');
 
             // Employment only fields
-            $table->string('company', 32)
+            $table->string('company', 64)
                 ->nullable()
                 ->comment('Use this field only when adding a "employment" persona.');
-            $table->string('occupation', 64)
+            $table->string('occupation', 96)
                 ->nullable()
                 ->comment('Use this field only when adding a "employment" persona.');
 
