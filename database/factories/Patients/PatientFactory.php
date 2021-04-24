@@ -5,6 +5,7 @@ namespace Database\Factories\Patients;
 use App\Models\Patients\Patient;
 use Database\Factories\Common\AddressFactory;
 use Database\Factories\Common\PersonaFactory;
+use Database\Factories\Insurances\SubscriberFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PatientFactory extends Factory
@@ -65,6 +66,23 @@ class PatientFactory extends Factory
                         'owner_type'    => 'employment',
                         'company'       => $company,
                         'occupation'    => $occupation,
+                    ]);
+
+                // Force a primary insurance
+                SubscriberFactory::new()
+                    ->count(1)
+                    ->create([
+                        'owner_id'      => $patient->patID,
+                        'owner_type'    => 'patient',
+                        'level'         => 'primary',
+                    ]);
+
+                // Random one
+                SubscriberFactory::new()
+                    ->count(1)
+                    ->create([
+                        'owner_id'      => $patient->patID,
+                        'owner_type'    => 'patient',
                     ]);
             }
         );

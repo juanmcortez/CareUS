@@ -3,6 +3,7 @@
 namespace App\Models\Patients;
 
 use App\Models\Common\Persona;
+use App\Models\Insurances\Subscriber;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -84,5 +85,15 @@ class Patient extends Model
     public function employment()
     {
         return $this->hasMany(Persona::class, 'owner_id', 'patID')->where('owner_type', 'employment');
+    }
+
+
+    /**
+     * Patient - Subscriber relationship
+     * Many subscriber models allowed per patient.
+     */
+    public function subscriber()
+    {
+        return $this->hasMany(Subscriber::class, 'owner_id', 'patID')->where('owner_type', 'patient');
     }
 }
