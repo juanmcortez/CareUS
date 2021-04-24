@@ -52,6 +52,19 @@ class CreatePersonasTable extends Migration
             $table->date('desease_date')->nullable();
             $table->string('desease_reason', 64)->nullable();
 
+            // Contact only fields
+            $table->enum('contact_type', [null, 'mother', 'father', 'guardian', 'relative', 'other'])
+                ->nullable()
+                ->comment('Use this field only when adding a "contact" persona.');
+
+            // Employment only fields
+            $table->string('company', 32)
+                ->nullable()
+                ->comment('Use this field only when adding a "employment" persona.');
+            $table->string('occupation', 64)
+                ->nullable()
+                ->comment('Use this field only when adding a "employment" persona.');
+
             $table->softDeletes();
             $table->timestamps();
         });

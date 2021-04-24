@@ -42,6 +42,9 @@ class Persona extends Model
         'homeless',
         'desease_date',
         'desease_reason',
+        'contact_type',
+        'company',
+        'occupation',
     ];
 
     /**
@@ -53,6 +56,7 @@ class Persona extends Model
         'id',
         'owner_type',
         'owner_id',
+        'patient',
         'deleted_at',
         'created_at',
     ];

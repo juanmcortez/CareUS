@@ -75,4 +75,14 @@ class Patient extends Model
     {
         return $this->hasMany(Persona::class, 'owner_id', 'patID')->where('owner_type', 'contact');
     }
+
+
+    /**
+     * Patient - Employment relationship
+     * Only 1 employment models allowed per patient.
+     */
+    public function employment()
+    {
+        return $this->hasMany(Persona::class, 'owner_id', 'patID')->where('owner_type', 'employment');
+    }
 }
