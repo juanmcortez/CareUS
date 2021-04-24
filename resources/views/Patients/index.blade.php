@@ -1,3 +1,4 @@
+{{--
 @foreach ($personas as $persona)
 <pre><strong>Patient:</strong> {!! $persona->patient !!}</pre>
 <pre><strong>Patient Persona:</strong> {!! $persona !!}</pre>
@@ -18,6 +19,20 @@
 <pre><strong>Employer Phone:</strong>{!! $employment->phone->first() !!}</pre>
 <hr />
 @endforeach
+<hr />
+<hr />
+<hr />
+@endforeach
+--}}
+@foreach ($personas as $persona)
+<pre><strong>Patient:</strong> {!! $persona->formated_name !!}</pre>
+<pre><strong>DOB:</strong> {!! $persona->date_of_birth->format('M d, Y').' - '.$persona->current_age !!}</pre>
+<pre><strong>Phone:</strong> {!! $persona->phone->first()->formated_phone !!}</pre>
+<pre><strong>SSN:</strong> {!! $persona->social_security !!}</pre>
+<pre><strong>Accession #:</strong> {!! $persona->patient->patient_level_accession !!}</pre>
+<pre><strong>PID:</strong> {!! $persona->patient->patID !!}</pre>
+<pre><strong>External ID:</strong> {!! $persona->patient->externalID !!}</pre>
+
 <hr />
 <hr />
 <hr />
