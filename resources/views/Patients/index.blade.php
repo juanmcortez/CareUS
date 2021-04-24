@@ -32,7 +32,13 @@
 <pre><strong>Accession #:</strong> {!! $persona->patient->patient_level_accession !!}</pre>
 <pre><strong>PID:</strong> {!! $persona->patient->patID !!}</pre>
 <pre><strong>External ID:</strong> {!! $persona->patient->externalID !!}</pre>
-
+<hr />
+@foreach ($persona->patient->subscriber as $subscriber)
+<pre><strong>Subscriber:</strong> {!! $subscriber->level !!} insurance</pre>
+<pre><strong>Company:</strong> {!! $subscriber->company !!}</pre>
+<pre><strong>Effective Date:</strong> {!! $subscriber->effective_date->format('M d, Y') !!}</pre>
+<hr />
+@endforeach
 <hr />
 <hr />
 <hr />
