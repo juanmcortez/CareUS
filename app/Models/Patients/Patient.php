@@ -65,4 +65,14 @@ class Patient extends Model
     {
         return $this->hasOne(Persona::class, 'owner_id', 'patID')->where('owner_type', 'patient');
     }
+
+
+    /**
+     * Patient - Contact relationship
+     * Only 3 contact models allowed per patient.
+     */
+    public function contact()
+    {
+        return $this->hasMany(Persona::class, 'owner_id', 'patID')->where('owner_type', 'contact');
+    }
 }
