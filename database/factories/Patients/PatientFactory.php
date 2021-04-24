@@ -71,6 +71,7 @@ class PatientFactory extends Factory
                 // Force a primary insurance
                 SubscriberFactory::new()
                     ->count(1)
+                    ->createSubscriberPersona()
                     ->create([
                         'owner_id'      => $patient->patID,
                         'owner_type'    => 'patient',
@@ -80,6 +81,7 @@ class PatientFactory extends Factory
                 // Random one
                 SubscriberFactory::new()
                     ->count(1)
+                    ->createSubscriberPersona()
                     ->create([
                         'owner_id'      => $patient->patID,
                         'owner_type'    => 'patient',

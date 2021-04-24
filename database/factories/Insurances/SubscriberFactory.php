@@ -4,6 +4,7 @@ namespace Database\Factories\Insurances;
 
 use App\Models\Insurances\Subscriber;
 use App\Models\Patients\Patient;
+use Database\Factories\Common\PersonaFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SubscriberFactory extends Factory
@@ -30,5 +31,25 @@ class SubscriberFactory extends Factory
             'policy_number'         => random_int(10000, 9999999),
             'accept_assignment'     => $this->faker->randomElement([false, true]),
         ];
+    }
+
+
+    /**
+     * After creating the subscriber, create
+     * all of the other relationship models
+     */
+    public function createSubscriberPersona()
+    {
+        return $this->afterCreating(
+            function (Subscriber $subscriner) {
+                PersonaFactory::new()
+                    ->count(1)
+                    ->createAddressPhone(1)
+                    ->create([
+                        'owner_id'      => $subscriner->subID,
+                        'owner_type'    => 'subscriber',
+                    ]);
+            }
+        );
     }
 }

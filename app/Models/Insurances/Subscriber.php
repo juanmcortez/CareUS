@@ -2,6 +2,7 @@
 
 namespace App\Models\Insurances;
 
+use App\Models\Common\Persona;
 use App\Models\Patients\Patient;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -79,5 +80,15 @@ class Subscriber extends Model
     public function patient()
     {
         return $this->belongsTo(Patient::class, 'owner_id', 'patID')->withDefault();
+    }
+
+
+    /**
+     * Subscriber - Persona relationship
+     * Only 1 persona model allowed per subscriber.
+     */
+    public function persona()
+    {
+        return $this->hasOne(Persona::class, 'owner_id', 'subID')->where('owner_type', 'subscriber');
     }
 }

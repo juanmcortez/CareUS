@@ -4,6 +4,7 @@ namespace App\Models\Common;
 
 use App\Models\Common\Address;
 use App\Models\Common\Phone;
+use App\Models\Insurances\Subscriber;
 use App\Models\Patients\Patient;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -118,6 +119,16 @@ class Persona extends Model
     public function patient()
     {
         return $this->belongsTo(Patient::class, 'owner_id', 'patID')->withDefault();
+    }
+
+
+    /**
+     * Persona - Subscriber relationship
+     * Only 1 persona model allowed per subscriber.
+     */
+    public function subscriber()
+    {
+        return $this->belongsTo(Subscriber::class, 'owner_id', 'subID')->withDefault();
     }
 
 
