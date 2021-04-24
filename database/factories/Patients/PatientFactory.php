@@ -37,8 +37,9 @@ class PatientFactory extends Factory
     {
         return $this->afterCreating(
             function (Patient $patient) {
-                PersonaFactory::new()->createAddressPhone(2)->create(['owner_id' => $patient->patID, 'owner_type' => 'patient']);
+                PersonaFactory::new()->count(1)->createAddressPhone(2)->create(['owner_id' => $patient->patID, 'owner_type' => 'patient']);
                 PersonaFactory::new()->count(3)->createAddressPhone(1)->create(['owner_id' => $patient->patID, 'owner_type' => 'contact']);
+                PersonaFactory::new()->count(1)->createAddressPhone(1)->create(['owner_id' => $patient->patID, 'owner_type' => 'employment']);
             }
         );
     }

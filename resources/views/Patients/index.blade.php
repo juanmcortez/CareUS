@@ -12,6 +12,12 @@
 <pre><strong>Contact Phone:</strong>{!! $contact->phone->first() !!}</pre>
 <hr />
 @endforeach
+@foreach ($persona->patient->employment as $employment)
+<pre><strong>Employer:</strong> {!! $employment !!}</pre>
+<pre><strong>Employer Address:</strong>{!! $employment->address !!}</pre>
+<pre><strong>Employer Phone:</strong>{!! $employment->phone->first() !!}</pre>
+<hr />
+@endforeach
 <hr />
 <hr />
 <hr />
