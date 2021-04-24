@@ -45,6 +45,8 @@ class Persona extends Model
         'contact_type',
         'company',
         'occupation',
+        'financial_review',
+        'monthly_income',
     ];
 
     /**

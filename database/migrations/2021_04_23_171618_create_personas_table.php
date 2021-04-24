@@ -44,7 +44,6 @@ class CreatePersonasTable extends Migration
 
             $table->string('family_size', 16)->nullable();
 
-            $table->string('financial_review', 64)->nullable();
             $table->string('migrant_seasonal', 64)->nullable();
             $table->string('interpreter', 64)->nullable();
             $table->string('homeless', 64)->nullable();
@@ -62,6 +61,12 @@ class CreatePersonasTable extends Migration
                 ->nullable()
                 ->comment('Use this field only when adding a "employment" persona.');
             $table->string('occupation', 96)
+                ->nullable()
+                ->comment('Use this field only when adding a "employment" persona.');
+            $table->string('financial_review', 64)
+                ->nullable()
+                ->comment('Use this field only when adding a "employment" persona.');
+            $table->string('monthly_income', 64)
                 ->nullable()
                 ->comment('Use this field only when adding a "employment" persona.');
 
