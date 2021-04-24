@@ -37,9 +37,35 @@ class PatientFactory extends Factory
     {
         return $this->afterCreating(
             function (Patient $patient) {
-                PersonaFactory::new()->count(1)->createAddressPhone(2)->create(['owner_id' => $patient->patID, 'owner_type' => 'patient']);
-                PersonaFactory::new()->count(3)->createAddressPhone(1)->create(['owner_id' => $patient->patID, 'owner_type' => 'contact']);
-                PersonaFactory::new()->count(1)->createAddressPhone(1)->create(['owner_id' => $patient->patID, 'owner_type' => 'employment']);
+                PersonaFactory::new()
+                    ->count(1)
+                    ->createAddressPhone(2)
+                    ->create([
+                        'owner_id'      => $patient->patID,
+                        'owner_type'    => 'patient',
+                    ]);
+
+                $contactType = $this->faker->randomElement(['mother', 'father', 'guardian', 'relative', 'other']);
+                PersonaFactory::new()
+                    ->count(3)
+                    ->createAddressPhone(1)
+                    ->create([
+                        'owner_id'      => $patient->patID,
+                        'owner_type'    => 'contact',
+                        'contact_type'  => $contactType,
+                    ]);
+
+                $company = $this->faker->company;
+                $occupation = $this->faker->jobTitle;
+                PersonaFactory::new()
+                    ->count(1)
+                    ->createAddressPhone(1)
+                    ->create([
+                        'owner_id'      => $patient->patID,
+                        'owner_type'    => 'employment',
+                        'company'       => $company,
+                        'occupation'    => $occupation,
+                    ]);
             }
         );
     }
