@@ -16,7 +16,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        $personas = Persona::query()->orderBy('last_name')->orderBy('first_name')->paginate(25);
+        $personas = Persona::query()->where('owner_type', 'patient')->orderBy('last_name')->orderBy('first_name')->paginate(25);
         return view('Patients.index', compact('personas'));
     }
 

@@ -47,14 +47,14 @@ class PersonaFactory extends Factory
      * After creating the persona, create
      * all of the other relationship models
      */
-    public function createAddressPhone()
+    public function createAddressPhone($countPhones)
     {
         return $this->afterCreating(
-            function (Persona $persona) {
+            function (Persona $persona) use ($countPhones) {
                 // Only 1 address
                 AddressFactory::new()->create(['owner_id' => $persona->id, 'owner_type' => 'persona']);
-                // Upto 2 phones
-                PhoneFactory::new()->count(2)->create(['owner_id' => $persona->id, 'owner_type' => 'persona']);
+                // Upto $countPhones phones
+                PhoneFactory::new()->count($countPhones)->create(['owner_id' => $persona->id, 'owner_type' => 'persona']);
             }
         );
     }
