@@ -35,7 +35,8 @@
 <hr />
 @foreach ($persona->patient->subscriber as $subscriber)
 <pre><strong>Subscriber:</strong> {!! $subscriber->level !!} insurance</pre>
-<pre><strong>Company:</strong> {!! $subscriber->company !!}</pre>
+<pre><strong>Company:</strong> {!! $subscriber->insurance->company_name !!}</pre>
+<pre><strong>Payer ID:</strong> {!! $subscriber->insurance->payerID !!}</pre>
 <pre><strong>Effective Date:</strong> {!! $subscriber->effective_date->format('M d, Y') !!}</pre>
 <hr />
 @endforeach

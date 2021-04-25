@@ -16,7 +16,7 @@ class CreatePhonesTable extends Migration
         Schema::create('phones', function (Blueprint $table) {
             $table->id();
 
-            $table->enum('owner_type', ['patient', 'persona', 'contact', 'employment', 'subscriber']);
+            $table->enum('owner_type', ['patient', 'persona', 'contact', 'employment', 'subscriber', 'insurance']);
             $table->unsignedBigInteger('owner_id');
 
             $table->enum('type', ['home', 'cellphone', 'work', 'emergency', 'family', 'relative'])->default('home');

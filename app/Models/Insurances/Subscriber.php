@@ -3,6 +3,7 @@
 namespace App\Models\Insurances;
 
 use App\Models\Common\Persona;
+use App\Models\Insurances\Company;
 use App\Models\Patients\Patient;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -28,7 +29,7 @@ class Subscriber extends Model
         'owner_type',
         'owner_id',
         'level',
-        'company',
+        'company_id',
         'policy_number',
         'group_number',
         'plan_name',
@@ -90,5 +91,15 @@ class Subscriber extends Model
     public function persona()
     {
         return $this->hasOne(Persona::class, 'owner_id', 'subID')->where('owner_type', 'subscriber');
+    }
+
+
+    /**
+     * Subscriber - Insurance company relationship
+     * Many insurance company models allowed per subscriber.
+     */
+    public function insurance()
+    {
+        return $this->hasOne(Company::class, 'insID', 'company_id');
     }
 }
