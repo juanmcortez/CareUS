@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PatientController::class, 'index'])->name('patients');
+Route::get('/patient/{patient}', [PatientController::class, 'show'])->name('patients.show');
