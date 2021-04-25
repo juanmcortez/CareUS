@@ -49,6 +49,7 @@ class Subscriber extends Model
         'subID',
         'owner_type',
         'owner_id',
+        'persona',
         'deleted_at',
         'created_at',
     ];
