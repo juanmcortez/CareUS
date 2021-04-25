@@ -16,11 +16,11 @@ class CreateSubscribersTable extends Migration
         Schema::create('subscribers', function (Blueprint $table) {
             $table->id('subID');
 
-            $table->enum('owner_type', ['patient', 'persona', 'contact', 'employment', 'subscriber']);
+            $table->enum('owner_type', ['patient', 'persona', 'contact', 'employment', 'subscriber', 'insurance']);
             $table->unsignedBigInteger('owner_id');
 
             $table->enum('level', ['primary', 'secondary', 'tertiary'])->default('primary');
-            $table->unsignedBigInteger('company');
+            $table->unsignedBigInteger('company_id');
 
             $table->string('policy_number', 16);
             $table->string('group_number', 16)->nullable();

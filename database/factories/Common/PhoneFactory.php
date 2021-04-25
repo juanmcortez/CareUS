@@ -23,7 +23,7 @@ class PhoneFactory extends Factory
     public function definition()
     {
         return [
-            'owner_type'            => $this->faker->randomElement(['patient', 'persona', 'contact', 'employment', 'subscriber']),
+            'owner_type'            => $this->faker->randomElement(['patient', 'persona', 'contact', 'employment', 'subscriber', 'insurance']),
             'owner_id'              => Persona::factory(),
             'type'                  => $this->faker->randomElement(['home', 'cellphone', 'work', 'emergency', 'family', 'relative']),
             'international_code'    => '1',

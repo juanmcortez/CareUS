@@ -28,7 +28,7 @@ class PersonaFactory extends Factory
         $driver = $this->faker->randomLetter . $this->faker->randomLetter . $this->faker->randomLetter;
 
         return [
-            'owner_type'        => $this->faker->randomElement(['patient', 'persona', 'contact', 'employment', 'subscriber']),
+            'owner_type'        => $this->faker->randomElement(['patient', 'persona', 'contact', 'employment', 'subscriber', 'insurance']),
             'owner_id'          => Patient::factory(),
             'title'             => $this->faker->title($gender),
             'first_name'        => $this->faker->firstName($gender),
