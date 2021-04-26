@@ -1,8 +1,7 @@
 <header id="topbar"
     class="p-1 md:p-2 flex flex-col md:flex-row justify-between md:text-sm bg-blue-300 border border-blue-400 border-t-0 border-l-0 border-r-0 text-blue-800 shadow-md">
     <div id="logo" class="w-full md:w-20 text-center">
-        <a class="cursor-pointer hover:text-blue-600 {{ request()->routeIs('dashboard*') ? 'font-semibold' : '' }}"
-            href="{{ route('dashboard.index') }}">
+        <a class="cursor-pointer hover:text-blue-600" href="{{ route('dashboard.index') }}">
             {{ __('LOGO') }}
         </a>
     </div>
