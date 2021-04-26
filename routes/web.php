@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Patients\PatientController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PatientController::class, 'index'])->name('patients');
-Route::get('/patient/{patient}', [PatientController::class, 'show'])->name('patients.show');
+App::setLocale(config('app.locale'));
+
+Route::prefix('/')->name('dashboard.')->group(function () {
+    Route::get('/', [PatientController::class, 'index'])->name('index');
+});
+
+Route::prefix('patients')->name('patients.')->group(function () {
+    Route::get('/list', [PatientController::class, 'index'])->name('list');
+    Route::get('/{patient}/ledger', [PatientController::class, 'show'])->name('show');
+});
