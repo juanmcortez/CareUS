@@ -19,11 +19,11 @@
 
     @include('Common.header')
 
-    <main class="container flex flex-col md:flex-row flex-nowrap flex-grow max-w-full min-h-full">
+    <main class="container flex flex-col md:flex-row flex-nowrap flex-grow min-w-full min-h-full overflow-x-hidden">
 
         @include('Common.sidebar')
 
-        <div id="content" class="flex flex-col flex-wrap flex-grow max-w-full overflow-x-auto">
+        <div id="content" class="flex flex-col flex-wrap flex-grow">
 
             <section class="flex-1 p-2 md:p-4 text-left">
                 @include('Common.submenu')
