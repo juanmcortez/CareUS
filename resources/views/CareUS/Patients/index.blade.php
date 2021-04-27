@@ -6,19 +6,19 @@
 @endpush
 
 @section('submenu')
-<div class="w-full sm:w-1/4 p-2 sm:py-4 text-center text-white bg-blue-800 sm:rounded sm:rounded-r-none">
-    <h2 class="text-sm sm:text-xl uppercase font-semibold leading-tight">{{ $pageH2 }}</h2>
+<div class="max-w-full md:w-1/4 p-2 md:py-4 text-center text-white bg-blue-800 md:rounded md:rounded-r-none">
+    <h2 class="text-sm md:text-xl uppercase font-semibold leading-tight">{{ $pageH2 }}</h2>
 </div>
-<div class="w-full sm:w-3/4 p-2 text-left">
+<div class="max-w-full md:w-3/4 p-2 text-left">
 </div>
 @endsection
 
 @section('content')
-<div class="my-4 flex sm:flex-row flex-col">
-    <div class="flex flex-row mb-1 sm:mb-0">
+<div class="my-4 flex md:flex-row flex-col">
+    <div class="flex flex-row mb-1 md:mb-0">
         <div class="relative">
             <select
-                class="appearance-none w-full h-full rounded-l border block bg-white border-gray-400 border-r-none text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                class="appearance-none max-w-full h-full rounded-l border block bg-white border-gray-400 border-r-none text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                 <option>5</option>
                 <option selected>10</option>
                 <option>25</option>
@@ -41,12 +41,12 @@
             </svg>
         </span>
         <input placeholder="{{ __('Search') }}"
-            class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
+            class="appearance-none rounded-r rounded-l md:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 max-w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
     </div>
 </div>
-<div class="-mx-4 sm:-mx-8 px-4 sm:px-8 pb-4 overflow-x-auto">
-    <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
-        <table class="min-w-full leading-normal">
+<div class="-mx-4 md:-mx-8 px-4 md:px-8 pb-4 overflow-x-auto">
+    <div class="inline-blockw-full shadow rounded-lg overflow-hidden">
+        <table class="w-full leading-normal">
             <thead>
                 <tr class="text-center">
                     <th
@@ -88,7 +88,7 @@
                     <td class="px-5 py-3 border-b border-gray-200 bg-white text-sm">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 w-10 h-10">
-                                <img class="w-full h-full rounded-full"
+                                <img class="max-w-full h-full rounded-full"
                                     src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
                                     alt="" />
                             </div>

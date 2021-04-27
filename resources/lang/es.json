@@ -23,6 +23,8 @@
     "Address": "Dirección",
     "SSN": "Seg. Soc.",
     "Primary Ins.": "Seg. Primario",
+    "Secondary Ins.": "Seg. Secundario",
+    "Tertiary Ins.": "Seg. Terciario",
     "Ins. Policy": "Póliza",
     "Ins. Group": "Grupo",
     "Ins. Phone": "Tel. Seguro",

@@ -15,17 +15,17 @@
 
 </head>
 
-<body class="antialiased flex flex-col flex-wrap w-full min-h-screen text-xs sm:text-base bg-blue-200">
+<body class="antialiased flex flex-col flex-wrap max-w-full min-h-screen text-xs md:text-base bg-blue-200">
 
     @include('Common.header')
 
-    <main class="container flex flex-col sm:flex-row flex-wrap flex-grow min-w-full min-h-full">
+    <main class="container flex flex-col md:flex-row flex-nowrap flex-grow min-w-full min-h-full overflow-x-hidden">
 
         @include('Common.sidebar')
 
-        <div id="content" class="flex flex-col flex-wrap flex-grow max-w-full overflow-x-hidden">
+        <div id="content" class="flex flex-col flex-wrap flex-grow">
 
-            <section class="flex-1 p-2 sm:p-4 text-left overflow-hidden">
+            <section class="flex-1 p-2 md:p-4 text-left">
                 @include('Common.submenu')
 
                 @yield('content')

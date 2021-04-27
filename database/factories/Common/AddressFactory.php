@@ -26,7 +26,7 @@ class AddressFactory extends Factory
             'owner_type'        => $this->faker->randomElement(['patient', 'persona', 'contact', 'employment', 'subscriber', 'insurance']),
             'owner_id'          => Persona::factory(),
             'street'            => $this->faker->streetAddress,
-            'street_extended'   => $this->faker->secondaryAddress,
+            'street_extended'   => $this->faker->randomElement([$this->faker->secondaryAddress, null]),
             'city'              => $this->faker->city,
             'state'             => $this->faker->state,
             'zip'               => $this->faker->postcode,
