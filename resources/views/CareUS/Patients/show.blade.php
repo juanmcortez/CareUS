@@ -6,64 +6,64 @@
 @endpush
 
 @section('submenu')
-<div class="w-full sm:w-1/4 p-2 sm:py-4 text-center text-white bg-blue-800 sm:rounded sm:rounded-r-none">
-    <h2 class="text-sm sm:text-xl uppercase font-semibold leading-tight">{{ $pageH2 }}</h2>
+<div class="max-w-full md:w-1/4 p-2 md:py-4 text-center text-white bg-blue-800 md:rounded md:rounded-r-none">
+    <h2 class="text-sm md:text-xl uppercase font-semibold leading-tight">{{ $pageH2 }}</h2>
 </div>
-<div class="w-full sm:w-3/4 p-2 text-left">
+<div class="max-w-full md:w-3/4 p-2 text-left">
     <ul class="flex flex-row flex-wrap text-xs">
-        <li class="w-1/3 sm:w-1/12 sm:mb-3 pr-1 font-semibold text-right uppercase">
+        <li class="w-1/3 md:w-1/12 md:mb-3 pr-1 font-semibold text-right uppercase">
             {{ __('Patient ID') }}
         </li>
-        <li class="w-2/3 sm:w-1/12 mb-3 text-left">
+        <li class="w-2/3 md:w-1/12 mb-3 text-left">
             {{ $patient->patID }}
         </li>
-        <li class="w-1/3 sm:w-1/12 sm:mb-3 pr-1 font-semibold text-right uppercase">
+        <li class="w-1/3 md:w-1/12 md:mb-3 pr-1 font-semibold text-right uppercase">
             {{ __('Birthdate') }}
         </li>
-        <li class="w-2/3 sm:w-1/12 mb-3 text-left">
+        <li class="w-2/3 md:w-1/12 mb-3 text-left">
             {{ ucfirst($patient->persona->date_of_birth->translatedFormat('M d, Y')) }}
         </li>
-        <li class="w-1/3 sm:w-1/12 sm:mb-3 pr-1 font-semibold text-right uppercase">{{ __('Address') }}</li>
-        <li class="w-2/3 sm:w-4/12 mb-3 text-left">
+        <li class="w-1/3 md:w-1/12 md:mb-3 pr-1 font-semibold text-right uppercase">{{ __('Address') }}</li>
+        <li class="w-2/3 md:w-4/12 mb-3 text-left">
             {{ $patient->persona->address->street }} |
             {{ $patient->persona->address->city }},
             {{ $patient->persona->address->state }} {{ $patient->persona->address->zip }}
         </li>
-        <li class="w-1/3 sm:w-1/12 sm:mb-3 pr-1 font-semibold text-right uppercase">
+        <li class="w-1/3 md:w-1/12 md:mb-3 pr-1 font-semibold text-right uppercase">
             {{ __('Phone') }}
         </li>
-        <li class="w-2/3 sm:w-2/12 mb-3 text-left">
+        <li class="w-2/3 md:w-2/12 mb-3 text-left">
             {{-- $patient->persona->phone->first()->formated_phone --}}
         </li>
 
-        <li class="w-1/3 sm:w-1/12 pr-1 pb-3 sm:pb-0 font-semibold text-right uppercase">
+        <li class="w-1/3 md:w-1/12 pr-1 pb-3 md:pb-0 font-semibold text-right uppercase">
             {{ __('SSN') }}
         </li>
-        <li class="w-2/3 sm:w-1/12 text-left">
+        <li class="w-2/3 md:w-1/12 text-left">
             {{ $patient->persona->social_security }}
         </li>
-        <li class="w-1/3 sm:w-1/12 pr-1 pb-3 sm:pb-0 font-semibold text-right uppercase">
+        <li class="w-1/3 md:w-1/12 pr-1 pb-3 md:pb-0 font-semibold text-right uppercase">
             {{ __('Primary Ins.') }}
         </li>
-        <li class="w-2/3 sm:w-2/12 text-left">
+        <li class="w-2/3 md:w-2/12 text-left">
             {{ $patient->subscriber->first()->insurance->company_name }}
         </li>
-        <li class="w-1/3 sm:w-1/12 pr-1 pb-3 sm:pb-0 font-semibold text-right uppercase">
+        <li class="w-1/3 md:w-1/12 pr-1 pb-3 md:pb-0 font-semibold text-right uppercase">
             {{ __('Ins. Policy') }}
         </li>
-        <li class="w-2/3 sm:w-1/12 text-left">
+        <li class="w-2/3 md:w-1/12 text-left">
             {{ $patient->subscriber->first()->policy_number }}
         </li>
-        <li class="w-1/3 sm:w-1/12 pr-1 pb-3 sm:pb-0 font-semibold text-right uppercase">
+        <li class="w-1/3 md:w-1/12 pr-1 pb-3 md:pb-0 font-semibold text-right uppercase">
             {{ __('Ins. Group') }}
         </li>
-        <li class="w-2/3 sm:w-1/12 text-left">
+        <li class="w-2/3 md:w-1/12 text-left">
             {{ $patient->subscriber->first()->group_number }}
         </li>
-        <li class="w-1/3 sm:w-1/12 pr-1 font-semibold text-right uppercase">
+        <li class="w-1/3 md:w-1/12 pr-1 font-semibold text-right uppercase">
             {{ __('Ins. Phone') }}
         </li>
-        <li class="w-2/3 sm:w-2/12 text-left">
+        <li class="w-2/3 md:w-2/12 text-left">
             {{-- $patient->subscriber->first()->insurance->phone->first()->formated_phone --}}
         </li>
     </ul>
@@ -71,9 +71,9 @@
 @endsection
 
 @section('content')
-<div class="w-full mx-auto overflow-auto pt-4">
+<div class="max-w-full mx-auto overflow-auto pt-4">
     <table
-        class="table-auto w-full text-left whitespace-no-wrap text-gray-900 text-sm bg-gray-100 rounded-tr rounded-tl">
+        class="table-auto max-w-full text-left whitespace-no-wrap text-gray-900 text-sm bg-gray-100 rounded-tr rounded-tl">
         <thead>
             <tr class="border-b-2 border-gray-300 text-center font-medium">
                 <th class="px-3 py-2 title-font tracking-wider">{{ __('Balance') }}</th>
