@@ -45,8 +45,8 @@
     </div>
 </div>
 <div class="-mx-4 md:-mx-8 px-4 md:px-8 pb-4 overflow-x-auto">
-    <div class="inline-block max-w-full shadow rounded-lg overflow-hidden">
-        <table class="max-w-full leading-normal">
+    <div class="inline-blockw-full shadow rounded-lg overflow-hidden">
+        <table class="w-full leading-normal">
             <thead>
                 <tr class="text-center">
                     <th
