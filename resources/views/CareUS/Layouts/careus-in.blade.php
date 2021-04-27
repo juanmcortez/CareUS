@@ -23,9 +23,9 @@
 
         @include('Common.sidebar')
 
-        <div id="content" class="flex flex-col flex-wrap flex-grow max-w-full overflow-x-hidden">
+        <div id="content" class="flex flex-col flex-wrap flex-grow max-w-full overflow-x-auto">
 
-            <section class="flex-1 p-2 sm:p-4 text-left overflow-hidden">
+            <section class="flex-1 p-2 sm:p-4 text-left">
                 @include('Common.submenu')
 
                 @yield('content')
