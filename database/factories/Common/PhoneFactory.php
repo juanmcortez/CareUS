@@ -30,7 +30,7 @@ class PhoneFactory extends Factory
             'area_code'             => random_int(100, 999),
             'initial_digits'        => random_int(100, 999),
             'last_digits'           => random_int(1000, 9999),
-            'extension'             => random_int(1, 99),
+            'extension'             => $this->faker->randomElement([random_int(1, 99), null]),
         ];
     }
 }

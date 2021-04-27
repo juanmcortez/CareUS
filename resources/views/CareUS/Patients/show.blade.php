@@ -14,43 +14,62 @@
         <table class="table w-full text-left text-gray-900 text-sm bg-gray-100 rounded">
             <tbody>
                 <tr>
-                    <td class="w-1/3 p-2 text-right font-semibold">{{ __('Patient ID') }}</td>
+                    <td class="w-1/3 p-1 pr-2 text-right font-semibold">{{ __('Patient ID') }}</td>
                     <td>{{ $patient->patID }}</td>
                 </tr>
                 <tr>
-                    <td class="w-1/3 p-2 text-right font-semibold">{{ __('Birthdate') }}</td>
+                    <td class="w-1/3 p-1 pr-2 text-right font-semibold">{{ __('Birthdate') }}</td>
                     <td>{{ ucfirst($patient->persona->date_of_birth->translatedFormat('M d, Y')) }}</td>
                 </tr>
                 <tr>
-                    <td class="w-1/3 p-2 text-right font-semibold">{{ __('Social Security') }}</td>
+                    <td class="w-1/3 p-1 pr-2 text-right font-semibold">{{ __('Social Security') }}</td>
                     <td>{{ $patient->persona->social_security }}</td>
                 </tr>
                 <tr>
-                    <td class="w-1/3 p-2 text-right font-semibold">{{ __('Phone') }}</td>
+                    <td class="w-1/3 p-1 pr-2 text-right font-semibold">{{ __('Phone') }}</td>
                     <td>{{ $patient->persona->phone->first()->formated_phone }}</td>
                 </tr>
                 <tr>
-                    <td class="w-1/3 p-2 text-right font-semibold">{{ __('Address') }}</td>
+                    <td class="w-1/3 p-1 pr-2 text-right font-semibold">{{ __('Address') }}</td>
                     <td>{{ $patient->persona->address->street }}</td>
                 </tr>
                 @if (!empty($patient->persona->address->street_extended))
                 <tr>
-                    <td class="w-1/3 p-2 text-right font-semibold">&nbsp;</td>
+                    <td class="w-1/3 p-1 pr-2 text-right font-semibold">&nbsp;</td>
                     <td>{{ $patient->persona->address->street_extended }}</td>
                 </tr>
                 @endif
                 <tr>
-                    <td class="w-1/3 p-2 text-right font-semibold">&nbsp;</td>
+                    <td class="w-1/3 p-1 pr-2 text-right font-semibold">&nbsp;</td>
                     <td>{{ $patient->persona->address->city }},</td>
                 </tr>
                 <tr>
-                    <td class="w-1/3 p-2 text-right font-semibold">&nbsp;</td>
+                    <td class="w-1/3 p-1 pr-2 text-right font-semibold">&nbsp;</td>
                     <td>{{ $patient->persona->address->state }} {{ $patient->persona->address->zip }}</td>
                 </tr>
                 <tr>
-                    <td class="w-1/3 p-2 text-right font-semibold">&nbsp;</td>
+                    <td class="w-1/3 p-1 pr-2 text-right font-semibold">&nbsp;</td>
                     <td>{{ $patient->persona->address->country }}</td>
                 </tr>
+                @foreach ($patient->subscriber as $subscriber)
+                <tr class="border-t border-blue-200">
+                    <td class="w-1/3 p-1 pr-2 text-right font-semibold">{{ __(ucfirst($subscriber->level).' Ins.') }}
+                    </td>
+                    <td>{{ $subscriber->insurance->company_name }}</td>
+                </tr>
+                <tr>
+                    <td class="w-1/3 p-1 pr-2 text-right font-semibold">{{ __('Ins. Policy') }}</td>
+                    <td>{{ $subscriber->policy_number }}</td>
+                </tr>
+                <tr>
+                    <td class="w-1/3 p-1 pr-2 text-right font-semibold">{{ __('Ins. Group') }}</td>
+                    <td>{{ $subscriber->group_number }}</td>
+                </tr>
+                <tr>
+                    <td class="w-1/3 p-1 pr-2 text-right font-semibold">{{ __('Phone') }}</td>
+                    <td>{{ $subscriber->insurance->phone->formated_phone }}</td>
+                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
