@@ -50,6 +50,7 @@ class Subscriber extends Model
         'owner_type',
         'owner_id',
         'persona',
+        'insurance',
         'deleted_at',
         'created_at',
     ];

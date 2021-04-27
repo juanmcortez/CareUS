@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Common\LocalizationController;
+use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Patients\PatientController;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
@@ -15,13 +18,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-App::setLocale(config('app.locale'));
-
 Route::prefix('/')->name('dashboard.')->group(function () {
-    Route::get('/', [PatientController::class, 'index'])->name('index');
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
 });
 
 Route::prefix('patients')->name('patients.')->group(function () {
     Route::get('/list', [PatientController::class, 'index'])->name('list');
     Route::get('/{patient}/ledger', [PatientController::class, 'show'])->name('show');
 });
+
+Route::get('/{locale}', [LocalizationController::class, 'index'])->name('lang.switch');
