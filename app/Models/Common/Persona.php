@@ -108,7 +108,7 @@ class Persona extends Model
      */
     public function getCurrentAgeAttribute()
     {
-        return Carbon::parse($this->date_of_birth)->diff(Carbon::now())->format('%y yrs');
+        return __(':AGE yrs.', ['AGE' => Carbon::parse($this->date_of_birth)->diff(Carbon::now())->format('%y')]);
     }
 
 

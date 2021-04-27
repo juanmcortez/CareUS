@@ -16,8 +16,10 @@ class PatientController extends Controller
      */
     public function index()
     {
-        $personas = Persona::query()->where('owner_type', 'patient')->orderBy('last_name')->orderBy('first_name')->paginate(25);
-        return view('Patients.index', compact('personas'));
+        $pageH2 = __("Patient's list");
+        $pageTitle = $pageH2 . ' | ' . config('app.name');
+        $personas = Persona::query()->where('owner_type', 'patient')->orderBy('last_name')->orderBy('first_name')->paginate(10);
+        return view('Patients.index', compact('pageTitle', 'pageH2', 'personas'));
     }
 
     /**
@@ -49,7 +51,9 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        return view('Patients.show', compact('patient'));
+        $pageH2 =  __("Ledger: :patient_name", ['patient_name' => $patient->persona->formated_name]);
+        $pageTitle = $pageH2 . ' | ' . config('app.name');
+        return view('Patients.show', compact('pageTitle', 'pageH2', 'patient'));
     }
 
     /**
