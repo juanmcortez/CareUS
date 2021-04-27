@@ -19,7 +19,7 @@
 
     @include('Common.header')
 
-    <main class="container flex flex-col sm:flex-row flex-wrap flex-grow min-w-full min-h-full">
+    <main class="container flex flex-col sm:flex-row flex-nowrap flex-grow min-w-full min-h-full">
 
         @include('Common.sidebar')
 
