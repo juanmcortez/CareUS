@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Patients\PatientController;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 App::setLocale(config('app.locale'));
 
 Route::prefix('/')->name('dashboard.')->group(function () {
-    Route::get('/', [PatientController::class, 'index'])->name('index');
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
 });
 
 Route::prefix('patients')->name('patients.')->group(function () {
