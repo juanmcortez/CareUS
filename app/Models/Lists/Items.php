@@ -21,6 +21,7 @@ class Items extends Model
         'list_item_name',
         'list_item_value',
         'list_item_title',
+        'list_item_default',
         'list_item_order',
     ];
 
