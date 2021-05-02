@@ -17,7 +17,7 @@
     "Phone": "Téléphoner",
     "Social Security": "Sécurité sociale",
     "Accession #": "Adhesión #",
-    "Patient ID": "ID Patient",
+    "Patient ID": "ID Patiente",
     "External ID": "ID Externe",
     "Birthdate": "Date Naiss.",
     "Address": "Adresse",
@@ -36,5 +36,15 @@
     "> 90 Days": "> 90 Jours",
     "> 120 Days": "> 120 Jours",
     "Insurance": "Assurance",
-    "Account": "Compte"
+    "Account": "Compte",
+    "Edit Demographics": "Modifier les données",
+    "Update": "Mettre à jour",
+    "Cancel": "Annuler",
+    "Contacts": "Contacts",
+    "Employment": "Emploi",
+    "Settings": "Paramètres",
+    "Other": "Autre",
+    "Created on": "Créé sur",
+    "Title": "Titre",
+    "Name": "Nom"
 }

@@ -36,5 +36,15 @@
     "> 90 Days": "> 90 Días",
     "> 120 Days": "> 120 Días",
     "Insurance": "Seguro",
-    "Account": "Cuenta"
+    "Account": "Cuenta",
+    "Edit Demographics": "Editar Datos Demográficos",
+    "Update": "Actualizar",
+    "Cancel": "Cancelar",
+    "Contacts": "Contactos",
+    "Employment": "Empleo",
+    "Settings": "Configuraciones",
+    "Other": "Otros",
+    "Created on": "Creado",
+    "Title": "Título",
+    "Name": "Nombre"
 }

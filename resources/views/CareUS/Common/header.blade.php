@@ -18,7 +18,7 @@
             </a>
         </li>
         <li class="order-5 md:order-3 w-1/2 md:w-auto md:px-3">
-            <a class="cursor-pointer hover:text-blue-600" href="#">
+            <a class="cursor-pointer hover:text-blue-600" href="{{ route('settings.index') }}">
                 {{ __('Your Practice Name') }}
             </a>
         </li>

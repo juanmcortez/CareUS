@@ -60,6 +60,7 @@ class Persona extends Model
         'owner_type',
         'owner_id',
         'patient',
+        'address',
         'deleted_at',
         'created_at',
     ];
