@@ -1,6 +1,17 @@
 @tailwind base;
+
+input:invalid,
+textarea:invalid,
+select:invalid {
+    box-shadow: none;
+}
+
 @tailwind components;
 @tailwind utilities;
+
+[x-cloak] {
+    display: none;
+}
 
 .text-xxs {
     font-size: 0.625rem /* 10px */;

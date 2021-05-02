@@ -12,7 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/careus.js', 'public/js')
-    .extract(['lodash', 'axios', 'jQuery'])
+    .extract(['alpinejs', 'lodash', 'axios', 'jQuery'])
     .postCss('resources/css/careus.css', 'public/css', [
         require("tailwindcss"),
     ])
