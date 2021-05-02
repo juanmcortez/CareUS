@@ -35,6 +35,7 @@ class Patient extends Model
      * @var array
      */
     protected $hidden = [
+        'persona',
         'deleted_at',
         'updated_at',
     ];

@@ -64,7 +64,9 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        //
+        $pageH2 =  __("Edit Demographics", ['patient_name' => $patient->persona->formated_name]);
+        $pageTitle = $pageH2 . ' | ' . config('app.name');
+        return view('Patients.edit', compact('pageTitle', 'pageH2', 'patient'));
     }
 
     /**
@@ -76,7 +78,7 @@ class PatientController extends Controller
      */
     public function update(Request $request, Patient $patient)
     {
-        //
+        dd($request, $patient);
     }
 
     /**

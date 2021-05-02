@@ -26,6 +26,8 @@ Route::prefix('/')->name('dashboard.')->group(function () {
 Route::prefix('patients')->name('patients.')->group(function () {
     Route::get('/list', [PatientController::class, 'index'])->name('list');
     Route::get('/{patient}/ledger', [PatientController::class, 'show'])->name('show');
+    Route::get('/{patient}/edit/demographics', [PatientController::class, 'edit'])->name('edit');
+    Route::put('/{patient}/edit/demographics', [PatientController::class, 'update'])->name('update');
 });
 
 Route::prefix('settings')->name('settings.')->group(function () {
