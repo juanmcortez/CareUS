@@ -60,6 +60,30 @@ class Phone extends Model
 
 
     /**
+     * Return created_at formated
+     * when calling created_at_language
+     *
+     * @return string
+     */
+    public function getCreatedAtLanguageAttribute()
+    {
+        return $this->created_at->translatedFormat('M d, Y - H:i');
+    }
+
+
+    /**
+     * Return updated_at formated
+     * when calling updated_at_language
+     *
+     * @return string
+     */
+    public function getUpdatedAtLanguageAttribute()
+    {
+        return $this->updated_at->translatedFormat('M d, Y');
+    }
+
+
+    /**
      * Return the formated phone of the persona
      *
      * @return string

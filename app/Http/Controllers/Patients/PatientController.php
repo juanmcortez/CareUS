@@ -18,7 +18,7 @@ class PatientController extends Controller
     {
         $pageH2 = __("Patient's list");
         $pageTitle = $pageH2 . ' | ' . config('app.name');
-        $personas = Persona::query()->where('owner_type', 'patient')->orderBy('last_name')->orderBy('first_name')->paginate(10);
+        $personas = Persona::query()->where('owner_type', 'patient')->orderBy('last_name')->orderBy('first_name')->paginate(15);
         return view('Patients.index', compact('pageTitle', 'pageH2', 'personas'));
     }
 
