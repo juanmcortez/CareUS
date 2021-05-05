@@ -5,36 +5,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('pageTitle')</title>
 
+    <meta name="author" content="name">
+    <meta name="description" content="description here">
+    <meta name="keywords" content="keywords,here">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ secure_asset('favicon.ico') }}">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
     <link href="{{ mix('css/careus.css') }}" rel="stylesheet">
 
     @stack('styles')
 
 </head>
 
-<body class="antialiased flex flex-col flex-wrap max-w-full min-h-screen text-xs md:text-base bg-blue-200">
+<body class="font-sans text-base antialiased leading-snug tracking-normal bg-palecerulean-500 text-lightcyan-500">
 
-    @include('Common.header')
-
-    <main class="container flex flex-col md:flex-row flex-nowrap flex-grow min-w-full min-h-full overflow-x-hidden">
+    <div class="flex flex-col min-h-screen lg:flex-row lg:relative">
 
         @include('Common.sidebar')
 
-        <div id="content" class="flex flex-col flex-wrap flex-grow">
+        <div class="flex-1">
+            <div class="flex flex-col min-h-full">
 
-            <section class="flex-1 p-2 md:p-4 text-left">
-                @include('Common.submenu')
+                @include('Common.header')
 
-                @yield('content')
-            </section>
+                <main class="flex-1 m-8 rounded-md bg-lightcyan-500">
+                    <div
+                        class="flex flex-row flex-wrap justify-between px-4 py-3 text-lightcyan-500 bg-bdazzledblue-500 rounded-t-md">
 
-            @include('Common.footer')
+                        @yield('submenu')
 
+                        @include('Common.submenutools')
+
+                    </div>
+                    <div class="flex flex-wrap flex-1 m-8 whitespace-normal text-gunmetal-900">
+
+                        @yield('content')
+
+                    </div>
+                </main>
+
+                @include('Common.footer')
+
+            </div>
         </div>
-    </main>
+    </div>
 
     <script src=" {{ mix('/js/manifest.js') }}"></script>
     <script src="{{ mix('/js/vendor.js') }}"></script>

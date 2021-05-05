@@ -12,8 +12,16 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/careus.js', 'public/js')
-    .extract(['lodash', 'axios', 'jQuery'])
-    .postCss('resources/css/careus.css', 'public/css', [
-        require("tailwindcss"),
-    ])
+    .extract(['alpinejs', 'lodash', 'axios', 'jQuery'])
+    .sass('resources/sass/careus.scss', 'public/css')
+    .options({
+        postCss: [
+            require('postcss-import'),
+            require('tailwindcss'),
+        ]
+    })
+    .copy(
+        'node_modules/@fortawesome/fontawesome-free/webfonts',
+        'public/fonts'
+    )
     .version();

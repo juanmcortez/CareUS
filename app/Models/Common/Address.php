@@ -60,6 +60,30 @@ class Address extends Model
 
 
     /**
+     * Return created_at formated
+     * when calling created_at_language
+     *
+     * @return string
+     */
+    public function getCreatedAtLanguageAttribute()
+    {
+        return ucfirst($this->created_at->translatedFormat('M d, Y - H:i'));
+    }
+
+
+    /**
+     * Return updated_at formated
+     * when calling updated_at_language
+     *
+     * @return string
+     */
+    public function getUpdatedAtLanguageAttribute()
+    {
+        return ucfirst($this->updated_at->translatedFormat('M d, Y - H:i'));
+    }
+
+
+    /**
      * Address - Persona relationship
      * Only 1 address model allowed per persona.
      */

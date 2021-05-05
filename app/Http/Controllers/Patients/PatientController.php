@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Patients;
 
 use App\Http\Controllers\Controller;
 use App\Models\Common\Persona;
+use App\Models\Lists\Items;
 use App\Models\Patients\Patient;
 use Illuminate\Http\Request;
 
@@ -66,7 +67,9 @@ class PatientController extends Controller
     {
         $pageH2 =  __("Edit Demographics", ['patient_name' => $patient->persona->formated_name]);
         $pageTitle = $pageH2 . ' | ' . config('app.name');
-        return view('Patients.edit', compact('pageTitle', 'pageH2', 'patient'));
+        $seletItems = new Items();
+        $items = $seletItems->getSelectListsItems($patient);
+        return view('Patients.edit', compact('pageTitle', 'pageH2', 'patient', 'items'));
     }
 
     /**

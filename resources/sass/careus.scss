@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+
+input:invalid,
+textarea:invalid,
+select:invalid {
+    box-shadow: none;
+}
+
+[x-cloak] {
+    display: none;
+}
+
+.w-2\/3 {
+    width: calc((100% / 3) * 2);
+}
+
+.w-3\/5 {
+    width: calc((100% / 5) * 3);
+}

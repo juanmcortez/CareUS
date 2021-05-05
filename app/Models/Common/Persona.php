@@ -87,6 +87,42 @@ class Persona extends Model
 
 
     /**
+     * Return created_at formated
+     * when calling created_at_language
+     *
+     * @return string
+     */
+    public function getCreatedAtLanguageAttribute()
+    {
+        return ucfirst($this->created_at->translatedFormat('M d, Y - H:i'));
+    }
+
+
+    /**
+     * Return updated_at formated
+     * when calling updated_at_language
+     *
+     * @return string
+     */
+    public function getUpdatedAtLanguageAttribute()
+    {
+        return ucfirst($this->updated_at->translatedFormat('M d, Y'));
+    }
+
+
+    /**
+     * Return date_of_birth formated
+     * when calling date_of_birth_language
+     *
+     * @return string
+     */
+    public function getDateOfBirthLanguageAttribute()
+    {
+        return ucfirst($this->date_of_birth->translatedFormat('M d, Y'));
+    }
+
+
+    /**
      * Return the formated name of the persona
      *
      * @return string

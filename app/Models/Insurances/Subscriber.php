@@ -77,6 +77,30 @@ class Subscriber extends Model
 
 
     /**
+     * Return created_at formated
+     * when calling created_at_language
+     *
+     * @return string
+     */
+    public function getCreatedAtLanguageAttribute()
+    {
+        return ucfirst($this->created_at->translatedFormat('M d, Y - H:i'));
+    }
+
+
+    /**
+     * Return updated_at formated
+     * when calling updated_at_language
+     *
+     * @return string
+     */
+    public function getUpdatedAtLanguageAttribute()
+    {
+        return ucfirst($this->updated_at->translatedFormat('M d, Y - H:i'));
+    }
+
+
+    /**
      * Subscriber - Patient relationship
      * Many subscriber models allowed per patient.
      */
