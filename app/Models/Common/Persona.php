@@ -94,7 +94,7 @@ class Persona extends Model
      */
     public function getCreatedAtLanguageAttribute()
     {
-        return $this->created_at->translatedFormat('M d, Y - H:i');
+        return ucfirst($this->created_at->translatedFormat('M d, Y - H:i'));
     }
 
 
@@ -106,7 +106,7 @@ class Persona extends Model
      */
     public function getUpdatedAtLanguageAttribute()
     {
-        return $this->updated_at->translatedFormat('M d, Y');
+        return ucfirst($this->updated_at->translatedFormat('M d, Y'));
     }
 
 
@@ -118,7 +118,7 @@ class Persona extends Model
      */
     public function getDateOfBirthLanguageAttribute()
     {
-        return $this->date_of_birth->translatedFormat('M d, Y');
+        return ucfirst($this->date_of_birth->translatedFormat('M d, Y'));
     }
 
 

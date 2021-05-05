@@ -82,7 +82,7 @@ class Company extends Model
      */
     public function getCreatedAtLanguageAttribute()
     {
-        return $this->created_at->translatedFormat('M d, Y - H:i');
+        return ucfirst($this->created_at->translatedFormat('M d, Y - H:i'));
     }
 
 
@@ -94,7 +94,7 @@ class Company extends Model
      */
     public function getUpdatedAtLanguageAttribute()
     {
-        return $this->updated_at->translatedFormat('M d, Y');
+        return ucfirst($this->updated_at->translatedFormat('M d, Y - H:i'));
     }
 
 
