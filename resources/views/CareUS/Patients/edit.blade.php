@@ -239,13 +239,13 @@
                     class="w-full p-2 text-center text-gray-500 bg-blue-100 border-b-2 border-blue-400 focus:outline-none" />
             </div>
             <div class="w-1/12 text-center">-</div>
-            <div class="w-3/12">
+            <div class="w-4/12">
                 <input type="text" name="patient[persona][dob][year]"
                     value="{{ $patient->persona->date_of_birth->format('Y') }}"
                     class="w-full p-2 text-center text-gray-500 bg-blue-100 border-b-2 border-blue-400 focus:outline-none" />
             </div>
         </div>
-        <div class="w-1/12 pr-2 font-bold text-right">{{ __('Social security') }}</div>
+        <div class="w-1/12 pr-2 font-bold text-right">{{ __('Social Security') }}</div>
         <div class="w-2/12 text-left">
             <input type="text" name="patient[persona][social_security]" value="{{ $patient->persona->social_security }}"
                 class="w-full p-2 text-gray-500 bg-blue-100 border-b-2 border-blue-400 focus:outline-none" />
