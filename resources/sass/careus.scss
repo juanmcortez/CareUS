@@ -19,3 +19,7 @@ select:invalid {
 .w-2\/3 {
     width: calc((100% / 3) * 2);
 }
+
+.w-3\/5 {
+    width: calc((100% / 5) * 3);
+}
