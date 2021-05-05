@@ -28,7 +28,7 @@ class AddressFactory extends Factory
             'street'            => $this->faker->streetAddress,
             'street_extended'   => $this->faker->randomElement([$this->faker->secondaryAddress, null]),
             'city'              => $this->faker->city,
-            'state'             => $this->faker->state,
+            'state'             => $this->faker->randomElement(['AL', 'AZ', 'CA', 'CT', 'DC', 'GA', 'ID', 'IN', 'KS', 'LA', 'MD', 'MI']),
             'zip'               => $this->faker->postcode,
             'country'           => $this->faker->countryCode,
         ];

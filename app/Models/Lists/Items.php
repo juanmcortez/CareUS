@@ -2,6 +2,8 @@
 
 namespace App\Models\Lists;
 
+use App\Models\Lists\Items;
+use App\Models\Patients\Patient;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -55,6 +57,59 @@ class Items extends Model
     protected $casts = [
         'date_time' => 'date',
     ];
+
+
+    /**
+     * Returns the list of items required for the
+     * edit / creation forms
+     *
+     * @param Patient $patient
+     *
+     * @return array
+     */
+    public function getSelectListsItems(Patient $patient)
+    {
+        $country = (empty($patient->persona->address->country)) ? 'US' : $patient->persona->address->country;
+
+        $titles = $this->select('list_item_value', 'list_item_title')
+            ->Where('list_item_type', 'child')
+            ->where('list_item_name', 'title')
+            ->orderBy('list_item_title')
+            ->get();
+
+        $states = $this->select('list_item_value', 'list_item_title')
+            ->Where('list_item_type', 'sub_child')
+            ->where('list_item_master', 'countries')
+            ->where('list_item_name', $country)
+            ->orderBy('list_item_title')
+            ->get();
+
+        $countries = $this->select('list_item_value', 'list_item_title')
+            ->Where('list_item_type', 'child')
+            ->where('list_item_name', 'countries')
+            ->orderBy('list_item_title')
+            ->get();
+
+        $contacttypes = $this->select('list_item_value', 'list_item_title')
+            ->Where('list_item_type', 'child')
+            ->where('list_item_name', 'contacttype')
+            ->orderBy('list_item_title')
+            ->get();
+
+        $genders = $this->select('list_item_value', 'list_item_title')
+            ->Where('list_item_type', 'child')
+            ->where('list_item_name', 'gender')
+            ->orderBy('list_item_title')
+            ->get();
+
+        $phonetypes = $this->select('list_item_value', 'list_item_title')
+            ->Where('list_item_type', 'child')
+            ->where('list_item_name', 'phonetype')
+            ->orderBy('list_item_title')
+            ->get();
+
+        return compact('titles', 'states', 'countries', 'contacttypes', 'genders', 'phonetypes');
+    }
 
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Patients;
 
 use App\Http\Controllers\Controller;
 use App\Models\Common\Persona;
+use App\Models\Lists\Items;
 use App\Models\Patients\Patient;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,7 @@ class PatientController extends Controller
     {
         $pageH2 = __("Patient's list");
         $pageTitle = $pageH2 . ' | ' . config('app.name');
-        $personas = Persona::query()->where('owner_type', 'patient')->orderBy('last_name')->orderBy('first_name')->paginate(15);
+        $personas = Persona::query()->where('owner_type', 'patient')->orderBy('last_name')->orderBy('first_name')->paginate(10);
         return view('Patients.index', compact('pageTitle', 'pageH2', 'personas'));
     }
 
@@ -66,7 +67,9 @@ class PatientController extends Controller
     {
         $pageH2 =  __("Edit Demographics", ['patient_name' => $patient->persona->formated_name]);
         $pageTitle = $pageH2 . ' | ' . config('app.name');
-        return view('Patients.edit', compact('pageTitle', 'pageH2', 'patient'));
+        $seletItems = new Items();
+        $items = $seletItems->getSelectListsItems($patient);
+        return view('Patients.edit', compact('pageTitle', 'pageH2', 'patient', 'items'));
     }
 
     /**
