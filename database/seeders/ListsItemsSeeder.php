@@ -375,7 +375,7 @@ class ListsItemsSeeder extends Seeder
     private function createGender()
     {
         $data_array = [
-            ['list_item_title' => 'Undisclosed', 'list_item_value' => 'undisclosed'],
+            ['list_item_title' => 'Undisclosed', 'list_item_value' => ''],
             ['list_item_title' => 'Male', 'list_item_value' => 'male'],
             ['list_item_title' => 'Female', 'list_item_value' => 'female'],
             ['list_item_title' => 'Agender', 'list_item_value' => 'agender'],
@@ -440,7 +440,7 @@ class ListsItemsSeeder extends Seeder
     private function createMarital()
     {
         $data_array = [
-            ['list_item_title' => 'Unassigned', 'list_item_value' => 'unassigned'],
+            ['list_item_title' => 'Unassigned', 'list_item_value' => ''],
             ['list_item_title' => 'Single', 'list_item_value' => 'single'],
             ['list_item_title' => 'Married', 'list_item_value' => 'married'],
             ['list_item_title' => 'Significant Other', 'list_item_value' => 'significantother'],
@@ -463,7 +463,7 @@ class ListsItemsSeeder extends Seeder
     private function createLanguage()
     {
         $data_array = [
-            ['list_item_title' => 'Unassigned', 'list_item_value' => 'en'],
+            ['list_item_title' => 'Unassigned', 'list_item_value' => ''],
             ['list_item_title' => 'Español', 'list_item_value' => 'es'],
             ['list_item_title' => 'English', 'list_item_value' => 'en'],
             ['list_item_title' => 'Français', 'list_item_value' => 'fr'],
@@ -482,7 +482,7 @@ class ListsItemsSeeder extends Seeder
     private function createEthnic()
     {
         $data_array = [
-            ['list_item_title' => 'Unassigned', 'list_item_value' => 'unassigned'],
+            ['list_item_title' => 'Unassigned', 'list_item_value' => ''],
             ['list_item_title' => 'American Indian', 'list_item_value' => 'americanindian'],
             ['list_item_title' => 'Alaska Native', 'list_item_value' => 'alaskanative'],
             ['list_item_title' => 'Asian', 'list_item_value' => 'asian'],
@@ -505,7 +505,7 @@ class ListsItemsSeeder extends Seeder
     private function createRace()
     {
         $data_array = [
-            ['list_item_title' => 'Unassigned', 'list_item_value' => 'unassigned'],
+            ['list_item_title' => 'Unassigned', 'list_item_value' => ''],
             ['list_item_title' => 'Hispanic', 'list_item_value' => 'hispanic'],
             ['list_item_title' => 'Latino', 'list_item_value' => 'latino'],
             ['list_item_title' => 'Not Hispanic', 'list_item_value' => 'nothispanic'],
@@ -525,7 +525,7 @@ class ListsItemsSeeder extends Seeder
     private function createReferral()
     {
         $data_array = [
-            ['list_item_title' => 'Unassigned', 'list_item_value' => 'unassigned'],
+            ['list_item_title' => 'Unassigned', 'list_item_value' => ''],
             ['list_item_title' => 'Patient', 'list_item_value' => 'patient'],
             ['list_item_title' => 'Employee', 'list_item_value' => 'employee'],
             ['list_item_title' => 'Walk-In', 'list_item_value' => 'walkin'],
@@ -551,7 +551,7 @@ class ListsItemsSeeder extends Seeder
     private function createVFC()
     {
         $data_array = [
-            ['list_item_title' => 'Unassigned', 'list_item_value' => 'unassigned'],
+            ['list_item_title' => 'Unassigned', 'list_item_value' => ''],
             ['list_item_title' => 'Eligible', 'list_item_value' => 'eligible'],
             ['list_item_title' => 'Ineligible', 'list_item_value' => 'ineligible'],
         ];

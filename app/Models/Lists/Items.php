@@ -90,16 +90,10 @@ class Items extends Model
             ->orderBy('list_item_title')
             ->get();
 
-        $contacttypes = $this->select('list_item_value', 'list_item_title')
-            ->Where('list_item_type', 'child')
-            ->where('list_item_name', 'contacttype')
-            ->orderBy('list_item_title')
-            ->get();
-
         $genders = $this->select('list_item_value', 'list_item_title')
             ->Where('list_item_type', 'child')
             ->where('list_item_name', 'gender')
-            ->orderBy('list_item_title')
+            ->orderBy('list_item_value')
             ->get();
 
         $phonetypes = $this->select('list_item_value', 'list_item_title')
@@ -108,7 +102,49 @@ class Items extends Model
             ->orderBy('list_item_title')
             ->get();
 
-        return compact('titles', 'states', 'countries', 'contacttypes', 'genders', 'phonetypes');
+        $maritals = $this->select('list_item_value', 'list_item_title')
+            ->Where('list_item_type', 'child')
+            ->where('list_item_name', 'marital')
+            ->orderBy('list_item_value')
+            ->get();
+
+        $languages = $this->select('list_item_value', 'list_item_title')
+            ->Where('list_item_type', 'child')
+            ->where('list_item_name', 'language')
+            ->orderBy('list_item_value')
+            ->get();
+
+        $ethnicities = $this->select('list_item_value', 'list_item_title')
+            ->Where('list_item_type', 'child')
+            ->where('list_item_name', 'ethnicity')
+            ->orderBy('list_item_value')
+            ->get();
+
+        $races = $this->select('list_item_value', 'list_item_title')
+            ->Where('list_item_type', 'child')
+            ->where('list_item_name', 'race')
+            ->orderBy('list_item_value')
+            ->get();
+
+        $referrals = $this->select('list_item_value', 'list_item_title')
+            ->Where('list_item_type', 'child')
+            ->where('list_item_name', 'referrals')
+            ->orderBy('list_item_value')
+            ->get();
+
+        $vfcs = $this->select('list_item_value', 'list_item_title')
+            ->Where('list_item_type', 'child')
+            ->where('list_item_name', 'vfc')
+            ->orderBy('list_item_value')
+            ->get();
+
+        $contacttypes = $this->select('list_item_value', 'list_item_title')
+            ->Where('list_item_type', 'child')
+            ->where('list_item_name', 'contacttype')
+            ->orderBy('list_item_title')
+            ->get();
+
+        return compact('titles', 'states', 'countries', 'genders', 'phonetypes', 'maritals', 'languages', 'ethnicities', 'races', 'referrals', 'vfcs', 'contacttypes');
     }
 
 
