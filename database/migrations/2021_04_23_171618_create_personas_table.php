@@ -48,8 +48,8 @@ class CreatePersonasTable extends Migration
             $table->string('interpreter', 64)->nullable();
             $table->string('homeless', 64)->nullable();
 
-            $table->date('desease_date')->nullable();
-            $table->string('desease_reason', 64)->nullable();
+            $table->date('decease_date')->nullable();
+            $table->string('decease_reason', 128)->nullable();
 
             // Contact only fields
             $table->enum('contact_type', [null, 'mother', 'father', 'guardian', 'relative', 'other'])

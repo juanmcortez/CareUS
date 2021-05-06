@@ -41,8 +41,8 @@ class Persona extends Model
         'migrant_seasonal',
         'interpreter',
         'homeless',
-        'desease_date',
-        'desease_reason',
+        'decease_date',
+        'decease_reason',
         'contact_type',
         'company',
         'occupation',
@@ -72,7 +72,7 @@ class Persona extends Model
      */
     protected $dates = [
         'date_of_birth',
-        'desease_date',
+        'decease_date',
         'updated_at',
     ];
 
