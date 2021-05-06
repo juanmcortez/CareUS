@@ -10,6 +10,12 @@
 @endsection
 
 @section('content')
+<pre class="w-full text-center text-red-500">
+    @foreach ($errors->all() as $error)
+        {{ $error }}
+    @endforeach
+</pre>
+
 <form class="w-full text-center" method="POST" action="{{ route('patients.update', ['patient' => $patient->patID]) }}">
     @csrf
     @method('PUT')
@@ -229,21 +235,21 @@
         <div class="w-1/12 pr-2 font-bold text-right">{{ __('Birthday') }}</div>
         <div class="flex flex-row items-center w-2/12 text-left">
             <div class="w-3/12">
-                <input type="text" name="patient[persona][dob][month]"
+                <input type="text" name="patient[persona][date_of_birth][month]"
                     value="{{ $patient->persona->date_of_birth->format('m') }}"
                     class="w-full pb-1 text-sm leading-loose text-center border-0 border-b-2 rounded-t-md border-burntsienna-300 text-gunmetal-400 bg-lightcyan-300 focus:text-gunmetal-700 focus:bg-lightcyan-50 placeholder-gunmetal-200"
                     placeholder="MM" />
             </div>
             <div class="w-1/12 text-center">-</div>
             <div class="w-3/12">
-                <input type="text" name="patient[persona][dob][day]"
+                <input type="text" name="patient[persona][date_of_birth][day]"
                     value="{{ $patient->persona->date_of_birth->format('d') }}"
                     class="w-full pb-1 text-sm leading-loose text-center border-0 border-b-2 rounded-t-md border-burntsienna-300 text-gunmetal-400 bg-lightcyan-300 focus:text-gunmetal-700 focus:bg-lightcyan-50 placeholder-gunmetal-200"
                     placeholder="DD" />
             </div>
             <div class="w-1/12 text-center">-</div>
             <div class="w-4/12">
-                <input type="text" name="patient[persona][dob][year]"
+                <input type="text" name="patient[persona][date_of_birth][year]"
                     value="{{ $patient->persona->date_of_birth->format('Y') }}"
                     class="w-full pb-1 text-sm leading-loose text-center border-0 border-b-2 rounded-t-md border-burntsienna-300 text-gunmetal-400 bg-lightcyan-300 focus:text-gunmetal-700 focus:bg-lightcyan-50 placeholder-gunmetal-200"
                     placeholder="YYYY" />
@@ -785,43 +791,43 @@
     </div>
     @endforeach
 
-    <!-- DESEASED -->
+    <!-- DECEASED -->
     <div
         class="flex flex-row w-full px-4 py-2 mb-8 text-xl font-bold leading-relaxed uppercase bg-red-500 rounded text-lightcyan-500">
         {{ __('Decease') }}
     </div>
     @php
     $year = $month = $day = '';
-    if(!empty($patient->persona->desease_date)) {
-    $year = $patient->persona->desease_date->format('Y');
-    $month = $patient->persona->desease_date->format('m');
-    $day = $patient->persona->desease_date->format('d');
+    if(!empty($patient->persona->decease_date)) {
+    $year = $patient->persona->decease_date->format('Y');
+    $month = $patient->persona->decease_date->format('m');
+    $day = $patient->persona->decease_date->format('d');
     }
     @endphp
     <div class="flex flex-row items-center w-full pb-8 mb-8 text-sm leading-relaxed border-b-2 border-palecerulean-300">
         <div class="w-1/12 pr-2 font-bold text-right">{{ __('Decease Date') }}</div>
         <div class="flex flex-row items-center w-2/12 text-left">
             <div class="w-3/12">
-                <input type="text" name="patient[persona][desease_date][month]" value="{{ $month }}"
+                <input type="text" name="patient[persona][decease_date][month]" value="{{ $month }}"
                     class="w-full pb-1 text-sm leading-loose text-center border-0 border-b-2 rounded-t-md border-burntsienna-300 text-gunmetal-400 bg-lightcyan-300 focus:text-gunmetal-700 focus:bg-lightcyan-50 placeholder-gunmetal-200"
                     placeholder="MM" />
             </div>
             <div class="w-1/12 font-bold text-center">/</div>
             <div class="w-3/12">
-                <input type="text" name="patient[persona][desease_date][day]" value="{{ $day }}"
+                <input type="text" name="patient[persona][decease_date][day]" value="{{ $day }}"
                     class="w-full pb-1 text-sm leading-loose text-center border-0 border-b-2 rounded-t-md border-burntsienna-300 text-gunmetal-400 bg-lightcyan-300 focus:text-gunmetal-700 focus:bg-lightcyan-50 placeholder-gunmetal-200"
                     placeholder="DD" />
             </div>
             <div class="w-1/12 font-bold text-center">/</div>
             <div class="w-4/12">
-                <input type="text" name="patient[persona][desease_date][year]" value="{{ $year }}"
+                <input type="text" name="patient[persona][decease_date][year]" value="{{ $year }}"
                     class="w-full pb-1 text-sm leading-loose text-center border-0 border-b-2 rounded-t-md border-burntsienna-300 text-gunmetal-400 bg-lightcyan-300 focus:text-gunmetal-700 focus:bg-lightcyan-50 placeholder-gunmetal-200"
                     placeholder="YYYY" />
             </div>
         </div>
         <div class="w-1/12 pr-2 font-bold text-right">{{ __('Reason') }}</div>
         <div class="w-8/12 text-left">
-            <input type="text" name="patient[persona][desease_reason]" value="{{ $patient->persona->desease_reason }}"
+            <input type="text" name="patient[persona][decease_reason]" value="{{ $patient->persona->decease_reason }}"
                 class="w-full pb-1 text-sm leading-loose border-0 border-b-2 rounded-t-md border-burntsienna-300 text-gunmetal-400 bg-lightcyan-300 focus:text-gunmetal-700 focus:bg-lightcyan-50 placeholder-gunmetal-200" />
         </div>
     </div>

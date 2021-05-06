@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Patients;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ValidatePatientRequest;
 use App\Models\Common\Persona;
 use App\Models\Lists\Items;
 use App\Models\Patients\Patient;
@@ -75,13 +76,13 @@ class PatientController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ValidatePatientRequest  $request
      * @param  \App\Models\Patients\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Patient $patient)
+    public function update(ValidatePatientRequest $request, Patient $patient)
     {
-        dd($request, $patient);
+        dd($request->validationData());
     }
 
     /**
