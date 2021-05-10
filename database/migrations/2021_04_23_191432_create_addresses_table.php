@@ -22,9 +22,9 @@ class CreateAddressesTable extends Migration
             $table->string('street', 64);
             $table->string('street_extended', 64)->nullable();
             $table->string('city', 32);
-            $table->string('state', 24);
+            $table->string('state', 4);
             $table->string('zip', 12);
-            $table->string('country', 3)->nullable();
+            $table->string('country', 4)->nullable();
 
             $table->softDeletes();
             $table->timestamps();

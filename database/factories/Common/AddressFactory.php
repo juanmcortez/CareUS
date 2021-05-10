@@ -30,7 +30,8 @@ class AddressFactory extends Factory
             'city'              => $this->faker->city,
             'state'             => $this->faker->randomElement(['AL', 'AZ', 'CA', 'CT', 'DC', 'GA', 'ID', 'IN', 'KS', 'LA', 'MD', 'MI']),
             'zip'               => $this->faker->postcode,
-            'country'           => $this->faker->countryCode,
+            //'country'           => $this->faker->countryCode,
+            'country'           => 'US',
         ];
     }
 }
