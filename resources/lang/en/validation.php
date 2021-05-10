@@ -150,6 +150,112 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        /* ****************** */
+        /* ***** CUSTOM ***** */
+        'patient.externalID'                            => '<strong>External ID</strong>',
+        'patient.patient_level_accession'               => '<strong>Accession #</strong>',
+        /* ***** NAME ***** */
+        'patient.persona.title'                         => '<strong>Title</strong>',
+        'patient.persona.last_name'                     => '<strong>Last name</strong>',
+        'patient.persona.first_name'                    => '<strong>First name</strong>',
+        'patient.persona.middle_name'                   => '<strong>Middle name</strong>',
+        /* ***** PHONE ***** */
+        'patient.persona.phone.0.type'                  => '<strong>Phone #1 - type</strong>',
+        'patient.persona.phone.0.international_code'    => '<strong>Phone #1 - international code</strong>',
+        'patient.persona.phone.0.area_code'             => '<strong>Phone #1 - area code</strong>',
+        'patient.persona.phone.0.initial_digits'        => '<strong>Phone #1 - number</strong>',
+        'patient.persona.phone.0.last_digits'           => '<strong>Phone #1 - number</strong>',
+        'patient.persona.phone.0.extension'             => '<strong>Phone #1 - extension</strong>',
+        'patient.persona.phone.1.type'                  => '<strong>Phone #2 - type</strong>',
+        'patient.persona.phone.1.international_code'    => '<strong>Phone #2 - internationl code</strong>',
+        'patient.persona.phone.1.area_code'             => '<strong>Phone #2 - area code</strong>',
+        'patient.persona.phone.1.initial_digits'        => '<strong>Phone #2 - number</strong>',
+        'patient.persona.phone.1.last_digits'           => '<strong>Phone #2 - number</strong>',
+        'patient.persona.phone.1.extension'             => '<strong>Phone #2 - extension</strong>',
+        /* ***** EMAIL ***** */
+        'patient.persona.email'                         => '<strong>E-mail</strong>',
+        /* ***** ADDRESS ***** */
+        'patient.persona.address.street'                => '<strong>Address</strong>',
+        'patient.persona.address.street_extended'       => '<strong>Extended address</strong>',
+        'patient.persona.address.city'                  => '<strong>City</strong>',
+        'patient.persona.address.state'                 => '<strong>State</strong>',
+        'patient.persona.address.zip'                   => '<strong>Zip</strong>',
+        'patient.persona.address.country'               => '<strong>Country</strong>',
+        /* ***** DEMOGRAPHICS ***** */
+        'patient.persona.gender'                        => '<strong>Gender</strong>',
+        'patient.persona.date_of_birth.month'           => '<strong>Birthday month</strong>',
+        'patient.persona.date_of_birth.day'             => '<strong>Birthday day</strong>',
+        'patient.persona.date_of_birth.year'            => '<strong>Birthday year</strong>',
+        /* ***** SSN ***** */
+        'patient.persona.social_security'               => '<strong>Social Security</strong>',
+        /* ***** OTHERS ***** */
+        'patient.persona.driver_license'                => '<strong>Driver license</strong>',
+        'patient.persona.family_size'                   => '<strong>Family size</strong>',
+        'patient.persona.marital'                       => '<strong>Marital status</strong>',
+        'patient.persona.marital_details'               => '<strong>Marital details</strong>',
+        'patient.persona.language'                      => '<strong>Language</strong>',
+        'patient.persona.ethnicity'                     => '<strong>Ethnicity</strong>',
+        'patient.persona.race'                          => '<strong>Race</strong>',
+        'patient.persona.migrant_seasonal'              => '<strong>Migrant / seasonal</strong>',
+        'patient.persona.interpreter'                   => '<strong>Interpreter</strong>',
+        'patient.persona.homeless'                      => '<strong>Homeless</strong>',
+        'patient.persona.referral'                      => '<strong>Referral</strong>',
+        'patient.persona.vfc'                           => '<strong>VFC</strong>',
+        /* ***** DECEASE ***** */
+        'patient.persona.decease_date.month'            => '<strong>Decease month</strong>',
+        'patient.persona.decease_date.day'              => '<strong>Decease day</strong>',
+        'patient.persona.decease_date.year'             => '<strong>Decease year</strong>',
+        'patient.persona.decease_reason'                => '<strong>Decease reason</strong>',
+        /* ***** CONTACTS ***** */
+        'patient.contact.*.contact_type'                => '<strong>Contact type</strong>',
+        // Name
+        'patient.contact.*.title'                       => '<strong>Title</strong>',
+        'patient.contact.*.last_name'                   => '<strong>Last name</strong>',
+        'patient.contact.*.first_name'                  => '<strong>First name</strong>',
+        'patient.contact.*.middle_name'                 => '<strong>Middle name</strong>',
+        // Phone
+        'patient.contact.*.phone.type'                  => '<strong>Phone - type</strong>',
+        'patient.contact.*.phone.international_code'    => '<strong>Phone - international code</strong>',
+        'patient.contact.*.phone.area_code'             => '<strong>Phone - area code</strong>',
+        'patient.contact.*.phone.initial_digits'        => '<strong>Phone - number</strong>',
+        'patient.contact.*.phone.last_digits'           => '<strong>Phone - number</strong>',
+        'patient.contact.*.phone.extension'             => '<strong>Phone - extension</strong>',
+        // Email
+        'patient.contact.*.email'                       => '<strong>E-mail</strong>',
+        // Address
+        'patient.contact.*.address.street'              => '<strong>Address</strong>',
+        'patient.contact.*.address.street_extended'     => '<strong>Extended address</strong>',
+        'patient.contact.*.address.city'                => '<strong>City</strong>',
+        'patient.contact.*.address.state'               => '<strong>State</strong>',
+        'patient.contact.*.address.zip'                 => '<strong>Zip</strong>',
+        'patient.contact.*.address.country'             => '<strong>Country</strong>',
+        /* ***** EMPLOYMENT ***** */
+        'patient.employer.company'                      => '<strong>Company</strong>',
+        'patient.employer.occupation'                   => '<strong>Occupation</strong>',
+        'patient.employer.monthly_income'               => '<strong>Monthly income</strong>',
+        'patient.employer.financial_review'             => '<strong>Financial review</strong>',
+        // Name
+        'patient.employer.title'                        => '<strong>Title</strong>',
+        'patient.employer.last_name'                    => '<strong>Last name</strong>',
+        'patient.employer.first_name'                   => '<strong>First name</strong>',
+        'patient.employer.middle_name'                  => '<strong>Middle name</strong>',
+        // Phone
+        'patient.employer.phone.type'                   => '<strong>Phone - type</strong>',
+        'patient.employer.phone.international_code'     => '<strong>Phone - international code</strong>',
+        'patient.employer.phone.area_code'              => '<strong>Phone - area code</strong>',
+        'patient.employer.phone.initial_digits'         => '<strong>Phone - number</strong>',
+        'patient.employer.phone.last_digits'            => '<strong>Phone - number</strong>',
+        'patient.employer.phone.extension'              => '<strong>Phone - extension</strong>',
+        // Email
+        'patient.employer.email'                        => '<strong>E-mail</strong>',
+        // Address
+        'patient.employer.address.street'               => '<strong>Address</strong>',
+        'patient.employer.address.street_extended'      => '<strong>Extended address</strong>',
+        'patient.employer.address.city'                 => '<strong>City</strong>',
+        'patient.employer.address.state'                => '<strong>State</strong>',
+        'patient.employer.address.zip'                  => '<strong>Zip</strong>',
+        'patient.employer.address.country'              => '<strong>Country</strong>',
+    ],
 
 ];
