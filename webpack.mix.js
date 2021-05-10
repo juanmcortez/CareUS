@@ -14,6 +14,7 @@ const mix = require('laravel-mix');
 mix.js('resources/js/careus.js', 'public/js')
     .extract(['alpinejs', 'lodash', 'axios', 'jQuery'])
     .sass('resources/sass/careus.scss', 'public/css')
+    .sass('resources/sass/careus_print.scss', 'public/css')
     .options({
         postCss: [
             require('postcss-import'),
