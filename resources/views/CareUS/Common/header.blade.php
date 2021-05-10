@@ -1,4 +1,4 @@
-<header class="flex justify-between text-xs bg-gunmetal-500 lg:sticky lg:top-0 lg:left-0">
+<header class="flex justify-between text-xs bg-gunmetal-500 lg:sticky lg:top-0 lg:left-0 lg:z-50">
     <section class="flex w-full p-0 m-0">
         <input type="text" name="mainsearch"
             class="w-full border-none outline-none focus:bg-gunmetal-600 text-lightcyan-500 bg-gunmetal-500" value=""

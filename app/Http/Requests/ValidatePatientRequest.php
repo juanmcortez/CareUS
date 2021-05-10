@@ -25,19 +25,25 @@ class ValidatePatientRequest extends FormRequest
     {
         return [
             'patient.externalID'                            => 'required|string|min:1|max:16',
-            'patient.patient_level_accession'               => 'nullable|min:1|max:16',
+            'patient.patient_level_accession'               => 'nullable|string|min:1|max:16',
             /* ***** NAME ***** */
             'patient.persona.title'                         => 'string|min:1|max:8',
             'patient.persona.last_name'                     => 'required|string|min:1|max:32',
             'patient.persona.first_name'                    => 'required|string|min:1|max:32',
             'patient.persona.middle_name'                   => 'nullable|string|min:1|max:32',
             /* ***** PHONE ***** */
-            'patient.persona.phone.*.type'                  => 'nullable|string|min:1|max:10|in:home,cellphone,work,emergency,family,relative',
-            'patient.persona.phone.*.international_code'    => 'nullable|digits_between:1,3',
-            'patient.persona.phone.*.area_code'             => 'nullable|digits_between:1,3',
-            'patient.persona.phone.*.initial_digits'        => 'nullable|digits_between:1,3',
-            'patient.persona.phone.*.last_digits'           => 'nullable|digits_between:1,4',
-            'patient.persona.phone.*.extension'             => 'nullable|digits_between:1,4',
+            'patient.persona.phone.0.type'                  => 'required|string|min:1|max:10|in:home,cellphone,work,emergency,family,relative',
+            'patient.persona.phone.0.international_code'    => 'required|digits_between:1,3',
+            'patient.persona.phone.0.area_code'             => 'required|digits_between:1,3',
+            'patient.persona.phone.0.initial_digits'        => 'required|digits_between:1,3',
+            'patient.persona.phone.0.last_digits'           => 'required|digits_between:1,4',
+            'patient.persona.phone.0.extension'             => 'nullable|digits_between:1,4',
+            'patient.persona.phone.1.type'                  => 'nullable|string|min:1|max:10|in:home,cellphone,work,emergency,family,relative',
+            'patient.persona.phone.1.international_code'    => 'nullable|digits_between:1,3',
+            'patient.persona.phone.1.area_code'             => 'nullable|digits_between:1,3',
+            'patient.persona.phone.1.initial_digits'        => 'nullable|digits_between:1,3',
+            'patient.persona.phone.1.last_digits'           => 'nullable|digits_between:1,4',
+            'patient.persona.phone.1.extension'             => 'nullable|digits_between:1,4',
             /* ***** EMAIL ***** */
             'patient.persona.email'                         => 'required|email|string|min:1|max:64',
             /* ***** ADDRESS ***** */
@@ -132,7 +138,7 @@ class ValidatePatientRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+            // Attributes are on validation.php file! (translation)
         ];
     }
 
@@ -144,7 +150,7 @@ class ValidatePatientRequest extends FormRequest
     public function attributes()
     {
         return [
-            //
+            // Attributes are on validation.php file! (translation)
         ];
     }
 }
