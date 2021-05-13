@@ -25,7 +25,7 @@ class Patient extends Model
      * @var array
      */
     protected $fillable = [
-        'external_id',
+        'externalID',
         'patient_level_accession',
     ];
 

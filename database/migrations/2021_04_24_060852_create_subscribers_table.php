@@ -22,7 +22,7 @@ class CreateSubscribersTable extends Migration
             $table->enum('level', ['primary', 'secondary', 'tertiary'])->default('primary');
             $table->unsignedBigInteger('company_id');
 
-            $table->string('policy_number', 16);
+            $table->string('policy_number', 16)->nullable();
             $table->string('group_number', 16)->nullable();
             $table->string('plan_name', 32)->nullable();
 
