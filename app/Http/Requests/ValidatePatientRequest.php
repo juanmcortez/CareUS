@@ -27,7 +27,7 @@ class ValidatePatientRequest extends FormRequest
             'patient.externalID'                            => 'required|string|min:1|max:16',
             'patient.patient_level_accession'               => 'nullable|string|min:1|max:16',
             /* ***** NAME ***** */
-            'patient.persona.title'                         => 'string|min:1|max:8',
+            'patient.persona.title'                         => 'nullable|min:1|max:8',
             'patient.persona.last_name'                     => 'required|string|min:1|max:32',
             'patient.persona.first_name'                    => 'required|string|min:1|max:32',
             'patient.persona.middle_name'                   => 'nullable|string|min:1|max:32',
@@ -52,14 +52,14 @@ class ValidatePatientRequest extends FormRequest
             'patient.persona.address.city'                  => 'required|string|min:1|max:32',
             'patient.persona.address.state'                 => 'required|string|min:1|max:4',
             'patient.persona.address.zip'                   => 'required|string|min:1|max:12',
-            'patient.persona.address.country'               => 'nullable|string|min:1|max:4',
+            'patient.persona.address.country'               => 'required|string|min:1|max:4',
             /* ***** DEMOGRAPHICS ***** */
-            'patient.persona.gender'                        => 'required|string|min:1|max:12',
+            'patient.persona.gender'                        => 'nullable|string|min:1|max:12',
             'patient.persona.date_of_birth.month'           => 'required|digits_between:1,2',
             'patient.persona.date_of_birth.day'             => 'required|digits_between:1,2',
             'patient.persona.date_of_birth.year'            => 'required|digits_between:1,4',
             /* ***** SSN ***** */
-            'patient.persona.social_security'               => 'nullable|string|min:1|max:16',
+            'patient.persona.social_security'               => 'required|string|min:1|max:16',
             /* ***** OTHERS ***** */
             'patient.persona.driver_license'                => 'nullable|string|min:1|max:16',
             'patient.persona.family_size'                   => 'nullable|string|min:1|max:16',
@@ -81,7 +81,7 @@ class ValidatePatientRequest extends FormRequest
             /* ***** CONTACTS ***** */
             'patient.contact.*.contact_type'                => 'nullable|string|min:1|max:10|in:mother,father,guardian,relative,other',
             // Name
-            'patient.contact.*.title'                       => 'string|min:1|max:8',
+            'patient.contact.*.title'                       => 'nullable|min:1|max:8',
             'patient.contact.*.last_name'                   => 'nullable|string|min:1|max:32',
             'patient.contact.*.first_name'                  => 'nullable|string|min:1|max:32',
             'patient.contact.*.middle_name'                 => 'nullable|string|min:1|max:32',
@@ -107,7 +107,7 @@ class ValidatePatientRequest extends FormRequest
             'patient.employer.monthly_income'               => 'nullable|string|min:1|max:64',
             'patient.employer.financial_review'             => 'nullable|string|min:1|max:64',
             // Name
-            'patient.employer.title'                        => 'string|min:1|max:8',
+            'patient.employer.title'                        => 'nullable|min:1|max:8',
             'patient.employer.last_name'                    => 'nullable|string|min:1|max:32',
             'patient.employer.first_name'                   => 'nullable|string|min:1|max:32',
             'patient.employer.middle_name'                  => 'nullable|string|min:1|max:32',

@@ -25,6 +25,8 @@ Route::prefix('/')->name('dashboard.')->group(function () {
 
 Route::prefix('patients')->name('patients.')->group(function () {
     Route::get('/list', [PatientController::class, 'index'])->name('list');
+    Route::get('/new', [PatientController::class, 'create'])->name('create');
+    Route::post('/new', [PatientController::class, 'store'])->name('store');
     Route::get('/{patient}/ledger', [PatientController::class, 'show'])->name('show');
     Route::get('/{patient}/edit/demographics', [PatientController::class, 'edit'])->name('edit');
     Route::put('/{patient}/edit/demographics', [PatientController::class, 'update'])->name('update');
