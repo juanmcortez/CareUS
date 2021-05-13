@@ -61,7 +61,7 @@ class Items extends Model
 
     /**
      * Returns the list of items required for the
-     * edit / creation forms
+     * edit / creation forms by passing patient data
      *
      * @param Patient $patient
      *
@@ -70,6 +70,20 @@ class Items extends Model
     public function getSelectListsItems(Patient $patient)
     {
         $country = (empty($patient->persona->address->country)) ? 'US' : $patient->persona->address->country;
+        return $this->getItemsLists($country);
+    }
+
+
+    /**
+     * Returns the list of items required for the
+     * edit / creation forms
+     *
+     * @param string $country
+     *
+     * @return array
+     */
+    public function getItemsLists($country = 'US')
+    {
 
         $titles = $this->select('list_item_value', 'list_item_title')
             ->Where('list_item_type', 'child')
