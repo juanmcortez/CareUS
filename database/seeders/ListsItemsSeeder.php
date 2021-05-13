@@ -44,7 +44,7 @@ class ListsItemsSeeder extends Seeder
     private function createCountries()
     {
         $data_array = [
-            ['list_item_title' => 'Afghanistan', 'list_item_value' => 'AF'],
+            /*['list_item_title' => 'Afghanistan', 'list_item_value' => 'AF'],
             ['list_item_title' => 'Åland Islands', 'list_item_value' => 'AX'],
             ['list_item_title' => 'Albania', 'list_item_value' => 'AL'],
             ['list_item_title' => 'Algeria', 'list_item_value' => 'DZ'],
@@ -278,10 +278,10 @@ class ListsItemsSeeder extends Seeder
             ['list_item_title' => 'Uganda', 'list_item_value' => 'UG'],
             ['list_item_title' => 'Ukraine', 'list_item_value' => 'UA'],
             ['list_item_title' => 'United Arab Emirates', 'list_item_value' => 'AE'],
-            ['list_item_title' => 'United Kingdom', 'list_item_value' => 'GB'],
+            ['list_item_title' => 'United Kingdom', 'list_item_value' => 'GB'],*/
             ['list_item_title' => 'United States', 'list_item_value' => 'US', 'list_item_default' => true],
             ['list_item_title' => 'United States Minor Outlying Islands', 'list_item_value' => 'UM'],
-            ['list_item_title' => 'Uruguay', 'list_item_value' => 'UY'],
+            /*['list_item_title' => 'Uruguay', 'list_item_value' => 'UY'],
             ['list_item_title' => 'Uzbekistan', 'list_item_value' => 'UZ'],
             ['list_item_title' => 'Vanuatu', 'list_item_value' => 'VU'],
             ['list_item_title' => 'Venezuela, Bolivarian Republic of', 'list_item_value' => 'VE'],
@@ -292,7 +292,7 @@ class ListsItemsSeeder extends Seeder
             ['list_item_title' => 'Western Sahara', 'list_item_value' => 'EH'],
             ['list_item_title' => 'Yemen', 'list_item_value' => 'YE'],
             ['list_item_title' => 'Zambia', 'list_item_value' => 'ZM'],
-            ['list_item_title' => 'Zimbabwe', 'list_item_value' => 'ZW'],
+            ['list_item_title' => 'Zimbabwe', 'list_item_value' => 'ZW'],*/
         ];
         $parent = ItemsFactory::new()->create(['list_item_master' => 'countries', 'list_item_name' => 'Countries']);
         // create child items
