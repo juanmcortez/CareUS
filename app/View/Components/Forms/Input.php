@@ -18,6 +18,7 @@ class Input extends Component
     public $showerror;
     public $placeholder;
     public $varname;
+    public $value;
 
     /**
      * Private vars
@@ -31,14 +32,14 @@ class Input extends Component
      *
      * @return void
      */
-    public function __construct($name, $type = 'text', $classes = '', $place = '', $showerror = '')
+    public function __construct($name, $type = 'text', $classes = '', $place = '', $showerror = '', $inputvalue = false)
     {
         // Change notation from . to []
-        foreach (explode('.', $name) as $key => $value) {
+        foreach (explode('.', $name) as $key => $item) {
             if ($key == 0) {
-                $this->privatename = $value;
+                $this->privatename = $item;
             } else {
-                $this->privatename .= '[' . $value . ']';
+                $this->privatename .= '[' . $item . ']';
             }
         }
 
@@ -50,6 +51,7 @@ class Input extends Component
         $this->showerror    = ($showerror <> 'false') ? true : false;
         $this->varname      = $name;
         $this->type         = $type;
+        $this->value        = $inputvalue;
     }
 
     /**

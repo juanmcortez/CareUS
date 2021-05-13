@@ -17,6 +17,7 @@ class Select extends Component
     public $showerror;
     public $options;
     public $varname;
+    public $selected;
 
     /**
      * Private vars
@@ -30,14 +31,14 @@ class Select extends Component
      *
      * @return void
      */
-    public function __construct($name, $classes = '', $options = '', $showerror = '')
+    public function __construct($name, $classes = '', $options = '', $showerror = '', $optionselected = false)
     {
         // Change notation from . to []
-        foreach (explode('.', $name) as $key => $value) {
+        foreach (explode('.', $name) as $key => $item) {
             if ($key == 0) {
-                $this->privatename = $value;
+                $this->privatename = $item;
             } else {
-                $this->privatename .= '[' . $value . ']';
+                $this->privatename .= '[' . $item . ']';
             }
         }
 
@@ -48,6 +49,7 @@ class Select extends Component
         $this->showerror    = ($showerror <> 'false') ? true : false;
         $this->options      = $options;
         $this->varname      = $name;
+        $this->selected     = $optionselected;
     }
 
     /**

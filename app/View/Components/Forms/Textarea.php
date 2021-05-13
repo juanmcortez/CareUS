@@ -18,6 +18,7 @@ class Textarea extends Component
     public $showerror;
     public $placeholder;
     public $varname;
+    public $value;
 
     /**
      * Private vars
@@ -31,14 +32,14 @@ class Textarea extends Component
      *
      * @return void
      */
-    public function __construct($name, $rows = 5, $classes = '', $place = '', $showerror = '')
+    public function __construct($name, $rows = 5, $classes = '', $place = '', $showerror = '', $textvalue = false)
     {
         // Change notation from . to []
-        foreach (explode('.', $name) as $key => $value) {
+        foreach (explode('.', $name) as $key => $item) {
             if ($key == 0) {
-                $this->privatename = $value;
+                $this->privatename = $item;
             } else {
-                $this->privatename .= '[' . $value . ']';
+                $this->privatename .= '[' . $item . ']';
             }
         }
 
@@ -50,6 +51,7 @@ class Textarea extends Component
         $this->showerror    = ($showerror <> 'false') ? true : false;
         $this->varname      = $name;
         $this->rows         = $rows;
+        $this->value        = $textvalue;
     }
 
     /**

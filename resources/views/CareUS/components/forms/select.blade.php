@@ -4,8 +4,26 @@
     <option value="">{{ __('Select') }}</option>
 
     @foreach ($options as $option)
-    <option @if($option->list_item_value == old($varname) || $option->list_item_default) selected @endif
-        value="{{ $option->list_item_value }}">
+    @php
+    // Check if we are showing default selection
+    // old selected value or selected value from
+    // update form
+    $itemSel = '';
+    if(!$selected) {
+    if(empty(old($varname))) {
+    // Default value selected
+    if($option->list_item_default) $itemSel = 'selected';
+    } else {
+    // Old value selected
+    if($option->list_item_value == old($varname)) $itemSel = 'selected';
+    }
+    } else {
+    // Update form value selected
+    if($option->list_item_value == $selected) $itemSel = 'selected';
+    }
+    // Build the option element
+    @endphp
+    <option value="{{ $option->list_item_value }}" {{ $itemSel }}>
         {{ __($option->list_item_title) }}
     </option>
     @endforeach
