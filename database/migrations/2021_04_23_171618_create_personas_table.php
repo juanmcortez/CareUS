@@ -20,9 +20,9 @@ class CreatePersonasTable extends Migration
             $table->unsignedBigInteger('owner_id');
 
             $table->string('title', 8)->nullable();
-            $table->string('first_name', 32);
+            $table->string('first_name', 32)->nullable();
             $table->string('middle_name', 32)->nullable();
-            $table->string('last_name', 32);
+            $table->string('last_name', 32)->nullable();
 
             $table->string('email', 64)->nullable();
 

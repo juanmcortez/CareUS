@@ -17,7 +17,7 @@ class CreatePatientsTable extends Migration
             $table->id('patID');
 
             $table->string('externalID', 16)->default('------------');
-            $table->string('patient_level_accession', 16)->default('------------');
+            $table->string('patient_level_accession', 16)->default('------------')->nullable();
 
             $table->softDeletes();
             $table->timestamps();

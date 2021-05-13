@@ -19,12 +19,12 @@ class CreatePhonesTable extends Migration
             $table->enum('owner_type', ['patient', 'persona', 'contact', 'employment', 'subscriber', 'insurance']);
             $table->unsignedBigInteger('owner_id');
 
-            $table->enum('type', ['home', 'cellphone', 'work', 'emergency', 'family', 'relative'])->default('home');
-            $table->string('international_code', 3)->default('1');
+            $table->enum('type', ['home', 'cellphone', 'work', 'emergency', 'family', 'relative'])->default('home')->nullable();
+            $table->string('international_code', 3)->default('1')->nullable();
 
-            $table->string('area_code', 3)->default('000');
-            $table->string('initial_digits', 3)->default('000');
-            $table->string('last_digits', 4)->default('0000');
+            $table->string('area_code', 3)->default('000')->nullable();
+            $table->string('initial_digits', 3)->default('000')->nullable();
+            $table->string('last_digits', 4)->default('0000')->nullable();
 
             $table->string('extension', 4)->nullable();
 

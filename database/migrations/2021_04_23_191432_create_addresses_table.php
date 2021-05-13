@@ -19,11 +19,11 @@ class CreateAddressesTable extends Migration
             $table->enum('owner_type', ['patient', 'persona', 'contact', 'employment', 'subscriber', 'insurance']);
             $table->unsignedBigInteger('owner_id');
 
-            $table->string('street', 64);
+            $table->string('street', 64)->nullable();
             $table->string('street_extended', 64)->nullable();
-            $table->string('city', 32);
-            $table->string('state', 4);
-            $table->string('zip', 12);
+            $table->string('city', 32)->nullable();
+            $table->string('state', 4)->nullable();
+            $table->string('zip', 12)->nullable();
             $table->string('country', 4)->nullable();
 
             $table->softDeletes();
