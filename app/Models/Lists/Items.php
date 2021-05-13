@@ -85,74 +85,74 @@ class Items extends Model
     public function getItemsLists($country = 'US')
     {
 
-        $titles = $this->select('list_item_value', 'list_item_title')
+        $titles = $this->select('list_item_value', 'list_item_title', 'list_item_default')
             ->Where('list_item_type', 'child')
             ->where('list_item_name', 'title')
             ->orderBy('list_item_title')
             ->get();
 
-        $states = $this->select('list_item_value', 'list_item_title')
+        $states = $this->select('list_item_value', 'list_item_title', 'list_item_default')
             ->Where('list_item_type', 'sub_child')
             ->where('list_item_master', 'countries')
             ->where('list_item_name', $country)
             ->orderBy('list_item_title')
             ->get();
 
-        $countries = $this->select('list_item_value', 'list_item_title')
+        $countries = $this->select('list_item_value', 'list_item_title', 'list_item_default')
             ->Where('list_item_type', 'child')
             ->where('list_item_name', 'countries')
             ->orderBy('list_item_title')
             ->get();
 
-        $genders = $this->select('list_item_value', 'list_item_title')
+        $genders = $this->select('list_item_value', 'list_item_title', 'list_item_default')
             ->Where('list_item_type', 'child')
             ->where('list_item_name', 'gender')
             ->orderBy('list_item_value')
             ->get();
 
-        $phonetypes = $this->select('list_item_value', 'list_item_title')
+        $phonetypes = $this->select('list_item_value', 'list_item_title', 'list_item_default')
             ->Where('list_item_type', 'child')
             ->where('list_item_name', 'phonetype')
             ->orderBy('list_item_title')
             ->get();
 
-        $maritals = $this->select('list_item_value', 'list_item_title')
+        $maritals = $this->select('list_item_value', 'list_item_title', 'list_item_default')
             ->Where('list_item_type', 'child')
             ->where('list_item_name', 'marital')
             ->orderBy('list_item_value')
             ->get();
 
-        $languages = $this->select('list_item_value', 'list_item_title')
+        $languages = $this->select('list_item_value', 'list_item_title', 'list_item_default')
             ->Where('list_item_type', 'child')
             ->where('list_item_name', 'language')
             ->orderBy('list_item_value')
             ->get();
 
-        $ethnicities = $this->select('list_item_value', 'list_item_title')
+        $ethnicities = $this->select('list_item_value', 'list_item_title', 'list_item_default')
             ->Where('list_item_type', 'child')
             ->where('list_item_name', 'ethnicity')
             ->orderBy('list_item_value')
             ->get();
 
-        $races = $this->select('list_item_value', 'list_item_title')
+        $races = $this->select('list_item_value', 'list_item_title', 'list_item_default')
             ->Where('list_item_type', 'child')
             ->where('list_item_name', 'race')
             ->orderBy('list_item_value')
             ->get();
 
-        $referrals = $this->select('list_item_value', 'list_item_title')
+        $referrals = $this->select('list_item_value', 'list_item_title', 'list_item_default')
             ->Where('list_item_type', 'child')
             ->where('list_item_name', 'referrals')
             ->orderBy('list_item_value')
             ->get();
 
-        $vfcs = $this->select('list_item_value', 'list_item_title')
+        $vfcs = $this->select('list_item_value', 'list_item_title', 'list_item_default')
             ->Where('list_item_type', 'child')
             ->where('list_item_name', 'vfc')
             ->orderBy('list_item_value')
             ->get();
 
-        $contacttypes = $this->select('list_item_value', 'list_item_title')
+        $contacttypes = $this->select('list_item_value', 'list_item_title', 'list_item_default')
             ->Where('list_item_type', 'child')
             ->where('list_item_name', 'contacttype')
             ->orderBy('list_item_title')

@@ -318,7 +318,7 @@ class ListsItemsSeeder extends Seeder
             ['list_item_name' => 'US', 'list_item_title' => 'Colorado', 'list_item_value' => 'CO'],
             ['list_item_name' => 'US', 'list_item_title' => 'Connecticut', 'list_item_value' => 'CT'],
             ['list_item_name' => 'US', 'list_item_title' => 'Delaware', 'list_item_value' => 'DE'],
-            ['list_item_name' => 'US', 'list_item_title' => 'District Of Columbia', 'list_item_value' => 'DC'],
+            ['list_item_name' => 'US', 'list_item_title' => 'District Of Columbia', 'list_item_value' => 'DC', 'list_item_default' => true],
             ['list_item_name' => 'US', 'list_item_title' => 'Florida', 'list_item_value' => 'FL'],
             ['list_item_name' => 'US', 'list_item_title' => 'Georgia', 'list_item_value' => 'GA'],
             ['list_item_name' => 'US', 'list_item_title' => 'Hawaii', 'list_item_value' => 'HI'],
@@ -375,7 +375,7 @@ class ListsItemsSeeder extends Seeder
     private function createGender()
     {
         $data_array = [
-            ['list_item_title' => 'Undisclosed', 'list_item_value' => ''],
+            ['list_item_title' => 'Undisclosed', 'list_item_value' => '', 'list_item_default' => true],
             ['list_item_title' => 'Male', 'list_item_value' => 'male'],
             ['list_item_title' => 'Female', 'list_item_value' => 'female'],
             ['list_item_title' => 'Agender', 'list_item_value' => 'agender'],
@@ -441,7 +441,7 @@ class ListsItemsSeeder extends Seeder
     {
         $data_array = [
             ['list_item_title' => 'Unassigned', 'list_item_value' => ''],
-            ['list_item_title' => 'Single', 'list_item_value' => 'single'],
+            ['list_item_title' => 'Single', 'list_item_value' => 'single', 'list_item_default' => true],
             ['list_item_title' => 'Married', 'list_item_value' => 'married'],
             ['list_item_title' => 'Significant Other', 'list_item_value' => 'significantother'],
             ['list_item_title' => 'Widowed', 'list_item_value' => 'widowed'],
@@ -465,7 +465,7 @@ class ListsItemsSeeder extends Seeder
         $data_array = [
             ['list_item_title' => 'Unassigned', 'list_item_value' => ''],
             ['list_item_title' => 'Español', 'list_item_value' => 'es'],
-            ['list_item_title' => 'English', 'list_item_value' => 'en'],
+            ['list_item_title' => 'English', 'list_item_value' => 'en', 'list_item_default' => true],
             ['list_item_title' => 'Français', 'list_item_value' => 'fr'],
         ];
         $parent = ItemsFactory::new()->create(['list_item_master' => 'language', 'list_item_name' => 'Patient Language Choice']);
@@ -482,7 +482,7 @@ class ListsItemsSeeder extends Seeder
     private function createEthnic()
     {
         $data_array = [
-            ['list_item_title' => 'Unassigned', 'list_item_value' => ''],
+            ['list_item_title' => 'Unassigned', 'list_item_value' => '', 'list_item_default' => true],
             ['list_item_title' => 'American Indian', 'list_item_value' => 'americanindian'],
             ['list_item_title' => 'Alaska Native', 'list_item_value' => 'alaskanative'],
             ['list_item_title' => 'Asian', 'list_item_value' => 'asian'],
@@ -505,7 +505,7 @@ class ListsItemsSeeder extends Seeder
     private function createRace()
     {
         $data_array = [
-            ['list_item_title' => 'Unassigned', 'list_item_value' => ''],
+            ['list_item_title' => 'Unassigned', 'list_item_value' => '', 'list_item_default' => true],
             ['list_item_title' => 'Hispanic', 'list_item_value' => 'hispanic'],
             ['list_item_title' => 'Latino', 'list_item_value' => 'latino'],
             ['list_item_title' => 'Not Hispanic', 'list_item_value' => 'nothispanic'],
@@ -525,7 +525,7 @@ class ListsItemsSeeder extends Seeder
     private function createReferral()
     {
         $data_array = [
-            ['list_item_title' => 'Unassigned', 'list_item_value' => ''],
+            ['list_item_title' => 'Unassigned', 'list_item_value' => '', 'list_item_default' => true],
             ['list_item_title' => 'Patient', 'list_item_value' => 'patient'],
             ['list_item_title' => 'Employee', 'list_item_value' => 'employee'],
             ['list_item_title' => 'Walk-In', 'list_item_value' => 'walkin'],
@@ -551,7 +551,7 @@ class ListsItemsSeeder extends Seeder
     private function createVFC()
     {
         $data_array = [
-            ['list_item_title' => 'Unassigned', 'list_item_value' => ''],
+            ['list_item_title' => 'Unassigned', 'list_item_value' => '', 'list_item_default' => true],
             ['list_item_title' => 'Eligible', 'list_item_value' => 'eligible'],
             ['list_item_title' => 'Ineligible', 'list_item_value' => 'ineligible'],
         ];
@@ -569,7 +569,7 @@ class ListsItemsSeeder extends Seeder
     private function createContactType()
     {
         $data_array = [
-            ['list_item_title' => 'Mother', 'list_item_value' => 'mother'],
+            ['list_item_title' => 'Mother', 'list_item_value' => 'mother', 'list_item_default' => true],
             ['list_item_title' => 'Father', 'list_item_value' => 'father'],
             ['list_item_title' => 'Guardian', 'list_item_value' => 'guardian'],
             ['list_item_title' => 'Relative', 'list_item_value' => 'relative'],
@@ -589,7 +589,7 @@ class ListsItemsSeeder extends Seeder
     private function createInsuranceType()
     {
         $data_array = [
-            ['list_item_title' => 'Primary', 'list_item_value' => 'primary'],
+            ['list_item_title' => 'Primary', 'list_item_value' => 'primary', 'list_item_default' => true],
             ['list_item_title' => 'Secondary', 'list_item_value' => 'secondary'],
             ['list_item_title' => 'Tertiary', 'list_item_value' => 'tertiary'],
         ];
@@ -607,7 +607,7 @@ class ListsItemsSeeder extends Seeder
     private function createInsuranceRelationship()
     {
         $data_array = [
-            ['list_item_title' => 'Self', 'list_item_value' => 'self'],
+            ['list_item_title' => 'Self', 'list_item_value' => 'self', 'list_item_default' => true],
             ['list_item_title' => 'Spouse', 'list_item_value' => 'spouse'],
             ['list_item_title' => 'Child', 'list_item_value' => 'child'],
             ['list_item_title' => 'Other', 'list_item_value' => 'other'],
@@ -626,7 +626,7 @@ class ListsItemsSeeder extends Seeder
     private function createSecondaryMedicalType()
     {
         $data_array = [
-            ['list_item_title' => 'N/A', 'list_item_value' => ''],
+            ['list_item_title' => 'N/A', 'list_item_value' => '', 'list_item_default' => true],
             ['list_item_title' => 'Working Aged Beneficiary or Spouse with Employer Group Health Plan', 'list_item_value' => 12],
             ['list_item_title' => 'End-Stage Renal Disease Beneficiary in MCP with Employer`s Group Plan', 'list_item_value' => 13],
             ['list_item_title' => 'No-fault Insurance including Auto is Primary', 'list_item_value' => 14],
@@ -659,7 +659,7 @@ class ListsItemsSeeder extends Seeder
             ['list_item_title' => 'ChampUS', 'list_item_value' => 5],
             ['list_item_title' => 'Blue Cross Blue Shield', 'list_item_value' => 6],
             ['list_item_title' => 'FECA', 'list_item_value' => 7],
-            ['list_item_title' => 'Self Pay', 'list_item_value' => 8],
+            ['list_item_title' => 'Self Pay', 'list_item_value' => 8, 'list_item_default' => true],
             ['list_item_title' => 'Central Certification', 'list_item_value' => 9],
             ['list_item_title' => 'Other Non-Federal Programs', 'list_item_value' => 10],
             ['list_item_title' => 'Preferred Provider Organization (PPO)', 'list_item_value' => 11],
@@ -694,7 +694,7 @@ class ListsItemsSeeder extends Seeder
     {
         $data_array = [
             ['list_item_title' => 'Blue Shield', 'list_item_value' => 'blueshield'],
-            ['list_item_title' => 'Commercial', 'list_item_value' => 'commercial'],
+            ['list_item_title' => 'Commercial', 'list_item_value' => 'commercial', 'list_item_default' => true],
             ['list_item_title' => 'Medicaid', 'list_item_value' => 'medicaid'],
             ['list_item_title' => 'Medicare', 'list_item_value' => 'medicare'],
             ['list_item_title' => 'Self Pay', 'list_item_value' => 'selfpay'],
@@ -722,7 +722,7 @@ class ListsItemsSeeder extends Seeder
             ['list_item_title' => 'MCDPAY', 'list_item_value' => 'primary'],
             ['list_item_title' => 'MCRPAY', 'list_item_value' => 'MCRPAY'],
             ['list_item_title' => 'PATPAY', 'list_item_value' => 'PATPAY'],
-            ['list_item_title' => 'SLFPAY', 'list_item_value' => 'SLFPAY'],
+            ['list_item_title' => 'SLFPAY', 'list_item_value' => 'SLFPAY', 'list_item_default' => true],
             ['list_item_title' => 'TRIPAY', 'list_item_value' => 'TRIPAY'],
             ['list_item_title' => 'UHCPAY', 'list_item_value' => 'UHCPAY'],
             ['list_item_title' => 'VALPAY', 'list_item_value' => 'VALPAY'],
@@ -742,7 +742,7 @@ class ListsItemsSeeder extends Seeder
     {
         $data_array = [
             ['list_item_title' => 'Home', 'list_item_value' => 'home'],
-            ['list_item_title' => 'Cellphone', 'list_item_value' => 'cellphone'],
+            ['list_item_title' => 'Cellphone', 'list_item_value' => 'cellphone', 'list_item_default' => true],
             ['list_item_title' => 'Work', 'list_item_value' => 'work'],
             ['list_item_title' => 'Emergency', 'list_item_value' => 'emergency'],
             ['list_item_title' => 'Family', 'list_item_value' => 'family'],

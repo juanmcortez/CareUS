@@ -4,7 +4,8 @@
     <option value="">{{ __('Select') }}</option>
 
     @foreach ($options as $option)
-    @if($option->list_item_value == old($varname))
+    {{ $option }}
+    @if($option->list_item_value == old($varname) || $option->list_item_default)
     <option value="{{ $option->list_item_value }}" selected>
         {{ __($option->list_item_title) }}
     </option>
