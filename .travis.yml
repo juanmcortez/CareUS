@@ -23,12 +23,12 @@ before_script:
   - php artisan db:seed
   - php artisan storage:link
   - npm install
+  - npm run production
 
 branches:
   only:
     - main
 
 script:
-  # - npm run production
   # - php artisan serve
   - vendor/bin/phpunit
