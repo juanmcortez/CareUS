@@ -3,11 +3,11 @@ language: php
 php:
   - 7.4
 
+before_install:
+  - nvm install node
+
 services:
   - mysql
-
-node_js:
-  - "14"
 
 before_script:
   - cp .env.example .env
