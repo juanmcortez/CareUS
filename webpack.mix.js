@@ -21,8 +21,8 @@ mix.js('resources/js/careus.js', 'public/js')
             require('tailwindcss'),
         ]
     })
-    .copy(
+    /*.copy(
         'node_modules/@fortawesome/fontawesome-free/webfonts',
         'public/fonts'
-    )
+    )*/
     .version();
