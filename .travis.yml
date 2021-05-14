@@ -29,4 +29,5 @@ branches:
     - main
 
 script:
-  - npm run production
+  # - npm run production
+  - php artisan serve
