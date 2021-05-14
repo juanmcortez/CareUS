@@ -2,8 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="no-js">
 
 <head>
-    <meta charset=" UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
     <title>@yield('pageTitle')</title>
@@ -40,8 +40,8 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="manifest" href="{{ secure_asset('images/careus.webmanifest') }}" />
-    <link rel="icon" href="{{ secure_asset('favicon.ico') }}" />
-    <link rel="icon" href="{{ secure_asset('favicon.svg') }}" type="image/svg+xml" />
+    <link rel="icon" type="image/x-icon" href="{{ secure_asset('favicon.ico') }}" />
+    <link rel="icon" type="image/svg+xml" href="{{ secure_asset('favicon.svg') }}" />
     <link rel="apple-touch-icon" href="{{ config('app.url') }}images/helper/apple-touch-icon.png" />
     <meta name="theme-color" content="#98C1D9" />
 

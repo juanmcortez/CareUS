@@ -73,6 +73,7 @@ class Persona extends Model
     protected $dates = [
         'date_of_birth',
         'decease_date',
+        'decease_date',
         'updated_at',
     ];
 
@@ -119,6 +120,18 @@ class Persona extends Model
     public function getDateOfBirthLanguageAttribute()
     {
         return ucfirst($this->date_of_birth->translatedFormat('M d, Y'));
+    }
+
+
+    /**
+     * Return decease_date formated
+     * when calling decease_date_language
+     *
+     * @return string
+     */
+    public function getDeceaseDateLanguageAttribute()
+    {
+        return ucfirst($this->decease_date->translatedFormat('M d, Y'));
     }
 
 

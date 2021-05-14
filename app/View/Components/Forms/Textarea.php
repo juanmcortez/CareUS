@@ -18,7 +18,7 @@ class Textarea extends Component
     public $showerror;
     public $placeholder;
     public $varname;
-    public $value;
+    public $textvalue;
 
     /**
      * Private vars
@@ -51,7 +51,7 @@ class Textarea extends Component
         $this->showerror    = ($showerror <> 'false') ? true : false;
         $this->varname      = $name;
         $this->rows         = $rows;
-        $this->value        = $textvalue;
+        $this->textvalue    = $textvalue;
     }
 
     /**

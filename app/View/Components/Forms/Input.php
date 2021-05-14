@@ -18,7 +18,7 @@ class Input extends Component
     public $showerror;
     public $placeholder;
     public $varname;
-    public $value;
+    public $inputvalue;
 
     /**
      * Private vars
@@ -51,7 +51,7 @@ class Input extends Component
         $this->showerror    = ($showerror <> 'false') ? true : false;
         $this->varname      = $name;
         $this->type         = $type;
-        $this->value        = $inputvalue;
+        $this->inputvalue   = $inputvalue;
     }
 
     /**

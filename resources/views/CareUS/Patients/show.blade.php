@@ -133,7 +133,9 @@
             <div class="w-3/12">{{ __('Gender') }}</div>
         </div>
         <div class="flex flex-row text-gunmetal-500">
-            <div class="w-3/12">{{ $patient->persona->date_of_birth_language }}</div>
+            <div class="w-3/12">
+                {{ $patient->persona->date_of_birth_language.' ['.$patient->persona->current_age.']' }}
+            </div>
             <div class="w-3/12">{{ $patient->persona->social_security }}</div>
             <div class="w-3/12">{{ $patient->persona->phone->first()->formated_phone }}</div>
             <div class="w-3/12">{{ __(ucfirst($patient->persona->gender)) }}</div>

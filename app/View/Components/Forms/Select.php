@@ -17,7 +17,7 @@ class Select extends Component
     public $showerror;
     public $options;
     public $varname;
-    public $selected;
+    public $optionselected;
 
     /**
      * Private vars
@@ -43,13 +43,13 @@ class Select extends Component
         }
 
         // Publish the vars values
-        $this->name         = $this->privatename;
-        $this->id           = $this->privatename;
-        $this->classes      = $classes;
-        $this->showerror    = ($showerror <> 'false') ? true : false;
-        $this->options      = $options;
-        $this->varname      = $name;
-        $this->selected     = $optionselected;
+        $this->name             = $this->privatename;
+        $this->id               = $this->privatename;
+        $this->classes          = $classes;
+        $this->showerror        = ($showerror <> 'false') ? true : false;
+        $this->options          = $options;
+        $this->varname          = $name;
+        $this->optionselected   = $optionselected;
     }
 
     /**
