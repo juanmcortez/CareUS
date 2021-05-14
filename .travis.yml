@@ -1,16 +1,29 @@
 language: php
+
 php:
   - 7.4
+
 services:
   - mysql
+
 before_script:
-  - mysql -e 'CREATE DATABASE test_db;'
-  - composer install --no-interaction
   - cp .env.example .env
+  - mysql -u root -e 'CREATE DATABASE laravel;'
+  - composer self-update
+  - composer install --no-interaction
   - php artisan key:generate
+  - php artisan migrate:install --env=testing --no-interaction
+  - composer dump-autoload
+  - sudo chgrp -R www-data storage bootstrap/cache
+  - sudo chmod -R ug+rwx storage bootstrap/cache
   - php artisan migrate
+  - php artisan db:seed
+  - php artisan storage:link
+  - npm install
+
 branches:
   only:
     - main
+
 script:
   - npm run production
