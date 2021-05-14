@@ -6,6 +6,9 @@ php:
 services:
   - mysql
 
+node_js:
+  - "14"
+
 before_script:
   - cp .env.example .env
   - mysql -u root -e 'CREATE DATABASE laravel;'
