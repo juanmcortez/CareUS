@@ -16,13 +16,13 @@ mix.js('resources/js/careus.js', 'public/js')
     .sass('resources/sass/careus.scss', 'public/css')
     .sass('resources/sass/careus_print.scss', 'public/css')
     .options({
+        fileLoaderDirs: {
+            images: 'public/images',
+            fonts: 'public/fonts'
+        },
         postCss: [
             require('postcss-import'),
             require('tailwindcss'),
         ]
     })
-    /*.copy(
-        'node_modules/@fortawesome/fontawesome-free/webfonts',
-        'public/fonts'
-    )*/
     .version();
