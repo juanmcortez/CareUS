@@ -9,7 +9,7 @@
     // old selected value or selected value from
     // update form
     $itemSel = '';
-    if(!$selected) {
+    if(!$optionselected) {
     if(empty(old($varname))) {
     // Default value selected
     if($option->list_item_default) $itemSel = 'selected';
@@ -19,7 +19,7 @@
     }
     } else {
     // Update form value selected
-    if($option->list_item_value == $selected) $itemSel = 'selected';
+    if($option->list_item_value == $optionselected) $itemSel = 'selected';
     }
     // Build the option element
     @endphp
