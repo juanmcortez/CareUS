@@ -1,0 +1,16 @@
+language: php
+php:
+  - 7.4
+services:
+  - mysql
+before_script:
+  - mysql -e 'CREATE DATABASE test_db;'
+  - composer install --no-interaction
+  - cp .env.example .env
+  - php artisan key:generate
+  - php artisan migrate
+branches:
+  only:
+    - main
+script:
+  - npm run production
