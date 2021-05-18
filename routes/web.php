@@ -19,7 +19,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('/')->name('dashboard.')->group(function () {
+// FORCE ALL OTHER ROUTES TO VUE
+Route::get('/{any?}', function () {
+    return view('Layouts.careus-out');
+});
+
+/*Route::prefix('/')->name('dashboard.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
 });
 
@@ -36,4 +41,4 @@ Route::prefix('settings')->name('settings.')->group(function () {
     Route::get('/lists', [ItemsController::class, 'index'])->name('index');
 });
 
-Route::get('/{locale}', [LocalizationController::class, 'index'])->name('lang.switch');
+Route::get('/{locale}', [LocalizationController::class, 'index'])->name('lang.switch');*/

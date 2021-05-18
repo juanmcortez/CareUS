@@ -43,3 +43,12 @@ select:focus {
 .w-3\/5 {
     width: calc((100% / 5) * 3);
 }
+
+body,
+#content,
+#submenu {
+    background-image: url("/images/helper/diamond-upholstery.png");
+    background-repeat: repeat;
+    background-position: top center;
+    background-blend-mode: multiply;
+}

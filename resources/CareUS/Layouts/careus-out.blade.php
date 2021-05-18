@@ -49,41 +49,15 @@
 
 </head>
 
-<body class="font-sans text-base antialiased leading-snug tracking-normal bg-palecerulean-500 text-lightcyan-500">
+<body
+    class="font-sans antialiased leading-relaxed tracking-wide bg-palecerulean-500 text-lightcyan-500 text-xxs md:text-xs xl:text-sm">
 
     <noscript>
         <h2>{{ __('Javascript needed for this website usage.') }}</h2>
     </noscript>
 
-    <div class="flex flex-col min-h-screen lg:flex-row lg:relative">
-
-        @include('Common.sidebar')
-
-        <div class="flex-1">
-            <div class="flex flex-col min-h-full">
-
-                @include('Common.header')
-
-                <main class="flex-1 m-8 rounded-md bg-lightcyan-500">
-                    <div
-                        class="flex flex-row flex-wrap justify-between px-4 py-3 text-lightcyan-500 bg-bdazzledblue-500 rounded-t-md">
-
-                        @yield('submenu')
-
-                        @include('Common.submenutools')
-
-                    </div>
-                    <div class="flex flex-wrap flex-1 m-8 whitespace-normal text-gunmetal-900">
-
-                        @yield('content')
-
-                    </div>
-                </main>
-
-                @include('Common.footer')
-
-            </div>
-        </div>
+    <div id="CareUS" class="flex">
+        <careus></careus>
     </div>
 
     <script src=" {{ mix('/js/manifest.js') }}"></script>
