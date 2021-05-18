@@ -49,7 +49,8 @@
 
 </head>
 
-<body class="font-sans text-base antialiased leading-snug tracking-normal bg-palecerulean-500 text-lightcyan-500">
+<body
+    class="font-sans antialiased leading-relaxed tracking-wide bg-palecerulean-500 text-lightcyan-500 text-xxs md:text-xs xl:text-sm">
 
     <noscript>
         <h2>{{ __('Javascript needed for this website usage.') }}</h2>
