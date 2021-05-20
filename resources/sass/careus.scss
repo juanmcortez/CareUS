@@ -6,6 +6,21 @@
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/brands";
 
+html {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+
+    @apply font-sans;
+}
+
+body {
+    background-image: url("/images/helper/diamond-upholstery.png");
+    background-repeat: repeat;
+    background-position: top center;
+    background-blend-mode: multiply;
+}
+
 input:invalid,
 textarea:invalid,
 select:invalid {

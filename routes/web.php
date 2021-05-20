@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Auth routes
+require __DIR__ . '/auth.php';
+
 // Force login to access routes
 Route::middleware(['auth'])->group(function () {
     Route::prefix('/')->name('dashboard.')->group(function () {
@@ -38,6 +41,3 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/{locale}', [LocalizationController::class, 'index'])->name('lang.switch');
 });
-
-// Auth routes
-require __DIR__ . '/auth.php';

@@ -26,7 +26,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Oxygen'],
+                sans: ['Poppins'],
             },
             fontSize: {
                 'xxs': ['0.625rem', '0.75rem'],
