@@ -807,5 +807,13 @@
     "Monthly Income": "Revenu Mensuel",
     "Financial Review": "Analyse Financier",
     "Employer": "Employeur",
-    "New Patient": "Nouveau Patient"
+    "New Patient": "Nouveau Patient",
+    "Last note": "Dernière note ",
+    "More": "Suite",
+    "Practice": "Pratique",
+    "Insurances": "Assurances",
+    "Codes": "Codes",
+    ":name settings": "Paramètres de :name",
+    "<strong>:name</strong>'s settings": "Paramètres de <strong>:name</strong>",
+    "Last login: :date": "Der. conn.: :date"
 }
