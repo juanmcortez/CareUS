@@ -23,6 +23,7 @@ mix.js('resources/js/careus.js', 'public/js')
         postCss: [
             require('postcss-import'),
             require('tailwindcss'),
+            require('autoprefixer'),
         ]
     })
     .version();

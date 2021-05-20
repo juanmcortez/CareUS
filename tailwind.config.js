@@ -12,6 +12,10 @@ module.exports = {
             './resources/**/*.php',
             './resources/**/*.vue',
             './resources/**/*.twig',
+            './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+            './storage/framework/views/*.php',
+            './resources/views/**/*.blade.php',
+            './resources/CareUS/**/*.blade.php',
         ],
         options: {
             defaultExtractor: (content) => content.match(/[\w-/.:]+(?<!:)/g) || [],
@@ -92,6 +96,6 @@ module.exports = {
     },
     plugins: [
         require('@tailwindcss/forms'),
-        require('@tailwindcss/typography'),
+        /* require('@tailwindcss/typography'), */
     ],
 }
