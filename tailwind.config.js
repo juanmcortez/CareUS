@@ -12,6 +12,10 @@ module.exports = {
             './resources/**/*.php',
             './resources/**/*.vue',
             './resources/**/*.twig',
+            './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+            './storage/framework/views/*.php',
+            './resources/views/**/*.blade.php',
+            './resources/CareUS/**/*.blade.php',
         ],
         options: {
             defaultExtractor: (content) => content.match(/[\w-/.:]+(?<!:)/g) || [],
@@ -22,7 +26,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Oxygen'],
+                sans: ['Poppins'],
             },
             fontSize: {
                 'xxs': ['0.625rem', '0.75rem'],
@@ -92,6 +96,6 @@ module.exports = {
     },
     plugins: [
         require('@tailwindcss/forms'),
-        require('@tailwindcss/typography'),
+        /* require('@tailwindcss/typography'), */
     ],
 }

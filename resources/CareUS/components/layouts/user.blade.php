@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
+    @auth
     <title>@yield('pageTitle')</title>
+    @else
+    <title>{{ __('You need to login to continue...') }}</title>
+    @endauth
 
     <script type="module">
         document.documentElement.classList.remove('no-js');
@@ -15,7 +19,7 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
 
     <!-- Styles -->
     <link href="{{ mix('css/careus.css') }}" rel="stylesheet" />
@@ -49,41 +53,58 @@
 
 </head>
 
-<body class="font-sans text-base antialiased leading-snug tracking-normal bg-palecerulean-500 text-lightcyan-500">
+<body class="font-sans antialiased">
 
     <noscript>
         <h2>{{ __('Javascript needed for this website usage.') }}</h2>
     </noscript>
 
-    <div class="flex flex-col min-h-screen lg:flex-row lg:relative">
+    <div class="relative flex flex-row w-full min-h-screen overflow-hidden" @auth x-data="{ open: true }" @else
+        x-data="{ open: false }" @endauth>
 
-        @include('Common.sidebar')
+        <div :class="{ 'w-full': !open, 'w-4/5 xl:w-5/6': open }" class="transition-all duration-200 ease-in-out">
 
-        <div class="flex-1">
-            <div class="flex flex-col min-h-full">
+            <!-- HEADER -->
+            <header class="text-2xl font-medium">
+                <h1 class="py-5 mx-10 text-gunmetal-700">
+                    <a href="{{ route('dashboard.index') }}">Care<span class="font-bold text-gunmetal-300">US</span></a>
+                </h1>
+            </header>
 
-                @include('Common.header')
+            <!-- STATUS -->
+            @if (isset($status))
+            <x-common.alert type="bdazzledblue" icon="info-circle" :message="$status" />
+            @endif
 
-                <main class="flex-1 m-8 rounded-md bg-lightcyan-500">
-                    <div
-                        class="flex flex-row flex-wrap justify-between px-4 py-3 text-lightcyan-500 bg-bdazzledblue-500 rounded-t-md">
+            <!-- ERRORS -->
+            @if ($errors->any())
+            <x-common.alert type="red" icon="exclamation-triangle" :message="$errors" />
+            @endif
 
-                        @yield('submenu')
+            @auth
 
-                        @include('Common.submenutools')
+            <!-- CONTENT -->
+            <main class="flex flex-col items-center justify-start w-full min-h-full px-10">
 
-                    </div>
-                    <div class="flex flex-wrap flex-1 m-8 whitespace-normal text-gunmetal-900">
+                @yield('content')
 
-                        @yield('content')
+            </main>
 
-                    </div>
-                </main>
+            @else
 
-                @include('Common.footer')
-
+            <!-- REJECT -->
+            <div class="flex flex-row items-center justify-center w-full min-h-full text-sm text-burntsienna-700">
+                <h2>
+                    <a href="{{ route('login') }}">{!! __('You need to <strong>login</strong> to continue...') !!}</a>
+                </h2>
             </div>
+
+            @endauth
+
         </div>
+
+        @includeWhen(auth()->user(), 'Common.sidebar')
+
     </div>
 
     <script src=" {{ mix('/js/manifest.js') }}"></script>

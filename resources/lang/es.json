@@ -313,8 +313,8 @@
     "Lithuania": "Lituania",
     "Load :perPage More": "Cargar :perPage Mas",
     "Log in": "Iniciar sesión",
-    "Log out": "Finalizar sesión",
-    "Log Out": "Finalizar sesión",
+    "Log out": "Desconectar",
+    "Log Out": "Desconectar",
     "Log Out Other Browser Sessions": "Cerrar las demás sesiones",
     "Login": "Iniciar sesión",
     "Logout Other Browser Sessions": "Cerrar las demás sesiones",
@@ -806,5 +806,13 @@
     "Monthly Income": "Sueldo",
     "Financial Review": "Revisión Financiera",
     "Employer": "Empleador",
-    "New Patient": "Nuevo Paciente"
+    "New Patient": "Nuevo Paciente",
+    "Last note": "Última nota",
+    "More": "Más",
+    "Practice": "Práctica",
+    "Insurances": "Seguros",
+    "Codes": "Códigos",
+    ":name settings": "Configuración de :name",
+    "<strong>:name</strong>'s settings": "Configuración de <strong>:name</strong>",
+    "Last login: :date": "Últ. vez: :date"
 }

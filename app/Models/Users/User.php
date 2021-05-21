@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Users;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +18,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'middle_name',
+        'last_name',
         'email',
         'password',
     ];
@@ -40,4 +43,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    /**
+     * Return the formated name of the persona
+     *
+     * @return string
+     */
+    public function getFormatedNameAttribute()
+    {
+        if (!empty($this->middle_name)) {
+            $formated = $this->last_name . ', ' . $this->first_name . ' ' . strtoupper(substr($this->middle_name, 0, 1)) . '.';
+        } else {
+            $formated = $this->last_name . ', ' . $this->first_name;
+        }
+        return $formated;
+    }
 }

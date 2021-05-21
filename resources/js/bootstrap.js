@@ -1,4 +1,3 @@
-import 'alpinejs';
 // window._ = require('lodash');
 
 /**
