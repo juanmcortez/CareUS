@@ -4,7 +4,7 @@ namespace App\View\Components\Layouts;
 
 use Illuminate\View\Component;
 
-class CareusUser extends Component
+class Logged extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class CareusUser extends Component
      */
     public function render()
     {
-        return view('components.layouts.user');
+        return view('components.layouts.logged');
     }
 }
