@@ -51,10 +51,23 @@ select:focus {
     border-color: #ee6c4d;
 }
 
+.top-112 {
+    top: 30rem /* 480px */;
+}
+
 .w-2\/3 {
     width: calc((100% / 3) * 2);
 }
 
 .w-3\/5 {
     width: calc((100% / 5) * 3);
+}
+
+.right-1\/5 {
+    right: calc(100% / 5);
+}
+
+.xl\:right-1\/6,
+.right-1\/6 {
+    right: calc(100% / 6);
 }
