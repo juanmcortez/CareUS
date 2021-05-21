@@ -62,13 +62,18 @@
             <!-- HEADER -->
             <header class="text-2xl font-medium">
                 <h1 class="py-5 mx-10 text-gunmetal-700">
-                    Care<span class="font-bold text-gunmetal-300">US</span>
+                    <a href="{{ route('dashboard.index') }}">Care<span class="font-bold text-gunmetal-300">US</span></a>
                 </h1>
             </header>
 
+            <!-- STATUS -->
+            @if (isset($status))
+            <x-common.alert type="bdazzledblue" icon="info-circle" :message="$status" />
+            @endif
+
             <!-- ERRORS -->
             @if ($errors->any())
-            <x-alert type="red" icon="exclamation-triangle" :message="$errors" />
+            <x-common.alert type="red" icon="exclamation-triangle" :message="$errors" />
             @endif
 
             <!-- CONTENT -->

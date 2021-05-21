@@ -1,12 +1,16 @@
 <div :class="{ 'opacity-0': !open, 'opacity-100': open }"
     class="w-full py-5 text-center transition-all duration-150 ease-in-out border-b border-gunmetal-400">
 
-    <img alt="@empty(Auth()->user()->name) {{ Auth()->user()->email }} @else {{ Auth()->user()->name }} @endempty"
+    <img alt="@empty(Auth()->user()->last_name) {{ Auth()->user()->email }} @else {{ Auth()->user()->formated_name }} @endempty"
         src="{{ secure_asset('images/users/usertmp.jpg') }}"
         class="mx-auto mb-5 border-4 rounded-full h-28 w-28 border-burntsienna-400" />
 
     <h3 class="mb-2 text-xl font-semibold">
-        @empty(Auth()->user()->name) {{ Auth()->user()->email }} @else {{ Auth()->user()->name }} @endempty
+        @empty(Auth()->user()->last_name)
+        {{ Auth()->user()->email }}
+        @else
+        {{ Auth()->user()->formated_name }}
+        @endempty
     </h3>
 
     <div class="flex flex-row items-center justify-center w-full text-sm text-center text-burntsienna-400">

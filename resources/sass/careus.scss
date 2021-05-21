@@ -51,6 +51,13 @@ select:focus {
     border-color: #ee6c4d;
 }
 
+#userform {
+    background-image: url("/images/helper/formhead.svg");
+    background-repeat: no-repeat;
+    background-position: top center;
+    overflow: hidden;
+}
+
 .top-112 {
     top: 30rem /* 480px */;
 }

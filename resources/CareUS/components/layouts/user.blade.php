@@ -71,9 +71,14 @@
                 </h1>
             </header>
 
+            <!-- STATUS -->
+            @if (isset($status))
+            <x-common.alert type="bdazzledblue" icon="info-circle" :message="$status" />
+            @endif
+
             <!-- ERRORS -->
             @if ($errors->any())
-            <x-alert type="red" icon="exclamation-triangle" :message="$errors" />
+            <x-common.alert type="red" icon="exclamation-triangle" :message="$errors" />
             @endif
 
             @auth
