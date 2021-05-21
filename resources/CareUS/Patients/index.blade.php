@@ -5,7 +5,7 @@
     @push('styles')
     @endpush
 
-    @section('submenu')
+    @section('contentheader')
     <h2 class="text-sm font-bold uppercase md:text-xl">{{ $pageH2 }}</h2>
     @endsection
 
