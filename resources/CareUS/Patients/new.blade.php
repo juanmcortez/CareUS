@@ -1,4 +1,4 @@
-<x-layouts.user>
+<x-layouts.logged>
 
     @section('pageTitle', $pageTitle)
 
@@ -583,4 +583,4 @@
 
     @push('scripts')
     @endpush
-</x-layouts.user>
+</x-layouts.logged>
