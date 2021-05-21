@@ -4,11 +4,9 @@
     @push('styles')
     @endpush
 
-    @section('contentheader')
-    <h2 class="text-sm font-bold uppercase md:text-xl">{{ $pageH2 }}</h2>
-    @endsection
-
     @section('content')
+    <x-common.pageheader>{{ $pageH2 }}</x-common.pageheader>
+
     Content
     @endsection
 

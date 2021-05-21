@@ -65,17 +65,16 @@
                     Care<span class="font-bold text-gunmetal-300">US</span>
                 </h1>
             </header>
-            <!-- HEADER -->
 
             <!-- ERRORS -->
+            @if ($errors->any())
             <x-alert type="red" icon="exclamation-triangle" :message="$errors" />
-            <!-- ERRORS -->
+            @endif
 
             <!-- CONTENT -->
             <div class="flex flex-row items-center justify-center w-full min-h-full text-sm">
                 @yield('content')
             </div>
-            <!-- CONTENT -->
 
         </div>
 

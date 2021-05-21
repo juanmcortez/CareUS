@@ -5,11 +5,9 @@
     @push('styles')
     @endpush
 
-    @section('contentheader')
-    <h2 class="text-sm font-bold uppercase md:text-xl">{{ $pageH2 }}</h2>
-    @endsection
-
     @section('content')
+    <x-common.pageheader>{{ $pageH2 }}</x-common.pageheader>
+
     <div class="flex flex-col md:flex-row">
 
         <select name="master_list" class="w-1/4 p-2 my-4 mr-4 border-none bg-gray-50" size="20" multiple>

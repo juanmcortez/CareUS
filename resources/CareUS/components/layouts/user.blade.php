@@ -70,25 +70,20 @@
                     <a href="{{ route('dashboard.index') }}">Care<span class="font-bold text-gunmetal-300">US</span></a>
                 </h1>
             </header>
-            <!-- HEADER -->
 
             <!-- ERRORS -->
+            @if ($errors->any())
             <x-alert type="red" icon="exclamation-triangle" :message="$errors" />
-            <!-- ERRORS -->
+            @endif
 
             @auth
 
             <!-- CONTENT -->
             <main class="flex flex-col items-center justify-start w-full min-h-full px-10">
 
-                <div class="flex flex-row items-center w-full pt-3 pb-10">
-                    @yield('contentheader')
-                </div>
-
                 @yield('content')
 
             </main>
-            <!-- CONTENT -->
 
             @else
 
@@ -98,7 +93,6 @@
                     <a href="{{ route('login') }}">{!! __('You need to <strong>login</strong> to continue...') !!}</a>
                 </h2>
             </div>
-            <!-- REJECT -->
 
             @endauth
 

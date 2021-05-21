@@ -1,4 +1,3 @@
-@if ($message->any())
 <div class="absolute flex flex-row items-center justify-center w-full leading-loose align-middle"
     x-data="{ showalert: true }">
     <div class="flex flex-row w-1/2 bg-{{ $type }}-300 text-{{ $type }}-800 px-3 py-2 rounded-md transition-opacity ease-in-out duration-300"
@@ -17,4 +16,3 @@
         </div>
     </div>
 </div>
-@endif
