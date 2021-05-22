@@ -1,4 +1,12 @@
-<x-layouts.guest>
+<x-layouts.logged>
+
+    @section('pageTitle', 'Verify e-mail')
+
+    @push('styles')
+    @endpush
+
+    @section('content')
+    <x-common.pageheader>{{ __('Verify your e-mail') }}</x-common.pageheader>
 
     <div class="mb-4 text-sm text-gray-600">
         {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
@@ -15,9 +23,9 @@
             @csrf
 
             <div>
-                <x-button>
+                <x-common.forms.button>
                     {{ __('Resend Verification Email') }}
-                </x-button>
+                </x-common.forms.button>
             </div>
         </form>
 
@@ -29,5 +37,8 @@
             </button>
         </form>
     </div>
+    @endsection
 
-</x-layouts.guest>
+    @push('scripts')
+    @endpush
+</x-layouts.logged>

@@ -3,7 +3,7 @@
 'excel' => false,
 'csv' => false,
 ])
-<div class="flex flex-row items-center w-full pt-3 pb-10">
+<div class="flex flex-row items-center w-full pt-5 pb-10">
     <h2 class="w-3/4 text-3xl font-bold text-bdazzledblue-800">{{ $slot }}</h2>
     <div class="flex flex-row items-center justify-end w-1/4">
         <div title="{{ __('Print') }}"
