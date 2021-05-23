@@ -1,4 +1,4 @@
-<footer class="flex justify-center py-6 bg-gunmetal-500">
+<footer class="flex justify-center w-full px-10 py-6 bg-gunmetal-500">
     <div class="container flex flex-col items-center mx-auto lg:flex-row">
         <a href="{{ route('dashboard.index') }}"
             class="flex items-center justify-center font-medium text-lightcyan-500 title-font md:justify-start">

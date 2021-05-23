@@ -57,17 +57,13 @@
 
     <div class="relative flex flex-row w-full min-h-screen overflow-hidden">
 
-        <div class="w-full transition-all duration-200 ease-in-out">
+        <div class="w-full transition-all duration-150 ease-in-out">
 
             <!-- HEADER -->
-            <header class="text-2xl font-medium border-b border-gray-300">
-                <h1 class="py-5 mx-10 text-gunmetal-700">
-                    <a href="{{ route('dashboard.index') }}">Care<span class="font-bold text-gunmetal-300">US</span></a>
-                </h1>
-            </header>
+            <x-sections.header />
 
             <!-- STATUS -->
-            @if (isset($status))
+            @if (\Session::has('status'))
             <x-common.alert type="bdazzledblue" icon="info-circle" :message="$status" />
             @endif
 

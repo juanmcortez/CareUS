@@ -2,13 +2,13 @@
     class="absolute top-0 flex flex-col items-center justify-start w-1/5 min-h-full px-8 overflow-hidden transition-all duration-150 ease-in-out transform bg-gunmetal-700 text-gunmetal-200 xl:w-1/6">
 
     <!-- USER -->
-    @include('Common.user_info')
+    <x-common.sidebar.user_info></x-common.sidebar.user_info>
 
     <!-- NOTES -->
-    @include('Common.user_notes')
+    <x-common.sidebar.user_notes></x-common.sidebar.user_notes>
 
     <!-- USER MENU -->
-    @include('Common.user_menu')
+    <x-common.sidebar.user_menu></x-common.sidebar.user_menu>
 </aside>
 
 <!-- HIDEBTN --->

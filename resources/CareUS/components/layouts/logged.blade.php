@@ -62,18 +62,14 @@
     <div class="relative flex flex-row w-full min-h-screen overflow-hidden" @auth x-data="{ open: true }" @else
         x-data="{ open: false }" @endauth>
 
-        <div :class="{ 'w-full': !open, 'w-4/5 xl:w-5/6': open }" class="transition-all duration-200 ease-in-out">
+        <div :class="{ 'w-full': !open, 'w-4/5 xl:w-5/6': open }" class="transition-all duration-150 ease-in-out">
 
             <!-- HEADER -->
-            <header class="text-2xl font-medium border-b border-gray-300">
-                <h1 class="py-5 mx-10 text-gunmetal-700">
-                    <a href="{{ route('dashboard.index') }}">Care<span class="font-bold text-gunmetal-300">US</span></a>
-                </h1>
-            </header>
+            <x-sections.header />
 
             <!-- STATUS -->
-            @if (isset($status))
-            <x-common.alert type="bdazzledblue" icon="info-circle" :message="$status" />
+            @if (\Session::has('status'))
+            <x-common.alert type="bdazzledblue" icon="info-circle" :message="\Session::has('status')" />
             @endif
 
             <!-- ERRORS -->
@@ -84,10 +80,10 @@
             @auth
 
             <!-- CONTENT -->
-            <main class="flex flex-col items-center justify-start w-full min-h-full px-10">
+            <main :class="{ 'pr-16': !open, 'pr-10': open }"
+                class="flex flex-col items-center justify-start w-full min-h-full pl-10 ">
 
                 @yield('content')
-
             </main>
 
             @else
@@ -103,7 +99,9 @@
 
         </div>
 
-        @includeWhen(auth()->user(), 'Common.sidebar')
+        @auth
+        <x-sections.sidebar />
+        @endauth
 
     </div>
 
