@@ -1,5 +1,4 @@
-<div :class="{ 'opacity-0': !open, 'opacity-100': open }"
-    class="flex flex-col w-full pt-5 text-center transition-all duration-150 ease-in-out">
+<div class="w-full h-auto mt-32">
 
     <div class="flex flex-col w-full py-5 pl-5 text-left border-t border-gunmetal-400">
         <a href="{{ route('practice.index') }}" class="mb-4 text-sm text-burntsienna-400 hover:text-burntsienna-600">

@@ -63,16 +63,6 @@
             <!-- HEADER -->
             <x-sections.header />
 
-            <!-- STATUS -->
-            @if (\Session::has('status'))
-            <x-common.alert type="bdazzledblue" icon="info-circle" :message="$status" />
-            @endif
-
-            <!-- ERRORS -->
-            @if ($errors->any())
-            <x-common.alert type="red" icon="exclamation-triangle" :message="$errors" />
-            @endif
-
             <!-- CONTENT -->
             @yield('content')
 

@@ -53,14 +53,61 @@
 
 </head>
 
-<body class="font-sans antialiased">
+<body
+    class="flex w-full min-h-screen font-sans text-sm antialiased duration-150 ease-in-out text-gunmetal-700 bg-bdazzledblue-50"
+    @auth x-data="{ sidebar: true }" @else x-data="{ sidebar: false }" @endauth>
 
     <noscript>
         <h2>{{ __('Javascript needed for this website usage.') }}</h2>
     </noscript>
 
-    <div class="relative flex flex-row w-full min-h-screen overflow-hidden" @auth x-data="{ open: true }" @else
-        x-data="{ open: false }" @endauth>
+    <div class="relative flex flex-row flex-wrap flex-1 overflow-x-hidden">
+        <div :class="{ 'w-full pr-14': !sidebar }"
+            class="w-5/6 pb-10 pl-10 pr-10 duration-150 ease-in-out transform pt-7">
+
+            <!-- HEADER -->
+            <x-sections.header />
+
+            <div class="w-full">
+
+                @auth
+
+                <!-- CONTENT -->
+                @yield('content')
+                <!-- CONTENT -->
+
+                @else
+
+                <!-- REJECT -->
+                <div class="flex flex-row items-center justify-center w-full min-h-full text-sm text-burntsienna-700">
+                    <h2>
+                        <a href="{{ route('login') }}">
+                            {!! __('You need to <strong>login</strong> to continue...') !!}
+                        </a>
+                    </h2>
+                </div>
+                <!-- REJECT -->
+
+                @endauth
+
+            </div>
+        </div>
+
+        @auth
+        <div :class="{ '-right-76': !sidebar }"
+            class="absolute right-0 w-1/6 min-h-full p-10 overflow-hidden duration-150 ease-in-out transform bg-bdazzledblue-900 text-bdazzledblue-100">
+            <x-sections.sidebar />
+        </div>
+
+        <a @click.prevent="sidebar = !sidebar"
+            :class="{ 'bg-bdazzledblue-900 text-bdazzledblue-100 right-0 -mr-2': !sidebar, 'text-bdazzledblue-900 bg-bdazzledblue-100 right-1/6 -mr-5': sidebar }"
+            class="absolute flex items-center justify-center w-10 h-10 duration-150 ease-in-out transform rounded-full cursor-pointer top-8">
+            <i :class="{ 'fa-chevron-left': !sidebar, 'fa-chevron-right': sidebar }" class="font-bold text-md fas"></i>
+        </a>
+        @endauth
+
+
+        {{--
 
         <div :class="{ 'w-full': !open, 'w-4/5 xl:w-5/6': open }" class="transition-all duration-150 ease-in-out">
 
@@ -92,16 +139,18 @@
             <div class="flex flex-row items-center justify-center w-full min-h-full text-sm text-burntsienna-700">
                 <h2>
                     <a href="{{ route('login') }}">{!! __('You need to <strong>login</strong> to continue...') !!}</a>
-                </h2>
-            </div>
+        </h2>
+    </div>
 
-            @endauth
+    @endauth
 
-        </div>
+    </div>
 
-        @auth
-        <x-sections.sidebar />
-        @endauth
+    @auth
+    <x-sections.sidebar />
+    @endauth
+
+    --}}
 
     </div>
 

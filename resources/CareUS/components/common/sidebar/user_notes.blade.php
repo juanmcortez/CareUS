@@ -1,7 +1,6 @@
-<div :class="{ 'opacity-0': !open, 'opacity-100': open }"
-    class="relative flex flex-col items-center justify-center w-full h-48 pt-5 my-32 text-center transition-all duration-150 ease-in-out">
+<div class="relative w-full h-44">
     <div
-        class="absolute z-10 flex flex-col w-5/6 h-40 overflow-hidden text-sm text-left origin-center transform bg-yellow-200 rounded-sm shadow text-gunmetal-700 -rotate-2">
+        class="absolute z-10 flex flex-col w-full h-40 overflow-hidden text-sm text-left origin-center transform bg-yellow-200 rounded-sm shadow text-gunmetal-700 -rotate-2">
         <h3
             class="flex flex-row items-center justify-between px-2 py-2 mb-2 text-yellow-500 border-b-2 border-yellow-300 text-md">
             <span class="font-semibold">{{ __('Last note') }}:</span>
@@ -15,9 +14,9 @@
             your last note.
         </p>
     </div>
-    <div class="absolute z-0 w-5/6 h-40 origin-center transform bg-green-300 rounded-sm shadow rotate-6">
+    <div class="absolute z-0 w-full h-40 origin-center transform bg-green-300 rounded-sm shadow rotate-6">
     </div>
-    <div class="absolute z-0 w-5/6 h-40 origin-center transform bg-pink-300 rounded-sm shadow rotate-2">
+    <div class="absolute z-0 w-full h-40 origin-center transform bg-pink-300 rounded-sm shadow rotate-2">
     </div>
     <a href="{{ route('user.notes') }}" class="absolute w-auto mt-3 text-xs text-right right-5 -bottom-7">
         {{ __('More') }} <i class="text-xxs fas fa-chevron-right"></i>

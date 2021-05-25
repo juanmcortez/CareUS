@@ -1,5 +1,4 @@
-<div :class="{ 'opacity-0': !open, 'opacity-100': open }"
-    class="w-full py-5 text-center transition-all duration-150 ease-in-out border-b border-gunmetal-400">
+<div class="w-full h-auto mb-32">
 
     <img alt="@empty(Auth()->user()->last_name) {{ Auth()->user()->email }} @else {{ Auth()->user()->formated_name }} @endempty"
         src="{{ secure_asset('images/users/usertmp.jpg') }}"
