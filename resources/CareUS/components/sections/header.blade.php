@@ -9,7 +9,7 @@
 
 <!-- STATUS -->
 @if (\Session::has('status'))
-<x-common.alert type="bdazzledblue" icon="info-circle" message="\Session::has('status')" />
+<x-common.alert type="bdazzledblue" icon="info-circle" :status="session('status')" />
 @endif
 
 <!-- ERRORS -->
