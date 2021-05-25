@@ -78,3 +78,8 @@ select:focus {
 .right-1\/6 {
     right: calc(100% / 6);
 }
+
+.xl\:-right-76,
+.-right-76 {
+    right: -19rem /* -304px */;
+}

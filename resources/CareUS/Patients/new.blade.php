@@ -1,5 +1,4 @@
 <x-layouts.logged>
-
     @section('pageTitle', $pageTitle)
 
     @push('styles')
@@ -12,572 +11,160 @@
         @csrf
         @method('POST')
 
-        <!-- ID's -->
-        <div
-            class="flex flex-row items-center w-full pb-8 mb-8 text-sm leading-relaxed border-b-2 border-palecerulean-300">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('External ID') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.externalID" place="000000000000" classes="text-center" />
-            </div>
-            <div class="flex flex-row w-7/12">&nbsp;</div>
-            <div class="flex w-2/12 text-sm">
-                <x-forms.button id="send_button" />
-                <x-forms.button tag="a" id="cancel_button" type="{{ route('patients.list') }}" color="red"
-                    icon="times-circle" text="Cancel" />
-            </div>
-        </div>
-
-        <!-- NAME -->
-        <div
-            class="flex flex-row items-center w-full pb-8 mb-8 text-sm leading-relaxed border-b-2 border-palecerulean-300">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Title') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.select name="patient.persona.title" :options="$items['titles']" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Last name') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.persona.last_name" place="Last name" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('First name') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.persona.first_name" place="First name" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Middle name') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.persona.middle_name" place="Middle name" />
-            </div>
-        </div>
-
-
-        <!-- PHONES -->
-        @foreach ($phones as $idx => $phone)
-        <div class="flex flex-row items-center w-full pb-4 text-sm leading-relaxed">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Phone #:index', ['index' => $idx+1]) }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.select name="patient.persona.phone.{{ $idx }}.type" :options="$items['phonetypes']" />
-            </div>
-            <div class="flex flex-row items-center w-3/12">
-                <div class="w-1/12 font-bold">+</div>
-                <div class="relative w-2/12">
-                    <x-forms.input name="patient.persona.phone.{{ $idx }}.international_code" classes="text-center"
-                        showerror="false" place="0" />
+        <div class="flex flex-col w-full text-sm leading-relaxed">
+            <!-- ID's -->
+            <div class="flex flex-row flex-wrap items-center justify-between pb-8 mb-8">
+                <div class="flex flex-row items-center justify-start w-1/4">
+                    <x-common.forms.label for="externalID" class="w-1/3">{{ __('External ID') }}</x-common.forms.label>
+                    <x-common.forms.input id="externalID" class="w-2/3" type="text" name="patient[externalID]"
+                        :value="old('patient.externalID')" placeholder="{{ __('External ID') }}" autofocus />
                 </div>
-                <div class="w-1/12 font-bold">(</div>
-                <div class="relative w-2/12">
-                    <x-forms.input name="patient.persona.phone.{{ $idx }}.area_code" classes="text-center"
-                        showerror="false" showerror="false" place="000" />
-                </div>
-                <div class="w-1/12 font-bold">)</div>
-                <div class="relative w-2/12">
-                    <x-forms.input name="patient.persona.phone.{{ $idx }}.initial_digits" classes="text-center"
-                        showerror="false" place="000" />
-                </div>
-                <div class="w-1/12 font-bold">-</div>
-                <div class="relative w-2/12">
-                    <x-forms.input name="patient.persona.phone.{{ $idx }}.last_digits" classes="text-center"
-                        showerror="false" place="0000" />
+                <div class="flex flex-row items-center justify-end w-1/4">
+                    <x-common.forms.button icon="save" color="green" class="ml-3">
+                        {{ __('Save') }}
+                    </x-common.forms.button>
+                    <x-common.forms.button icon="times-circle" color="red" type="cancel" class="ml-3">
+                        {{ __('Cancel') }}
+                    </x-common.forms.button>
                 </div>
             </div>
-            <div class="flex flex-row items-center w-1/12">
-                <div class="w-8/12 font-bold">{{ __('Extension') }}</div>
-                <div class="w-4/12">
-                    <x-forms.input name="patient.persona.phone.{{ $idx }}.extension" classes="text-center"
-                        showerror="false" place="00" />
+
+            <!-- NAME -->
+            <div class="flex flex-row flex-wrap items-center justify-between pb-8 mb-8">
+                <div class="flex flex-row items-center justify-start w-1/4">
+                    <x-common.forms.label for="title" class="w-1/3">{{ __('Title') }}</x-common.forms.label>
+                    <x-common.forms.select id="title" name="patient[persona][title]" class="w-2/3"
+                        :options="$items['titles']" :seloption="old('patient.persona.title')" />
+                </div>
+                <div class="flex flex-row items-center justify-start w-1/4">
+                    <x-common.forms.label for="last_name" class="w-1/3">{{ __('Last name') }}</x-common.forms.label>
+                    <x-common.forms.input id="last_name" class="w-2/3" type="text" name="patient[persona][last_name]"
+                        :value="old('patient.persona.last_name')" placeholder="{{ __('Last name') }}" />
+                </div>
+                <div class="flex flex-row items-center justify-start w-1/4">
+                    <x-common.forms.label for="first_name" class="w-1/3">{{ __('First name') }}</x-common.forms.label>
+                    <x-common.forms.input id="first_name" class="w-2/3" type="text" name="patient[persona][first_name]"
+                        :value="old('patient.persona.first_name')" placeholder="{{ __('First name') }}" />
+                </div>
+                <div class="flex flex-row items-center justify-start w-1/4">
+                    <x-common.forms.label for="middle_name" class="w-1/3">{{ __('Middle name') }}</x-common.forms.label>
+                    <x-common.forms.input id="middle_name" class="w-2/3" type="text"
+                        name="patient[persona][middle_name]" :value="old('patient.persona.middle_name')"
+                        placeholder="{{ __('Middle name') }}" />
                 </div>
             </div>
-            <div class="relative flex flex-row w-5/12 h-10">
-                @error('patient.persona.phone.'.$idx.'.international_code')
-                <span class="absolute top-0 z-10 leading-none text-red-600 left-1 text-xxs">{!! __($message) !!}</span>
-                @enderror
-                @error('patient.persona.phone.'.$idx.'.area_code')
-                <span class="absolute z-10 leading-none text-red-600 left-1 top-3 text-xxs">{!! __($message) !!}</span>
-                @enderror
-                @error('patient.persona.phone.'.$idx.'.initial_digits')
-                <span class="absolute z-10 leading-none text-red-600 left-1 top-6 text-xxs">{!! __($message) !!}</span>
-                @enderror
-                @error('patient.persona.phone.'.$idx.'.last_digits')
-                <span class="absolute z-10 leading-none text-red-600 left-1 top-9 text-xxs">{!! __($message) !!}</span>
-                @enderror
-            </div>
-        </div>
-        @endforeach
 
-        <!-- EMAIL -->
-        <div class="flex flex-row items-center w-full pt-4 pb-8 text-sm leading-relaxed">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('E-mail') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.persona.email" place="patient@email.com" />
-            </div>
-        </div>
-
-        <!-- ADDRESS -->
-        <div class="flex flex-row items-center w-full pb-4 text-sm leading-relaxed">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Address') }}</div>
-            <div class="relative flex flex-row w-5/12 text-left">
-                <x-forms.input name="patient.persona.address.street" place="Address" />
-                <x-forms.input name="patient.persona.address.street_extended" classes="ml-4" place="Extended Address" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('City') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.persona.address.city" place="City" />
-            </div>
-            <div class="flex flex-row w-3/12">&nbsp;</div>
-        </div>
-
-        <div
-            class="flex flex-row items-center w-full pb-8 mb-8 text-sm leading-relaxed border-b-2 border-palecerulean-300">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('State') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.select name="patient.persona.address.state" :options="$items['states']" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Zip') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.persona.address.zip" place="Zip" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Country') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.select name="patient.persona.address.country" :options="$items['countries']" />
-            </div>
-            <div class="flex flex-row w-3/12">&nbsp;</div>
-        </div>
-
-        <!-- GENDER -->
-        <div class="flex flex-row items-center w-full pb-4 text-sm leading-relaxed">
-            <div class="w-1/12 pr-2 font-bold text-right ">{{ __('Gender') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.select name="patient.persona.gender" :options="$items['genders']" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Birthday') }}</div>
-            <div class="flex flex-row items-center w-2/12 text-left">
-                <div class="relative w-3/12">
-                    <x-forms.input name="patient.persona.date_of_birth.month" classes="text-center" showerror="false"
-                        place="MM" />
+            <!-- PHONES -->
+            @foreach ($phones as $idx => $phone)
+            <div class="flex flex-row flex-wrap items-center justify-start pb-4">
+                <div class="flex flex-row items-center justify-start w-1/4">
+                    <x-common.forms.label for="type" class="w-1/3">
+                        {{ __('Phone #:index', ['index' => $idx+1]) }}
+                    </x-common.forms.label>
+                    <x-common.forms.select id="type" name="patient[persona][phone][{{ $idx }}][type]" class="w-2/3"
+                        :options="$items['phonetypes']" seloption="{{ old('patient.persona.phone.'.$idx.'.type') }}" />
                 </div>
-                <div class="w-1/12 text-center">/</div>
-                <div class="relative w-3/12">
-                    <x-forms.input name="patient.persona.date_of_birth.day" classes="text-center" showerror="false"
-                        place="DD" />
-                </div>
-                <div class="w-1/12 text-center">/</div>
-                <div class="relative w-4/12">
-                    <x-forms.input name="patient.persona.date_of_birth.year" classes="text-center" showerror="false"
-                        place="YYYY" />
+                <div class="flex flex-row items-center justify-start w-2/4">
+                    <x-common.forms.label for="international_code" class="w-1/12">+</x-common.forms.label>
+                    <x-common.forms.input id="international_code" class="w-1/12" type="text"
+                        name="patient[persona][phone][{{ $idx }}][international_code]"
+                        value="{{ old('patient.persona.phone.'.$idx.'.international_code') }}" placeholder="1" />
+
+                    <x-common.forms.label for="area_code" class="w-1/12">(</x-common.forms.label>
+                    <x-common.forms.input id="area_code" class="w-1/12" type="text"
+                        name="patient[persona][phone][{{ $idx }}][area_code]"
+                        value="{{ old('patient.persona.phone.'.$idx.'.area_code') }}" placeholder="00" />
+
+                    <x-common.forms.label for="initial_digits" class="w-1/12">)</x-common.forms.label>
+                    <x-common.forms.input id="initial_digits" class="w-2/12" type="text"
+                        name="patient[persona][phone][{{ $idx }}][initial_digits]"
+                        value="{{ old('patient.persona.phone.'.$idx.'.initial_digits') }}" placeholder="000" />
+
+                    <x-common.forms.label for="last_digits" class="w-1/12">-</x-common.forms.label>
+                    <x-common.forms.input id="last_digits" class="w-2/12" type="text"
+                        name="patient[persona][phone][{{ $idx }}][last_digits]"
+                        value="{{ old('patient.persona.phone.'.$idx.'.last_digits') }}" placeholder="0000" />
+
+                    <x-common.forms.label for="extension" class="w-1/12">&nbsp;</x-common.forms.label>
+                    <x-common.forms.input id="extension" class="w-1/12" type="text"
+                        name="patient[persona][phone][{{ $idx }}][extension]"
+                        value="{{ old('patient.persona.phone.'.$idx.'.extension') }}" placeholder="00" />
                 </div>
             </div>
-            <div class="relative flex flex-row w-6/12 h-10">
-                @error('patient.persona.date_of_birth.month')
-                <span class="absolute z-10 leading-none text-red-600 top-1 left-1 text-xxs">
-                    {!! __($message) !!}
-                </span>
-                @enderror
-                @error('patient.persona.date_of_birth.day')
-                <span class="absolute z-10 leading-none text-red-600 top-4 left-1 text-xxs">
-                    {!! __($message) !!}
-                </span>
-                @enderror
-                @error('patient.persona.date_of_birth.year')
-                <span class="absolute z-10 leading-none text-red-600 top-7 left-1 text-xxs">
-                    {!! __($message) !!}
-                </span>
-                @enderror
-            </div>
-        </div>
+            @endforeach
 
-        <!-- ACCESSION -->
-        <div
-            class="flex flex-row items-center w-full pb-8 mb-8 text-sm leading-relaxed border-b-2 border-palecerulean-300">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Accession #') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.patient_level_accession" classes="text-center" place="0000000000000000" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Social Security') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.persona.social_security" classes="text-center" place="000-00-0000" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Driver License') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.persona.driver_license" place="000000000000" />
-            </div>
-            <div class="flex flex-row w-3/12">&nbsp;</div>
-        </div>
-
-        <!-- MARITAL -->
-        <div
-            class="flex flex-row items-center w-full pb-8 mb-8 text-sm leading-relaxed border-b-2 border-palecerulean-300">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Family Size') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.persona.family_size" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Marital Status') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.select name="patient.persona.marital" :options="$items['maritals']" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Marital Details') }}</div>
-            <div class="relative w-5/12 text-left">
-                <x-forms.input name="patient.persona.marital_details" />
-            </div>
-        </div>
-
-        <!-- LANGUAGE -->
-        <div class="flex flex-row items-center w-full pb-4 text-sm leading-relaxed">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Language') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.select name="patient.persona.language" :options="$items['languages']" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Ethnicity') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.select name="patient.persona.ethnicity" :options="$items['ethnicities']" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Race') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.select name="patient.persona.race" :options="$items['races']" />
-            </div>
-            <div class="flex flex-row w-3/12">&nbsp;</div>
-        </div>
-
-        <!-- MIGRANT -->
-        <div class="flex flex-row items-center w-full pb-4 text-sm leading-relaxed">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Migrant / Seasonal') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.persona.migrant_seasonal" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Interpreter') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.persona.interpreter" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Homeless') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.persona.homeless" />
-            </div>
-            <div class="flex flex-row w-3/12">&nbsp;</div>
-        </div>
-
-        <!-- REFERRAL -->
-        <div class="flex flex-row items-center w-full pb-8 text-sm leading-relaxed">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Referral') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.select name="patient.persona.referral" :options="$items['referrals']" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('VFC') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.select name="patient.persona.vfc" :options="$items['vfcs']" />
-            </div>
-            <div class="flex flex-row w-6/12">&nbsp;</div>
-        </div>
-
-        <!-- DECEASE -->
-        <div
-            class="flex flex-row w-full px-4 py-2 mb-8 text-xl font-bold leading-relaxed uppercase bg-red-500 rounded text-lightcyan-500">
-            {{ __('Decease') }}
-        </div>
-        <div class="flex flex-row items-center w-full pb-4 text-sm leading-relaxed">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Decease Date') }}</div>
-            <div class="relative flex flex-row items-center w-2/12 text-left">
-                <div class="w-3/12">
-                    <x-forms.input name="patient.persona.decease_date.month" classes="text-center" showerror="false"
-                        place="MM" />
-                </div>
-                <div class="w-1/12 font-bold text-center">/</div>
-                <div class="w-3/12">
-                    <x-forms.input name="patient.persona.decease_date.day" classes="text-center" showerror="false"
-                        place="DD" />
-                </div>
-                <div class="w-1/12 font-bold text-center">/</div>
-                <div class="w-4/12">
-                    <x-forms.input name="patient.persona.decease_date.year" classes="text-center" showerror="false"
-                        place="YYYY" />
+            <!-- EMAIL -->
+            <div class="flex flex-row flex-wrap items-center justify-between pb-4">
+                <div class="flex flex-row items-center justify-start w-1/4">
+                    <x-common.forms.label for="email" class="w-1/3">{{ __('E-mail') }}</x-common.forms.label>
+                    <x-common.forms.input id="email" class="w-2/3" type="text" name="patient[persona][email]"
+                        :value="old('patient.persona.email')" placeholder="{{ __('patient@email.com') }}" />
                 </div>
             </div>
-            <div class="relative flex flex-row w-6/12 h-10">
-                @error('patient.persona.decease_date.month')
-                <span class="absolute z-10 leading-none text-red-600 top-1 left-1 text-xxs">
-                    {!! __($message) !!}
-                </span>
-                @enderror
-                @error('patient.persona.decease_date.day')
-                <span class="absolute z-10 leading-none text-red-600 top-4 left-1 text-xxs">
-                    {!! __($message) !!}
-                </span>
-                @enderror
-                @error('patient.persona.decease_date.year')
-                <span class="absolute z-10 leading-none text-red-600 top-7 left-1 text-xxs">
-                    {!! __($message) !!}
-                </span>
-                @enderror
-            </div>
-        </div>
-        <div class="flex flex-row items-center w-full pb-8 text-sm leading-relaxed">
-            <div class="w-1/12 pr-2 font-bold text-right align-top">{{ __('Reason') }}</div>
-            <div class="relative w-11/12 text-left">
-                <x-forms.textarea name="patient.persona.decease_reason" />
-            </div>
-        </div>
 
-        <!-- CONTACTS -->
-        <div
-            class="flex flex-row w-full px-4 py-2 mb-8 text-xl font-bold leading-relaxed uppercase rounded bg-bdazzledblue-500 text-lightcyan-500">
-            {{ __('Contacts') }}
-        </div>
-        @foreach ($contacts as $idx => $contact)
-        <div class="flex flex-row items-center w-full pb-4 text-sm leading-relaxed">
-            <div class="w-1/12 pr-2 font-bold text-right">
-                {{ __('Contact #:contact_id', ['contact_id' => ($idx+1)]) }}
-            </div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.select name="patient.contact.{{ $idx }}.contact_type" :options="$items['contacttypes']" />
-            </div>
-            <div class="flex flex-row w-9/12">&nbsp;</div>
-        </div>
-
-        <div class="flex flex-row items-center w-full pb-4 text-sm leading-relaxed">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Title') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.select name="patient.contact.{{ $idx }}.title" :options="$items['titles']" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Last name') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.contact.{{ $idx }}.last_name" place="Last name" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('First name') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.contact.{{ $idx }}.first_name" place="First name" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Middle name') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.contact.{{ $idx }}.middle_name" place="Middle name" />
-            </div>
-        </div>
-
-        <div class="flex flex-row items-center w-full pt-4 text-sm leading-relaxed">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Phone') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.select name="patient.contact.{{ $idx }}.phone.type" :options="$items['phonetypes']" />
-            </div>
-            <div class="flex flex-row items-center w-3/12 ">
-                <div class="w-1/12 font-bold">+</div>
-                <div class="w-2/12">
-                    <x-forms.input name="patient.contact.{{ $idx }}.phone.international_code" classes="text-center"
-                        showerror="false" place="0" />
+            <!-- Address -->
+            <div class="flex flex-row flex-wrap items-center justify-start pb-4">
+                <div class="flex flex-row items-center justify-start w-1/4">
+                    <x-common.forms.label for="street" class="w-1/3">{{ __('Address') }}</x-common.forms.label>
+                    <x-common.forms.input id="street" class="w-2/3" type="text" name="patient[persona][address][street]"
+                        :value="old('patient.persona.address.street')" placeholder="{{ __('Address') }}" />
                 </div>
-                <div class="w-1/12 font-bold">(</div>
-                <div class="w-2/12">
-                    <x-forms.input name="patient.contact.{{ $idx }}.phone.area_code" classes="text-center"
-                        showerror="false" place="000" />
+                <div class="flex flex-row items-center justify-start w-1/4">
+                    <x-common.forms.input id="street_extended" class="w-full ml-5" type="text"
+                        name="patient[persona][address][street_extended]"
+                        :value="old('patient.persona.address.street_extended')"
+                        placeholder="{{ __('Extended Address') }}" />
                 </div>
-                <div class="w-1/12 font-bold">)</div>
-                <div class="w-2/12">
-                    <x-forms.input name="patient.contact.{{ $idx }}.phone.initial_digits" classes="text-center"
-                        showerror="false" place="000" />
-                </div>
-                <div class="w-1/12 font-bold">-</div>
-                <div class="w-2/12">
-                    <x-forms.input name="patient.contact.{{ $idx }}.phone.last_digits" classes="text-center"
-                        showerror="false" place="000" />
+                <div class="flex flex-row items-center justify-start w-1/4">
+                    <x-common.forms.label for="city" class="w-1/3">{{ __('City') }}</x-common.forms.label>
+                    <x-common.forms.input id="city" class="w-2/3" type="text" name="patient[persona][address][city]"
+                        :value="old('patient.persona.address.city')" placeholder="{{ __('City') }}" />
                 </div>
             </div>
-            <div class="flex flex-row items-center w-1/12">
-                <div class="w-8/12 font-bold">{{ __('Extension') }}</div>
-                <div class="w-4/12">
-                    <x-forms.input name="patient.contact.{{ $idx }}.phone.extension" classes="text-center"
-                        showerror="false" place="00" />
+            <div class="flex flex-row flex-wrap items-center justify-start pb-8 mb-8">
+                <div class="flex flex-row items-center justify-start w-1/4">
+                    <x-common.forms.label for="state" class="w-1/3">{{ __('State') }}</x-common.forms.label>
+                    <x-common.forms.select id="state" name="patient[persona][address][state]" class="w-2/3"
+                        :options="$items['states']" :seloption="old('patient.persona.address.state')" />
+                </div>
+                <div class="flex flex-row items-center justify-start w-1/4">
+                    <x-common.forms.label for="zip" class="w-1/3">{{ __('Zip') }}</x-common.forms.label>
+                    <x-common.forms.input id="zip" class="w-2/3" type="text" name="patient[persona][address][zip]"
+                        :value="old('patient.persona.address.zip')" placeholder="{{ __('Zip') }}" />
+                </div>
+                <div class="flex flex-row items-center justify-start w-1/4">
+                    <x-common.forms.label for="country" class="w-1/3">{{ __('Country') }}</x-common.forms.label>
+                    <x-common.forms.select id="country" name="patient[persona][address][country]" class="w-2/3"
+                        :options="$items['countries']" :seloption="old('patient.persona.address.country')" />
                 </div>
             </div>
-            <div class="relative flex flex-row w-5/12 h-10">
-                @error('patient.contact.'.$idx.'.phone.international_code')
-                <span class="absolute top-0 z-10 leading-none text-red-600 left-1 text-xxs">{!! __($message) !!}</span>
-                @enderror
-                @error('patient.contact.'.$idx.'.phone.area_code')
-                <span class="absolute z-10 leading-none text-red-600 left-1 top-3 text-xxs">{!! __($message) !!}</span>
-                @enderror
-                @error('patient.contact.'.$idx.'.phone.initial_digits')
-                <span class="absolute z-10 leading-none text-red-600 left-1 top-6 text-xxs">{!! __($message) !!}</span>
-                @enderror
-                @error('patient.contact.'.$idx.'.phone.last_digits')
-                <span class="absolute z-10 leading-none text-red-600 left-1 top-9 text-xxs">{!! __($message) !!}</span>
-                @enderror
-            </div>
-        </div>
 
-        <div class="flex flex-row items-center w-full pt-4 pb-8 text-sm leading-relaxed">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('E-mail') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.contact.{{ $idx }}.email" place="contact@email.com" />
-            </div>
-        </div>
-
-        <div class="flex flex-row items-center w-full pb-4 text-sm leading-relaxed">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Address') }}</div>
-            <div class="relative flex flex-row w-5/12 text-left">
-                <x-forms.input name="patient.contact.{{ $idx }}.address.street" place="Address" />
-                <x-forms.input name="patient.contact.{{ $idx }}.address.street_extended" classes="ml-4"
-                    place="Extended Address" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('City') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.contact.{{ $idx }}.address.city" place="City" />
-            </div>
-            <div class="flex flex-row w-3/12">&nbsp;</div>
-        </div>
-
-        <div
-            class="flex flex-row items-center w-full pb-8 @if($idx != 2) mb-8 @endif text-sm leading-relaxed @if($idx != 2) border-b-2 border-palecerulean-300 @endif">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('State') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.select name="patient.contact.{{ $idx }}.address.state" :options="$items['states']" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Zip') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.contact.{{ $idx }}.address.zip" place="Zip" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Country') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.select name="patient.contact.{{ $idx }}.address.country" :options="$items['countries']" />
-            </div>
-            <div class="flex flex-row w-3/12">&nbsp;</div>
-        </div>
-        @endforeach
-
-        <!-- EMPLOYMENT -->
-        <div
-            class="flex flex-row w-full px-4 py-2 mb-8 text-xl font-bold leading-relaxed uppercase rounded bg-bdazzledblue-500 text-lightcyan-500">
-            {{ __('Employment') }}
-        </div>
-        <div
-            class="flex flex-row items-center w-full pb-8 mb-8 text-sm leading-relaxed border-b-2 border-palecerulean-300">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Company') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.employer.company" place="Company" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Occupation') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.employer.occupation" place="Occupation" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Monthly Income') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.employer.monthly_income" place="0000.00" classes="text-center" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Financial Review') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.employer.financial_review" place="Financial Review" />
-            </div>
-        </div>
-
-        <div class="flex flex-row items-center w-full pb-4 text-sm leading-relaxed">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Employer') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.select name="patient.employer.title" :options="$items['titles']" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Last name') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.employer.last_name" place="Last name" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('First name') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.employer.first_name" place="First name" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Middle name') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.employer.middle_name" place="Middle name" />
-            </div>
-        </div>
-
-        <div class="flex flex-row items-center w-full pt-4 text-sm leading-relaxed">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Phone') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.select name="patient.employer.phone.type" :options="$items['phonetypes']" />
-            </div>
-            <div class="flex flex-row items-center w-3/12">
-                <div class="w-1/12 font-bold">+</div>
-                <div class="w-2/12">
-                    <x-forms.input name="patient.employer.phone.international_code" classes="text-center"
-                        showerror="false" place="0" />
+            <!-- GENDER -->
+            <div class="flex flex-row flex-wrap items-center justify-start pb-8 mb-8">
+                <div class="flex flex-row items-center justify-start w-1/4">
+                    <x-common.forms.label for="gender" class="w-1/3">{{ __('Gender') }}</x-common.forms.label>
+                    <x-common.forms.select id="gender" name="patient[persona][gender]" class="w-2/3"
+                        :options="$items['genders']" :seloption="old('patient.persona.gender')" />
                 </div>
-                <div class="w-1/12 font-bold">(</div>
-                <div class="w-2/12">
-                    <x-forms.input name="patient.employer.phone.area_code" classes="text-center" showerror="false"
-                        place="000" />
-                </div>
-                <div class="w-1/12 font-bold">)</div>
-                <div class="w-2/12">
-                    <x-forms.input name="patient.employer.phone.initial_digits" classes="text-center" showerror="false"
-                        place="000" />
-                </div>
-                <div class="w-1/12 font-bold">-</div>
-                <div class="w-2/12">
-                    <x-forms.input name="patient.employer.phone.last_digits" classes="text-center" showerror="false"
-                        place="0000" />
+                <div class="flex flex-row items-center justify-start w-2/4">
+                    <x-common.forms.label for="date_of_birth" class="w-1/4">{{ __('Birthday') }}</x-common.forms.label>
+                    <x-common.forms.input id="date_of_birth" class="w-1/4" type="text"
+                        name="patient[persona][date_of_birth][month]"
+                        :value="old('patient.persona.date_of_birth.month')" placeholder="{{ __('MM') }}" />
+                    <x-common.forms.input id="date_of_birth" class="w-1/4 ml-5" type="text"
+                        name="patient[persona][date_of_birth][day]" :value="old('patient.persona.date_of_birth.day')"
+                        placeholder="{{ __('DD') }}" />
+                    <x-common.forms.input id="date_of_birth" class="w-1/4 ml-5" type="text"
+                        name="patient[persona][date_of_birth][year]" :value="old('patient.persona.date_of_birth.year')"
+                        placeholder="{{ __('YYYY') }}" />
                 </div>
             </div>
-            <div class="flex flex-row items-center w-1/12">
-                <div class="w-8/12 font-bold">{{ __('Extension') }}</div>
-                <div class="w-4/12">
-                    <x-forms.input name="patient.employer.phone.extension" classes="text-center" showerror="false"
-                        place="00" />
-                </div>
-            </div>
-            <div class="relative flex flex-row w-5/12 h-10">
-                @error('patient.employer.phone.international_code')
-                <span class="absolute top-0 z-10 leading-none text-red-600 left-1 text-xxs">{!! __($message) !!}</span>
-                @enderror
-                @error('patient.employer.phone.area_code')
-                <span class="absolute z-10 leading-none text-red-600 left-1 top-3 text-xxs">{!! __($message) !!}</span>
-                @enderror
-                @error('patient.employer.phone.initial_digits')
-                <span class="absolute z-10 leading-none text-red-600 left-1 top-6 text-xxs">{!! __($message) !!}</span>
-                @enderror
-                @error('patient.employer.phone.last_digits')
-                <span class="absolute z-10 leading-none text-red-600 left-1 top-9 text-xxs">{!! __($message) !!}</span>
-                @enderror
-            </div>
+
+
+
         </div>
 
-        <div class="flex flex-row items-center w-full pt-4 pb-8 text-sm leading-relaxed">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('E-mail') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.employer.email" place="employer@email.com" />
-            </div>
-        </div>
 
-        <div class="flex flex-row items-center w-full pb-4 text-sm leading-relaxed">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Address') }}</div>
-            <div class="relative flex flex-row w-5/12 text-left">
-                <x-forms.input name="patient.employer.address.street" place="Address" />
-                <x-forms.input name="patient.employer.address.street_extended" classes="ml-4"
-                    place="Extended Address" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('City') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.employer.address.city" place="City" />
-            </div>
-            <div class="flex flex-row w-3/12">&nbsp;</div>
-        </div>
-
-        <div
-            class="flex flex-row items-center w-full pb-8 mb-8 text-sm leading-relaxed border-b-2 border-palecerulean-300">
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('State') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.select name="patient.employer.address.state" :options="$items['states']" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Zip') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.input name="patient.employer.address.zip" place="Zip" />
-            </div>
-            <div class="w-1/12 pr-2 font-bold text-right">{{ __('Country') }}</div>
-            <div class="relative w-2/12 text-left">
-                <x-forms.select name="patient.employer.address.country" :options="$items['countries']" />
-            </div>
-            <div class="flex flex-row w-3/12">&nbsp;</div>
-        </div>
-
-        <!-- BUTTONS -->
-        <div class="flex flex-row w-full pb-4 text-sm leading-relaxed">
-            <div class="flex flex-row w-10/12">&nbsp;</div>
-            <div class="flex w-2/12 text-sm">
-                <x-forms.button id="send_button" />
-                <x-forms.button tag="a" id="cancel_button" type="{{ route('patients.list') }}" color="red"
-                    icon="times-circle" text="Cancel" />
-            </div>
-        </div>
     </form>
     @endsection
 

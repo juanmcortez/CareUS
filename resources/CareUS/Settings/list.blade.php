@@ -8,7 +8,7 @@
     @section('content')
     <x-common.pageheader>{{ $pageH2 }}</x-common.pageheader>
 
-    <div class="flex flex-col md:flex-row">
+    <div class="flex flex-col xl:flex-row">
 
         <select name="master_list" class="w-1/4 p-2 my-4 mr-4 border-none bg-gray-50" size="20" multiple>
             @foreach ($lists as $idx => $parent)

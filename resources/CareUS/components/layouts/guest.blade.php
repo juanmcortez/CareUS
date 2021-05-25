@@ -49,15 +49,16 @@
 
 </head>
 
-<body class="font-sans antialiased">
+<body
+    class="flex w-full min-h-screen font-sans text-sm antialiased duration-150 ease-in-out text-gunmetal-700 bg-bdazzledblue-50">
 
     <noscript>
         <h2>{{ __('Javascript needed for this website usage.') }}</h2>
     </noscript>
 
-    <div class="relative flex flex-row w-full min-h-screen overflow-hidden">
+    <div class="relative flex flex-row flex-wrap flex-1 overflow-x-hidden">
 
-        <div class="w-full transition-all duration-150 ease-in-out">
+        <div class="w-full p-2 duration-150 ease-in-out transform xl:p-10 xl:pt-7">
 
             <!-- HEADER -->
             <x-sections.header />
@@ -73,9 +74,7 @@
             @endif
 
             <!-- CONTENT -->
-            <div class="flex flex-row items-center justify-center w-full min-h-full text-sm">
-                @yield('content')
-            </div>
+            @yield('content')
 
         </div>
 
