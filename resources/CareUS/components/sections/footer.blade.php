@@ -1,7 +1,7 @@
-<footer class="flex justify-center py-6 bg-gunmetal-500">
+<footer class="flex justify-center w-full px-10 py-6 bg-gunmetal-500">
     <div class="container flex flex-col items-center mx-auto lg:flex-row">
         <a href="{{ route('dashboard.index') }}"
-            class="flex items-center justify-center font-medium text-lightcyan-500 title-font md:justify-start">
+            class="flex items-center justify-center font-medium text-lightcyan-500 title-font xl:justify-start">
             <i class="p-2 mx-auto text-xl rounded-full fas fa-heartbeat bg-bdazzledblue-500"></i>
             <span class="ml-3 text-base">{{ config('app.name') }}</span>
         </a>

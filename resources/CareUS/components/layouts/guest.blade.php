@@ -49,37 +49,22 @@
 
 </head>
 
-<body class="font-sans antialiased">
+<body
+    class="flex w-full min-h-screen font-sans text-sm antialiased duration-150 ease-in-out text-gunmetal-700 bg-bdazzledblue-50">
 
     <noscript>
         <h2>{{ __('Javascript needed for this website usage.') }}</h2>
     </noscript>
 
-    <div class="relative flex flex-row w-full min-h-screen overflow-hidden">
+    <div class="relative flex flex-row flex-wrap flex-1 overflow-x-hidden">
 
-        <div class="w-full transition-all duration-200 ease-in-out">
+        <div class="w-full p-2 duration-150 ease-in-out transform xl:p-10 xl:pt-7">
 
             <!-- HEADER -->
-            <header class="text-2xl font-medium border-b border-gray-300">
-                <h1 class="py-5 mx-10 text-gunmetal-700">
-                    <a href="{{ route('dashboard.index') }}">Care<span class="font-bold text-gunmetal-300">US</span></a>
-                </h1>
-            </header>
-
-            <!-- STATUS -->
-            @if (isset($status))
-            <x-common.alert type="bdazzledblue" icon="info-circle" :message="$status" />
-            @endif
-
-            <!-- ERRORS -->
-            @if ($errors->any())
-            <x-common.alert type="red" icon="exclamation-triangle" :message="$errors" />
-            @endif
+            <x-sections.header />
 
             <!-- CONTENT -->
-            <div class="flex flex-row items-center justify-center w-full min-h-full text-sm">
-                @yield('content')
-            </div>
+            @yield('content')
 
         </div>
 

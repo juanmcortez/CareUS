@@ -53,27 +53,70 @@
 
 </head>
 
-<body class="font-sans antialiased">
+<body
+    class="flex w-full min-h-screen font-sans text-sm antialiased duration-150 ease-in-out text-gunmetal-700 bg-bdazzledblue-50"
+    @auth x-data="{ sidebar: true }" @else x-data="{ sidebar: false }" @endauth>
 
     <noscript>
         <h2>{{ __('Javascript needed for this website usage.') }}</h2>
     </noscript>
 
-    <div class="relative flex flex-row w-full min-h-screen overflow-hidden" @auth x-data="{ open: true }" @else
-        x-data="{ open: false }" @endauth>
-
-        <div :class="{ 'w-full': !open, 'w-4/5 xl:w-5/6': open }" class="transition-all duration-200 ease-in-out">
+    <div class="relative flex flex-row flex-wrap flex-1 overflow-x-hidden">
+        <div :class="{ 'w-full pr-14': !sidebar }"
+            class="w-5/6 pb-10 pl-10 pr-10 duration-150 ease-in-out transform pt-7">
 
             <!-- HEADER -->
-            <header class="text-2xl font-medium border-b border-gray-300">
-                <h1 class="py-5 mx-10 text-gunmetal-700">
-                    <a href="{{ route('dashboard.index') }}">Care<span class="font-bold text-gunmetal-300">US</span></a>
-                </h1>
-            </header>
+            <x-sections.header />
+
+            <div class="w-full">
+
+                @auth
+
+                <!-- CONTENT -->
+                @yield('content')
+                <!-- CONTENT -->
+
+                @else
+
+                <!-- REJECT -->
+                <div class="flex flex-row items-center justify-center w-full min-h-full text-sm text-burntsienna-700">
+                    <h2>
+                        <a href="{{ route('login') }}">
+                            {!! __('You need to <strong>login</strong> to continue...') !!}
+                        </a>
+                    </h2>
+                </div>
+                <!-- REJECT -->
+
+                @endauth
+
+            </div>
+        </div>
+
+        @auth
+        <div :class="{ '-right-76': !sidebar }"
+            class="absolute right-0 w-1/6 min-h-full p-10 overflow-hidden duration-150 ease-in-out transform bg-bdazzledblue-900 text-bdazzledblue-100">
+            <x-sections.sidebar />
+        </div>
+
+        <a @click.prevent="sidebar = !sidebar"
+            :class="{ 'bg-bdazzledblue-900 text-bdazzledblue-100 right-0 -mr-2': !sidebar, 'text-bdazzledblue-900 bg-bdazzledblue-100 right-1/6 -mr-5': sidebar }"
+            class="absolute flex items-center justify-center w-10 h-10 duration-150 ease-in-out transform rounded-full cursor-pointer top-8">
+            <i :class="{ 'fa-chevron-left': !sidebar, 'fa-chevron-right': sidebar }" class="font-bold text-md fas"></i>
+        </a>
+        @endauth
+
+
+        {{--
+
+        <div :class="{ 'w-full': !open, 'w-4/5 xl:w-5/6': open }" class="transition-all duration-150 ease-in-out">
+
+            <!-- HEADER -->
+            <x-sections.header />
 
             <!-- STATUS -->
-            @if (isset($status))
-            <x-common.alert type="bdazzledblue" icon="info-circle" :message="$status" />
+            @if (\Session::has('status'))
+            <x-common.alert type="bdazzledblue" icon="info-circle" :message="\Session::has('status')" />
             @endif
 
             <!-- ERRORS -->
@@ -84,10 +127,10 @@
             @auth
 
             <!-- CONTENT -->
-            <main class="flex flex-col items-center justify-start w-full min-h-full px-10">
+            <main :class="{ 'pr-16': !open, 'pr-10': open }"
+                class="flex flex-col items-center justify-start w-full min-h-full pl-10 ">
 
                 @yield('content')
-
             </main>
 
             @else
@@ -96,14 +139,18 @@
             <div class="flex flex-row items-center justify-center w-full min-h-full text-sm text-burntsienna-700">
                 <h2>
                     <a href="{{ route('login') }}">{!! __('You need to <strong>login</strong> to continue...') !!}</a>
-                </h2>
-            </div>
+        </h2>
+    </div>
 
-            @endauth
+    @endauth
 
-        </div>
+    </div>
 
-        @includeWhen(auth()->user(), 'Common.sidebar')
+    @auth
+    <x-sections.sidebar />
+    @endauth
+
+    --}}
 
     </div>
 
