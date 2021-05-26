@@ -7,13 +7,13 @@
             @if (!empty($status))
             <p class="inline-block w-full text-sm leading-loose align-middle">
                 <i class="mr-2 text-{{ $type }}-600 fas fa-exclamation-triangle animate-pulse"></i>
-                {!! $status !!}
+                {{ __($status) }}
             </p>
             @else
             @foreach ($message->all() as $error)
             <p class="inline-block w-full text-sm leading-loose align-middle">
                 <i class="mr-2 text-{{ $type }}-600 fas fa-exclamation-triangle animate-pulse"></i>
-                {!! $error !!}
+                {!! __($error) !!}
             </p>
             @endforeach
             @endif

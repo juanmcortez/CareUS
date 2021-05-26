@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\UserProfileController;
 use App\Http\Controllers\Common\LocalizationController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Patients\PatientController;
@@ -57,6 +58,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('user')->name('user.')->group(function () {
         Route::get('/notes', [DashboardController::class, 'index'])->name('notes');
-        Route::get('/settings', [DashboardController::class, 'index'])->name('settings');
+        Route::get('/settings', [UserProfileController::class, 'index'])->name('settings');
+        Route::put('/settings', [UserProfileController::class, 'update'])->name('update');
     });
 });
