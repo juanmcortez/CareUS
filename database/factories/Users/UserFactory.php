@@ -3,6 +3,7 @@
 namespace Database\Factories\Users;
 
 use App\Models\Users\User;
+use Database\Factories\Common\PersonaFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -22,11 +23,7 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        $gender = $this->faker->randomElement(['male', 'female']);
         return [
-            'first_name'        => $this->faker->firstName($gender),
-            'middle_name'       => $this->faker->firstName($gender),
-            'last_name'         => $this->faker->lastName,
             'email'             => $this->faker->unique()->safeEmail(),
             'email_verified_at' => null,
             'password'          => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
@@ -46,5 +43,24 @@ class UserFactory extends Factory
                 'email_verified_at' => null,
             ];
         });
+    }
+
+    /**
+     * After creating the user, create
+     * all of the other relationship models
+     */
+    public function createUserDemographics()
+    {
+        return $this->afterCreating(
+            function (User $user) {
+                PersonaFactory::new()
+                    ->count(1)
+                    ->createAddressPhone(2)
+                    ->create([
+                        'owner_id'      => $user->id,
+                        'owner_type'    => 'user',
+                    ]);
+            }
+        );
     }
 }

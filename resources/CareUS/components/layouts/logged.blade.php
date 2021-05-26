@@ -53,17 +53,16 @@
 
 </head>
 
-<body
-    class="flex w-full min-h-screen font-sans text-sm antialiased duration-150 ease-in-out text-gunmetal-700 bg-bdazzledblue-50"
-    @auth x-data="{ sidebar: true }" @else x-data="{ sidebar: false }" @endauth>
+<body class="flex w-full min-h-screen font-sans text-sm antialiased text-gunmetal-700 bg-bdazzledblue-50" @auth
+    x-data="{ sidebar: localStorage.getItem('status') }"
+    x-init="$watch('sidebar', (newvalue) => localStorage.setItem('status', newvalue))" @endauth>
 
     <noscript>
         <h2>{{ __('Javascript needed for this website usage.') }}</h2>
     </noscript>
 
     <div class="relative flex flex-row flex-wrap flex-1 overflow-x-hidden">
-        <div :class="{ 'w-full pr-14': !sidebar }"
-            class="w-5/6 pb-10 pl-10 pr-10 duration-150 ease-in-out transform pt-7">
+        <div :class="{ 'w-full pr-14': sidebar === 'false' }" class="w-5/6 pb-10 pl-10 pr-10 pt-7">
 
             <!-- HEADER -->
             <x-sections.header />
@@ -94,63 +93,18 @@
         </div>
 
         @auth
-        <div :class="{ '-right-76': !sidebar }"
-            class="absolute right-0 w-1/6 min-h-full p-10 overflow-hidden duration-150 ease-in-out transform bg-bdazzledblue-900 text-bdazzledblue-100">
+        <div :class="{ '-right-76': sidebar === 'false' }"
+            class="absolute right-0 w-1/6 min-h-full p-10 overflow-hidden bg-bdazzledblue-900 text-bdazzledblue-100">
             <x-sections.sidebar />
         </div>
 
-        <a @click.prevent="sidebar = !sidebar"
-            :class="{ 'bg-bdazzledblue-900 text-bdazzledblue-100 right-0 -mr-2': !sidebar, 'text-bdazzledblue-900 bg-bdazzledblue-100 right-1/6 -mr-5': sidebar }"
-            class="absolute flex items-center justify-center w-10 h-10 duration-150 ease-in-out transform rounded-full cursor-pointer top-8">
-            <i :class="{ 'fa-chevron-left': !sidebar, 'fa-chevron-right': sidebar }" class="font-bold text-md fas"></i>
+        <a @click.prevent="sidebar = (sidebar === 'false') ? 'true' : 'false'"
+            :class="{ 'bg-bdazzledblue-900 text-bdazzledblue-100 right-0 -mr-2': sidebar === 'false', 'text-bdazzledblue-900 bg-bdazzledblue-100 right-1/6 -mr-5': sidebar === 'true' }"
+            class="absolute flex items-center justify-center w-10 h-10 rounded-full cursor-pointer top-8">
+            <i :class="{ 'fa-chevron-left': sidebar === 'false', 'fa-chevron-right': sidebar === 'true' }"
+                class="font-bold text-md fas"></i>
         </a>
         @endauth
-
-
-        {{--
-
-        <div :class="{ 'w-full': !open, 'w-4/5 xl:w-5/6': open }" class="transition-all duration-150 ease-in-out">
-
-            <!-- HEADER -->
-            <x-sections.header />
-
-            <!-- STATUS -->
-            @if (\Session::has('status'))
-            <x-common.alert type="bdazzledblue" icon="info-circle" :message="\Session::has('status')" />
-            @endif
-
-            <!-- ERRORS -->
-            @if ($errors->any())
-            <x-common.alert type="red" icon="exclamation-triangle" :message="$errors" />
-            @endif
-
-            @auth
-
-            <!-- CONTENT -->
-            <main :class="{ 'pr-16': !open, 'pr-10': open }"
-                class="flex flex-col items-center justify-start w-full min-h-full pl-10 ">
-
-                @yield('content')
-            </main>
-
-            @else
-
-            <!-- REJECT -->
-            <div class="flex flex-row items-center justify-center w-full min-h-full text-sm text-burntsienna-700">
-                <h2>
-                    <a href="{{ route('login') }}">{!! __('You need to <strong>login</strong> to continue...') !!}</a>
-        </h2>
-    </div>
-
-    @endauth
-
-    </div>
-
-    @auth
-    <x-sections.sidebar />
-    @endauth
-
-    --}}
 
     </div>
 
