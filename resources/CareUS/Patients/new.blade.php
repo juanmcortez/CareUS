@@ -11,7 +11,7 @@
         @csrf
         @method('POST')
 
-        <div class="flex flex-col w-full text-sm leading-relaxed">
+        <div class="flex flex-col w-full text-sm leading-relaxed text-right">
             <!-- ID's -->
             <div class="flex flex-row flex-wrap items-center justify-between pb-8 mb-8">
                 <div class="flex flex-row items-center justify-start w-1/4">
@@ -65,28 +65,30 @@
                         :options="$items['phonetypes']" seloption="{{ old('patient.persona.phone.'.$idx.'.type') }}" />
                 </div>
                 <div class="flex flex-row items-center justify-start w-2/4">
-                    <x-common.forms.label for="international_code" class="w-1/12">+</x-common.forms.label>
-                    <x-common.forms.input id="international_code" class="w-1/12" type="text"
+                    <x-common.forms.label for="international_code" class="w-1/12 text-center">+</x-common.forms.label>
+                    <x-common.forms.input id="international_code" class="w-1/12 text-center" type="text"
                         name="patient[persona][phone][{{ $idx }}][international_code]"
                         value="{{ old('patient.persona.phone.'.$idx.'.international_code') }}" placeholder="1" />
 
-                    <x-common.forms.label for="area_code" class="w-1/12">(</x-common.forms.label>
-                    <x-common.forms.input id="area_code" class="w-1/12" type="text"
+                    <x-common.forms.label for="area_code" class="w-1/12 text-center">(</x-common.forms.label>
+                    <x-common.forms.input id="area_code" class="w-1/12 text-center" type="text"
                         name="patient[persona][phone][{{ $idx }}][area_code]"
                         value="{{ old('patient.persona.phone.'.$idx.'.area_code') }}" placeholder="00" />
 
-                    <x-common.forms.label for="initial_digits" class="w-1/12">)</x-common.forms.label>
-                    <x-common.forms.input id="initial_digits" class="w-2/12" type="text"
+                    <x-common.forms.label for="initial_digits" class="w-1/12 text-center">)</x-common.forms.label>
+                    <x-common.forms.input id="initial_digits" class="w-2/12 text-center" type="text"
                         name="patient[persona][phone][{{ $idx }}][initial_digits]"
                         value="{{ old('patient.persona.phone.'.$idx.'.initial_digits') }}" placeholder="000" />
 
-                    <x-common.forms.label for="last_digits" class="w-1/12">-</x-common.forms.label>
-                    <x-common.forms.input id="last_digits" class="w-2/12" type="text"
+                    <x-common.forms.label for="last_digits" class="w-1/12 text-center">-</x-common.forms.label>
+                    <x-common.forms.input id="last_digits" class="w-2/12 text-center" type="text"
                         name="patient[persona][phone][{{ $idx }}][last_digits]"
                         value="{{ old('patient.persona.phone.'.$idx.'.last_digits') }}" placeholder="0000" />
 
-                    <x-common.forms.label for="extension" class="w-1/12">&nbsp;</x-common.forms.label>
-                    <x-common.forms.input id="extension" class="w-1/12" type="text"
+                    <x-common.forms.label for="extension" class="w-1/12 text-center">
+                        {{ __('Ext.') }}
+                    </x-common.forms.label>
+                    <x-common.forms.input id="extension" class="w-1/12 text-center" type="text"
                         name="patient[persona][phone][{{ $idx }}][extension]"
                         value="{{ old('patient.persona.phone.'.$idx.'.extension') }}" placeholder="00" />
                 </div>
@@ -146,18 +148,23 @@
                     <x-common.forms.select id="gender" name="patient[persona][gender]" class="w-2/3"
                         :options="$items['genders']" :seloption="old('patient.persona.gender')" />
                 </div>
-                <div class="flex flex-row items-center justify-start w-2/4">
-                    <x-common.forms.label for="date_of_birth" class="w-1/4">{{ __('Birthday') }}</x-common.forms.label>
-                    <x-common.forms.input id="date_of_birth" class="w-1/4" type="text"
-                        name="patient[persona][date_of_birth][month]"
-                        :value="old('patient.persona.date_of_birth.month')" placeholder="{{ __('MM') }}" />
-                    <x-common.forms.input id="date_of_birth" class="w-1/4 ml-5" type="text"
-                        name="patient[persona][date_of_birth][day]" :value="old('patient.persona.date_of_birth.day')"
-                        placeholder="{{ __('DD') }}" />
-                    <x-common.forms.input id="date_of_birth" class="w-1/4 ml-5" type="text"
-                        name="patient[persona][date_of_birth][year]" :value="old('patient.persona.date_of_birth.year')"
-                        placeholder="{{ __('YYYY') }}" />
+                <div class="flex flex-row items-center justify-start w-1/4">
+                    <x-common.forms.label for="date_of_birth" class="w-1/3">{{ __('Birthday') }}</x-common.forms.label>
+                    <div class="w-2/3 text-left">
+                        <x-common.forms.input id="date_of_birth" class="w-3/12 text-center" type="text"
+                            name="patient[persona][date_of_birth][month]"
+                            :value="old('patient.persona.date_of_birth.month')" placeholder="{{ __('MM') }}" />
+                        <x-common.forms.label for="date_of_birth" class="w-1/12 text-center">-</x-common.forms.label>
+                        <x-common.forms.input id="date_of_birth" class="w-3/12 text-center" type="text"
+                            name="patient[persona][date_of_birth][day]"
+                            :value="old('patient.persona.date_of_birth.day')" placeholder="{{ __('DD') }}" />
+                        <x-common.forms.label for="date_of_birth" class="w-1/12 text-center">-</x-common.forms.label>
+                        <x-common.forms.input id="date_of_birth" class="w-4/12 text-center" type="text"
+                            name="patient[persona][date_of_birth][year]"
+                            :value="old('patient.persona.date_of_birth.year')" placeholder="{{ __('YYYY') }}" />
+                    </div>
                 </div>
+                <div class="flex flex-row items-center justify-start w-2/4">&nbsp;</div>
             </div>
 
 
