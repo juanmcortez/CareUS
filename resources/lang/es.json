@@ -814,5 +814,7 @@
     "Codes": "Códigos",
     ":name settings": "Configuración de :name",
     "<strong>:name</strong>'s settings": "Configuración de <strong>:name</strong>",
-    "Last login: :date": "Últ. vez: :date"
+    "Last login: :date": "Últ. vez: :date",
+    "User updated successfully": "Se actualizó el usuario correctamente",
+    ":name profile": "Perfil de :name"
 }
