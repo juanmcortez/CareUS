@@ -2,6 +2,7 @@
 
 namespace App\Models\Users;
 
+use App\Models\Common\Persona;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -18,9 +19,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name',
-        'middle_name',
-        'last_name',
         'email',
         'password',
     ];
@@ -31,8 +29,18 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
+        'persona',
         'password',
         'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
     ];
 
     /**
@@ -44,19 +52,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
     /**
-     * Return the formated name of the persona
-     *
-     * @return string
+     * User - Persona relationship
+     * Only 1 persona model allowed per user.
      */
-    public function getFormatedNameAttribute()
+    public function persona()
     {
-        if (!empty($this->middle_name)) {
-            $formated = $this->last_name . ', ' . $this->first_name . ' ' . strtoupper(substr($this->middle_name, 0, 1)) . '.';
-        } else {
-            $formated = $this->last_name . ', ' . $this->first_name;
-        }
-        return $formated;
+        return $this->hasOne(Persona::class, 'owner_id', 'id')->where('owner_type', 'user');
     }
 }

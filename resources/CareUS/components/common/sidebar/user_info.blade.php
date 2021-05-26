@@ -1,14 +1,14 @@
 <div class="w-full h-auto mb-32">
 
-    <img alt="@empty(Auth()->user()->last_name) {{ Auth()->user()->email }} @else {{ Auth()->user()->formated_name }} @endempty"
+    <img alt="@empty(Auth()->user()->persona->last_name) {{ Auth()->user()->email }} @else {{ Auth()->user()->persona->formated_name }} @endempty"
         src="{{ secure_asset('images/users/usertmp.jpg') }}"
         class="mx-auto mb-5 border-4 rounded-full h-28 w-28 border-burntsienna-400" />
 
     <h3 class="mb-2 text-xl font-semibold">
-        @empty(Auth()->user()->last_name)
+        @empty(Auth()->user()->persona->last_name)
         {{ Auth()->user()->email }}
         @else
-        {{ Auth()->user()->formated_name }}
+        {{ Auth()->user()->persona->formated_name }}
         @endempty
     </h3>
 

@@ -16,7 +16,7 @@ class CreatePersonasTable extends Migration
         Schema::create('personas', function (Blueprint $table) {
             $table->id();
 
-            $table->enum('owner_type', ['patient', 'persona', 'contact', 'employment', 'subscriber', 'insurance']);
+            $table->enum('owner_type', ['user', 'patient', 'persona', 'contact', 'employment', 'subscriber', 'insurance']);
             $table->unsignedBigInteger('owner_id');
 
             $table->string('title', 8)->nullable();

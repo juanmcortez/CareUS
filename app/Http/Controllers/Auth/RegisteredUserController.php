@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Common\Persona;
 use App\Models\Users\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -43,12 +44,17 @@ class RegisteredUserController extends Controller
         ]);
 
         $user = User::create([
-            'first_name'        => $request->first_name,
-            'middle_name'       => $request->middle_name,
-            'last_name'         => $request->last_name,
             'email'             => $request->email,
             'password'          => Hash::make($request->password),
             'email_verified_at' => null
+        ]);
+
+        $persona = Persona::create([
+            'owner_id'          => $user->id,
+            'owner_type'        => 'user',
+            'first_name'        => $request->first_name,
+            'middle_name'       => $request->middle_name,
+            'last_name'         => $request->last_name,
         ]);
 
         event(new Registered($user));

@@ -27,10 +27,10 @@
         <a href="{{ route('user.settings') }}"
             class="text-sm text-left {{ request()->routeIs('user.settings') ? 'text-burntsienna-100' : 'text-burntsienna-400' }} hover:text-burntsienna-600">
             <i class="w-4 text-xs fas fa-user-cog"></i>
-            @empty(Auth()->user()->first_name)
+            @empty(Auth()->user()->persona->first_name)
             {!! __('<strong>:name</strong>\'s settings', ['name' => Auth()->user()->email]) !!}
             @else
-            {!! __('<strong>:name</strong>\'s settings', ['name' => Auth()->user()->first_name]) !!}
+            {!! __('<strong>:name</strong>\'s settings', ['name' => Auth()->user()->persona->first_name]) !!}
             @endempty
         </a>
     </div>
