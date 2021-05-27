@@ -29,7 +29,7 @@ class ExampleTest extends TestCase
      */
     public function test_get_patients_list()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->createUserDemographics()->create();
 
         $response = $this->actingAs($user)->get('/patients/list');
 
