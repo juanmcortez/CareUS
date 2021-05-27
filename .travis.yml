@@ -31,4 +31,4 @@ branches:
 
 script:
   # - php artisan serve
-  - vendor/bin/phpunit
+  # - vendor/bin/phpunit
