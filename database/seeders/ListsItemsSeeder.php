@@ -419,12 +419,12 @@ class ListsItemsSeeder extends Seeder
     private function createTitle()
     {
         $data_array = [
-            ['list_item_title' => 'Mr.', 'list_item_value' => 'Mr.'],
-            ['list_item_title' => 'Mrs.', 'list_item_value' => 'Mrs.'],
-            ['list_item_title' => 'Ms.', 'list_item_value' => 'Ms.'],
-            ['list_item_title' => 'Dr.', 'list_item_value' => 'Dr.'],
-            ['list_item_title' => 'Prof.', 'list_item_value' => 'Prof.'],
-            ['list_item_title' => 'Miss', 'list_item_value' => 'Miss'],
+            ['list_item_title' => 'Mr.', 'list_item_value' => 'mr'],
+            ['list_item_title' => 'Mrs.', 'list_item_value' => 'mrs'],
+            ['list_item_title' => 'Ms.', 'list_item_value' => 'ms'],
+            ['list_item_title' => 'Dr.', 'list_item_value' => 'dr'],
+            ['list_item_title' => 'Prof.', 'list_item_value' => 'prof'],
+            ['list_item_title' => 'Miss', 'list_item_value' => 'miss'],
         ];
         $parent = ItemsFactory::new()->create(['list_item_master' => 'title', 'list_item_name' => 'Patient Title']);
         // create child items

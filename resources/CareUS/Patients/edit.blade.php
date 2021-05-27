@@ -6,12 +6,13 @@
     @endpush
 
     @section('content')
-    <x-common.pageheader>{{ $pageH2 }}</x-common.pageheader>
-
-    <form class="w-full text-center" method="POST"
-        action="{{ route('patients.update', ['patient' => $patient->patID]) }}">
+    <form class="w-full" method="POST" action="{{ route('patients.update', ['patient' => $patient->patID]) }}">
         @csrf
         @method('PUT')
+
+        <x-common.pageheader formsave formcancel="patients.list">
+            {{ $pageH2 }}
+        </x-common.pageheader>
 
         <!-- ID's -->
         <div
@@ -672,15 +673,7 @@
         @endforeach
 
         <!-- BUTTONS -->
-        <div class="flex flex-row w-full pb-0 text-sm leading-relaxed">
-            <div class="flex flex-row w-10/12">&nbsp;</div>
-            <div class="flex w-2/12 text-sm">
-                <x-common.forms.button id="send_button" />
-                <x-common.forms.button tag="a" id="cancel_button"
-                    type="{{ route('patients.show', ['patient' => $patient->patID]) }}" color="red" icon="times-circle"
-                    text="Cancel" />
-            </div>
-        </div>
+        <x-common.pageheader formsave formcancel="patients.list" />
     </form>
     @endsection
 

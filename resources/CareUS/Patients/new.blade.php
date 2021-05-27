@@ -5,11 +5,13 @@
     @endpush
 
     @section('content')
-    <x-common.pageheader>{{ $pageH2 }}</x-common.pageheader>
-
-    <form class="w-full text-center" method="POST" action="{{ route('patients.store') }}">
+    <form class="w-ful" method="POST" action="{{ route('patients.store') }}">
         @csrf
         @method('POST')
+
+        <x-common.pageheader formsave formcancel="patients.list">
+            {{ $pageH2 }}
+        </x-common.pageheader>
 
         <div class="flex flex-col w-full text-sm leading-relaxed text-right">
             <!-- ID's -->
@@ -20,12 +22,12 @@
                         :value="old('patient.externalID')" placeholder="{{ __('External ID') }}" autofocus />
                 </div>
                 <div class="flex flex-row items-center justify-end w-1/4">
-                    <x-common.forms.button icon="save" color="green" class="ml-3">
+                    {{-- <x-common.forms.button icon="save" color="green" class="ml-3">
                         {{ __('Save') }}
                     </x-common.forms.button>
                     <x-common.forms.button icon="times-circle" color="red" type="cancel" class="ml-3">
                         {{ __('Cancel') }}
-                    </x-common.forms.button>
+                    </x-common.forms.button> --}}
                 </div>
             </div>
 
@@ -170,6 +172,9 @@
 
 
         </div>
+
+        <!-- BUTTONS -->
+        <x-common.pageheader formsave formcancel="patients.list" />
 
 
     </form>

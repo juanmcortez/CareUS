@@ -6,7 +6,7 @@
     @endpush
 
     @section('content')
-    <x-common.pageheader>{{ $pageH2 }}</x-common.pageheader>
+    <x-common.pageheader formcancel="dashboard.index">{{ $pageH2 }}</x-common.pageheader>
 
     <div class="flex flex-col xl:flex-row">
 
@@ -36,8 +36,9 @@
             @endforeach
         </select>
         @endempty
-
     </div>
+
+    <x-common.pageheader formcancel="dashboard.index" />
     @endsection
 
     @push('scripts')

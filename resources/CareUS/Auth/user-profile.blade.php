@@ -5,13 +5,13 @@
     @endpush
 
     @section('content')
-    <x-common.pageheader>{{ $pageH2 }}</x-common.pageheader>
-
-    <form class="w-full text-center" method="POST" action="{{ route('user.update') }}">
+    <form class="w-full" method="POST" action="{{ route('user.update') }}">
         @csrf
         @method('PUT')
 
-        <x-common.forms.input type="hidden" name="user[id]" :value="Auth()->user()->id" />
+        <x-common.pageheader formsave formcancel="dashboard.index">
+            {{ $pageH2 }}
+        </x-common.pageheader>
 
         <div class="flex flex-col w-full text-sm leading-relaxed text-right">
             <!-- NAME -->
@@ -19,7 +19,7 @@
                 <div class="flex flex-row items-center justify-start w-1/4">
                     <x-common.forms.label for="title" class="w-4/12 xl:w-3/12">{{ __('Title') }}</x-common.forms.label>
                     <x-common.forms.select id="title" name="user[persona][title]" class="w-8/12 xl:w-9/12"
-                        :options="$items['titles']" :seloption="old('patient.persona.title')" />
+                        :options="$items['titles']" :seloption="Auth()->user()->persona->title" />
                 </div>
                 <div class="flex flex-row items-center justify-start w-1/4">
                     <x-common.forms.label for="last_name" class="w-4/12 xl:w-3/12" :value="__('Last name')" />
@@ -83,13 +83,13 @@
                     <x-common.forms.select id="gender" name="user[persona][language]" class="w-8/12 xl:w-9/12"
                         :options="$items['languages']" :seloption="Auth()->user()->persona->language" />
                 </div>
-                <div class="flex flex-row items-center justify-start w-1/4">
-                    <x-common.forms.button icon="save" color="green" class="ml-3">
-                        {{ __('Save') }}
-                    </x-common.forms.button>
-                </div>
+                <div class="flex flex-row items-center justify-start w-1/4">&nbsp;</div>
             </div>
         </div>
+
+        <x-common.forms.input type="hidden" name="user[id]" :value="Auth()->user()->id" />
+
+        <x-common.pageheader formsave formcancel="dashboard.index" />
     </form>
 
     @endsection

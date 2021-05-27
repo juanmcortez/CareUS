@@ -271,5 +271,17 @@ return [
         'patient.employer.address.state'                => '<strong>Estado</strong>',
         'patient.employer.address.zip'                  => '<strong>Código postal</strong>',
         'patient.employer.address.country'              => '<strong>País</strong>',
+
+        /* ***** USER ***** */
+        'user.persona.title'                            => '<strong>Título</strong>',
+        'user.persona.last_name'                        => '<strong>Apellido</strong>',
+        'user.persona.first_name'                       => '<strong>Nombre</strong>',
+        'user.persona.middle_name'                      => '<strong>Seg. Nombr</strong>',
+        'user.persona.email'                            => '<strong>E-mail</strong>',
+        'user.persona.gender'                           => '<strong>Género</strong>',
+        'user.persona.date_of_birth.month'              => '<strong>Mes de nacimiento</strong>',
+        'user.persona.date_of_birth.day'                => '<strong>Día de nacimiento</strong>',
+        'user.persona.date_of_birth.year'               => '<strong>Año de nacimiento</strong>',
+        'user.persona.language'                         => '<strong>Idioma</strong>',
     ],
 ];

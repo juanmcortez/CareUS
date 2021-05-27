@@ -1,9 +1,6 @@
 @props([ 'color' => 'blue', 'icon' => 'info-circle' ])
-
-<button {{ $attributes->merge(['type' => 'submit', 'class' => 'inline-flex items-center px-4 py-2 bg-'.$color.'-500
-    border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest
-    hover:bg-'.$color.'-600 active:bg-'.$color.'-600 focus:outline-none focus:border-'.$color.'-600 focus:ring
-    ring-'.$color.'-500 disabled:opacity-25 transition ease-in-out duration-150']) }}>
+<button
+    {{ $attributes->merge(['type' => 'submit', 'class' => 'flex items-center justify-center w-44 h-10 ml-4 text-xs outline-none rounded-full cursor-pointer uppercase font-semibold tracking-widest transition-colors duration-150 ease-in-out bg-'.$color.'-800 text-'.$color.'-50 hover:bg-'.$color.'-50 hover:text-'.$color.'-800 active:bg-'.$color.'-50 focus:outline-none focus:ring border border-transparent ring-'.$color.'-800 disabled:opacity-25']) }}>
     <i class="mr-2 fas fa-{{ $icon }}"></i>
     {{ $slot }}
 </button>
