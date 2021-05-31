@@ -6,7 +6,7 @@
     @endpush
 
     @section('content')
-    <x-common.pageheader>{{ __('Verify your e-mail') }}</x-common.pageheader>
+    <x-common.pageheader class="pt-10 pb-16">{{ __('Verify your e-mail') }}</x-common.pageheader>
 
     <div class="mb-4 text-sm text-gray-600">
         {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}

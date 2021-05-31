@@ -5,177 +5,156 @@
     @endpush
 
     @section('content')
-    <form class="w-ful" method="POST" action="{{ route('patients.store') }}">
+    <form class="w-full" method="POST" action="{{ route('patients.store') }}">
         @csrf
         @method('POST')
 
-        <x-common.pageheader formsave formcancel="patients.list">
+        <!-- BUTTONS -->
+        <x-common.pageheader formsave formcancel="{{ route('patients.list') }}" class="pt-10 pb-16">
             {{ $pageH2 }}
         </x-common.pageheader>
 
-        <div class="flex flex-col w-full text-sm leading-relaxed text-right">
-            <!-- ID's -->
-            <div class="flex flex-row flex-wrap items-center justify-between pb-8 mb-8">
-                <div class="flex flex-row items-center justify-start w-1/4">
-                    <x-common.forms.label for="externalID" class="w-1/3">{{ __('External ID') }}</x-common.forms.label>
-                    <x-common.forms.input id="externalID" class="w-2/3" type="text" name="patient[externalID]"
-                        :value="old('patient.externalID')" placeholder="{{ __('External ID') }}" autofocus />
+        <div class="flex flex-col" x-data="{ activeTab: 1}">
+            <div class="flex flex-row items-center justify-center w-8/12">
+                <a @click.prevent="activeTab=1"
+                    :class="activeTab===1 ? 'text-bdazzledblue-400 bg-gunmetal-50 font-semibold' : 'text-gunmetal-50 bg-bdazzledblue-400'"
+                    class="w-2/12 py-3 mx-1 tracking-wider text-center transition-colors duration-150 ease-in-out rounded-t cursor-pointer hover:text-gunmetal-50 hover:bg-bdazzledblue-500">
+                    {{ __('Patient') }}
+                </a>
+                <a @click.prevent="activeTab=2"
+                    :class="activeTab===2 ? 'text-bdazzledblue-400 bg-gunmetal-50 font-semibold' : 'text-gunmetal-50 bg-bdazzledblue-400'"
+                    class="w-2/12 py-3 mx-1 tracking-wider text-center transition-colors duration-150 ease-in-out rounded-t cursor-pointer hover:text-gunmetal-50 hover:bg-bdazzledblue-500">
+                    {{ __('Demographics') }}
+                </a>
+                <a @click.prevent="activeTab=3"
+                    :class="activeTab===3 ? 'text-bdazzledblue-400 bg-gunmetal-50 font-semibold' : 'text-gunmetal-50 bg-bdazzledblue-400'"
+                    class="w-2/12 py-3 mx-1 tracking-wider text-center transition-colors duration-150 ease-in-out rounded-t cursor-pointer hover:text-gunmetal-50 hover:bg-bdazzledblue-500">
+                    {{ __('Contacts') }}
+                </a>
+                <a @click.prevent="activeTab=4"
+                    :class="activeTab===4 ? 'text-bdazzledblue-400 bg-gunmetal-50 font-semibold' : 'text-gunmetal-50 bg-bdazzledblue-400'"
+                    class="w-2/12 py-3 mx-1 tracking-wider text-center transition-colors duration-150 ease-in-out rounded-t cursor-pointer hover:text-gunmetal-50 hover:bg-bdazzledblue-500">
+                    {{ __('Employment') }}
+                </a>
+                <a @click.prevent="activeTab=5"
+                    :class="activeTab===5 ? 'text-bdazzledblue-400 bg-gunmetal-50 font-semibold' : 'text-gunmetal-50 bg-bdazzledblue-400'"
+                    class="w-2/12 py-3 mx-1 tracking-wider text-center transition-colors duration-150 ease-in-out rounded-t cursor-pointer hover:text-gunmetal-50 hover:bg-bdazzledblue-500">
+                    {{ __('Insurances') }}
+                </a>
+                <a @click.prevent="activeTab=6"
+                    :class="activeTab===6 ? 'text-bdazzledblue-400 bg-gunmetal-50 font-semibold' : 'text-gunmetal-50 bg-bdazzledblue-400'"
+                    class="w-2/12 py-3 mx-1 tracking-wider text-center transition-colors duration-150 ease-in-out rounded-t cursor-pointer hover:text-gunmetal-50 hover:bg-bdazzledblue-500">
+                    {{ __('Options') }}
+                </a>
+                <a @click.prevent="activeTab=7"
+                    :class="activeTab===7 ? 'text-bdazzledblue-400 bg-gunmetal-50 font-semibold' : 'text-gunmetal-50 bg-bdazzledblue-400'"
+                    class="w-2/12 py-3 mx-1 tracking-wider text-center transition-colors duration-150 ease-in-out rounded-t cursor-pointer hover:text-gunmetal-50 hover:bg-bdazzledblue-500">
+                    {{ __('Others') }}
+                </a>
+                <a @click.prevent="activeTab=8"
+                    :class="activeTab===8 ? 'text-red-400 bg-red-50 font-semibold' : 'text-red-50 bg-red-400'"
+                    class="w-2/12 py-3 mx-1 tracking-wider text-center transition-colors duration-150 ease-in-out rounded-t cursor-pointer hover:text-red-50 hover:bg-red-500">
+                    {{ __('Decease') }}
+                </a>
+            </div>
+            <div class="border-t-2 border-b-2 bg-gunmetal-100 border-gunmetal-50">
+
+                {{-- Patient --}}
+                <div x-show="activeTab===1" class="p-10 transition-all duration-150 ease-in-out">
+                    <x-common.persona.name class="w-full mb-4" item="patient.persona" :titleList="$items['titles']" />
+                    <x-common.persona.gender class="w-full mb-4" item="patient.persona"
+                        :genderList="$items['genders']" />
+
+                    <hr class="w-full mb-8 border-none" />
+
+                    <x-common.persona.created class="w-full mb-4" item="patient" />
+                    <x-common.persona.social class="w-full mb-0" item="patient" :showpatlvlacc="true" />
+
+                    <hr class="w-full mb-8 border-none" />
+
+                    <x-common.persona.language class="w-full mb-0" item="patient.persona"
+                        :langList="$items['languages']" />
                 </div>
-                <div class="flex flex-row items-center justify-end w-1/4">
-                    {{-- <x-common.forms.button icon="save" color="green" class="ml-3">
-                        {{ __('Save') }}
-                    </x-common.forms.button>
-                    <x-common.forms.button icon="times-circle" color="red" type="cancel" class="ml-3">
-                        {{ __('Cancel') }}
-                    </x-common.forms.button> --}}
+
+                {{-- Demographics --}}
+                <div x-show="activeTab===2" class="p-10 transition-all duration-150 ease-in-out">
+                    <x-common.persona.address class="w-full mb-4" item="patient.persona.address"
+                        :countryList="$items['countries']" :stateList="$items['states']" />
+
+                    <hr class="w-full mb-8 border-none" />
+
+                    @foreach ($phones as $idx => $phone)
+                    <x-common.persona.phone class="w-full mb-4" item="{{ 'patient.persona.phone.'.$idx }}" :idx="$idx"
+                        :phoneList="$items['phonetypes']" />
+                    @endforeach
+
+                    <hr class="w-full mb-8 border-none" />
+
+                    <x-common.persona.email class="w-full mb-0" item="patient.persona" />
+                </div>
+
+                {{-- Contacts --}}
+                <div x-show="activeTab===3" class="p-10 transition-all duration-150 ease-in-out">
+                    @foreach ($contacts as $idx => $contact)
+                    <x-common.contact.type class="w-full mb-4" item="{{ 'patient.contact.'.$idx }}" :idx="$idx"
+                        :titleList="$items['contacttypes']" />
+                    <x-common.persona.name class="w-full mb-4" item="{{ 'patient.contact.'.$idx }}"
+                        :titleList="$items['titles']" />
+                    <x-common.persona.phone class="w-full mb-4" item="{{ 'patient.contact.'.$idx.'.phone' }}"
+                        :phoneList="$items['phonetypes']" />
+                    <x-common.persona.email class="w-full mb-4" item="{{ 'patient.contact.'.$idx }}" />
+                    <x-common.persona.address class="w-full mb-4" item="{{ 'patient.contact.'.$idx.'.address' }}"
+                        :countryList="$items['countries']" :stateList="$items['states']" />
+                    @unless ($idx>1)
+                    <hr class="w-full mb-16 border-none" />
+                    @endunless
+                    @endforeach
+                </div>
+
+                {{-- Employment --}}
+                <div x-show="activeTab===4" class="p-10 transition-all duration-150 ease-in-out">
+                    <x-common.employer.details class="w-full mb-4" item="patient.employer" />
+                    <hr class="w-full mb-8 border-none" />
+                    <x-common.persona.name class="w-full mb-4" item="patient.employer" :titleList="$items['titles']"
+                        title="Employer" />
+                    <x-common.persona.phone class="w-full mb-4" item="patient.employer.phone"
+                        :phoneList="$items['phonetypes']" />
+                    <x-common.persona.email class="w-full mb-4" item="patient.employer" />
+                    <hr class="w-full mb-8 border-none" />
+                    <x-common.persona.address class="w-full mb-4" item="patient.employer.address"
+                        :countryList="$items['countries']" :stateList="$items['states']" />
+                </div>
+
+                {{-- Insurances --}}
+                <div x-show="activeTab===5" class="p-10 transition-all duration-150 ease-in-out">
+                    {{ __('Insurances Content') }}
+                </div>
+
+                {{-- Options --}}
+                <div x-show="activeTab===6" class="p-10 transition-all duration-150 ease-in-out">
+                    {{ __('Options Content') }}
+                </div>
+
+                {{-- Others --}}
+                <div x-show="activeTab===7" class="p-10 transition-all duration-150 ease-in-out">
+                    <x-common.persona.marital class="w-full mb-4" item="patient.persona"
+                        :maritList="$items['maritals']" />
+                    <hr class="w-full mb-8 border-none" />
+                    <x-common.persona.race class="w-full mb-4" item="patient.persona" :raceList="$items['races']"
+                        :ethnicList="$items['ethnicities']" />
+                    <x-common.persona.others class="w-full mb-4" item="patient.persona" :referList="$items['referrals']"
+                        :vfcList="$items['vfcs']" />
+                </div>
+
+                {{-- Decease --}}
+                <div x-show="activeTab===8" class="p-10 transition-all duration-150 ease-in-out">
+                    <x-common.persona.decease class="w-full mb-0" item="patient.persona" />
                 </div>
             </div>
-
-            <!-- NAME -->
-            <div class="flex flex-row flex-wrap items-center justify-between pb-8 mb-8">
-                <div class="flex flex-row items-center justify-start w-1/4">
-                    <x-common.forms.label for="title" class="w-1/3">{{ __('Title') }}</x-common.forms.label>
-                    <x-common.forms.select id="title" name="patient[persona][title]" class="w-2/3"
-                        :options="$items['titles']" :seloption="old('patient.persona.title')" />
-                </div>
-                <div class="flex flex-row items-center justify-start w-1/4">
-                    <x-common.forms.label for="last_name" class="w-1/3">{{ __('Last name') }}</x-common.forms.label>
-                    <x-common.forms.input id="last_name" class="w-2/3" type="text" name="patient[persona][last_name]"
-                        :value="old('patient.persona.last_name')" placeholder="{{ __('Last name') }}" />
-                </div>
-                <div class="flex flex-row items-center justify-start w-1/4">
-                    <x-common.forms.label for="first_name" class="w-1/3">{{ __('First name') }}</x-common.forms.label>
-                    <x-common.forms.input id="first_name" class="w-2/3" type="text" name="patient[persona][first_name]"
-                        :value="old('patient.persona.first_name')" placeholder="{{ __('First name') }}" />
-                </div>
-                <div class="flex flex-row items-center justify-start w-1/4">
-                    <x-common.forms.label for="middle_name" class="w-1/3">{{ __('Middle name') }}</x-common.forms.label>
-                    <x-common.forms.input id="middle_name" class="w-2/3" type="text"
-                        name="patient[persona][middle_name]" :value="old('patient.persona.middle_name')"
-                        placeholder="{{ __('Middle name') }}" />
-                </div>
-            </div>
-
-            <!-- PHONES -->
-            @foreach ($phones as $idx => $phone)
-            <div class="flex flex-row flex-wrap items-center justify-start pb-4">
-                <div class="flex flex-row items-center justify-start w-1/4">
-                    <x-common.forms.label for="type" class="w-1/3">
-                        {{ __('Phone #:index', ['index' => $idx+1]) }}
-                    </x-common.forms.label>
-                    <x-common.forms.select id="type" name="patient[persona][phone][{{ $idx }}][type]" class="w-2/3"
-                        :options="$items['phonetypes']" seloption="{{ old('patient.persona.phone.'.$idx.'.type') }}" />
-                </div>
-                <div class="flex flex-row items-center justify-start w-2/4">
-                    <x-common.forms.label for="international_code" class="w-1/12 text-center">+</x-common.forms.label>
-                    <x-common.forms.input id="international_code" class="w-1/12 text-center" type="text"
-                        name="patient[persona][phone][{{ $idx }}][international_code]"
-                        value="{{ old('patient.persona.phone.'.$idx.'.international_code') }}" placeholder="1" />
-
-                    <x-common.forms.label for="area_code" class="w-1/12 text-center">(</x-common.forms.label>
-                    <x-common.forms.input id="area_code" class="w-1/12 text-center" type="text"
-                        name="patient[persona][phone][{{ $idx }}][area_code]"
-                        value="{{ old('patient.persona.phone.'.$idx.'.area_code') }}" placeholder="00" />
-
-                    <x-common.forms.label for="initial_digits" class="w-1/12 text-center">)</x-common.forms.label>
-                    <x-common.forms.input id="initial_digits" class="w-2/12 text-center" type="text"
-                        name="patient[persona][phone][{{ $idx }}][initial_digits]"
-                        value="{{ old('patient.persona.phone.'.$idx.'.initial_digits') }}" placeholder="000" />
-
-                    <x-common.forms.label for="last_digits" class="w-1/12 text-center">-</x-common.forms.label>
-                    <x-common.forms.input id="last_digits" class="w-2/12 text-center" type="text"
-                        name="patient[persona][phone][{{ $idx }}][last_digits]"
-                        value="{{ old('patient.persona.phone.'.$idx.'.last_digits') }}" placeholder="0000" />
-
-                    <x-common.forms.label for="extension" class="w-1/12 text-center">
-                        {{ __('Ext.') }}
-                    </x-common.forms.label>
-                    <x-common.forms.input id="extension" class="w-1/12 text-center" type="text"
-                        name="patient[persona][phone][{{ $idx }}][extension]"
-                        value="{{ old('patient.persona.phone.'.$idx.'.extension') }}" placeholder="00" />
-                </div>
-            </div>
-            @endforeach
-
-            <!-- EMAIL -->
-            <div class="flex flex-row flex-wrap items-center justify-between pb-4">
-                <div class="flex flex-row items-center justify-start w-1/4">
-                    <x-common.forms.label for="email" class="w-1/3">{{ __('E-mail') }}</x-common.forms.label>
-                    <x-common.forms.input id="email" class="w-2/3" type="text" name="patient[persona][email]"
-                        :value="old('patient.persona.email')" placeholder="{{ __('patient@email.com') }}" />
-                </div>
-            </div>
-
-            <!-- Address -->
-            <div class="flex flex-row flex-wrap items-center justify-start pb-4">
-                <div class="flex flex-row items-center justify-start w-1/4">
-                    <x-common.forms.label for="street" class="w-1/3">{{ __('Address') }}</x-common.forms.label>
-                    <x-common.forms.input id="street" class="w-2/3" type="text" name="patient[persona][address][street]"
-                        :value="old('patient.persona.address.street')" placeholder="{{ __('Address') }}" />
-                </div>
-                <div class="flex flex-row items-center justify-start w-1/4">
-                    <x-common.forms.input id="street_extended" class="w-full ml-5" type="text"
-                        name="patient[persona][address][street_extended]"
-                        :value="old('patient.persona.address.street_extended')"
-                        placeholder="{{ __('Extended Address') }}" />
-                </div>
-                <div class="flex flex-row items-center justify-start w-1/4">
-                    <x-common.forms.label for="city" class="w-1/3">{{ __('City') }}</x-common.forms.label>
-                    <x-common.forms.input id="city" class="w-2/3" type="text" name="patient[persona][address][city]"
-                        :value="old('patient.persona.address.city')" placeholder="{{ __('City') }}" />
-                </div>
-            </div>
-            <div class="flex flex-row flex-wrap items-center justify-start pb-8 mb-8">
-                <div class="flex flex-row items-center justify-start w-1/4">
-                    <x-common.forms.label for="state" class="w-1/3">{{ __('State') }}</x-common.forms.label>
-                    <x-common.forms.select id="state" name="patient[persona][address][state]" class="w-2/3"
-                        :options="$items['states']" :seloption="old('patient.persona.address.state')" />
-                </div>
-                <div class="flex flex-row items-center justify-start w-1/4">
-                    <x-common.forms.label for="zip" class="w-1/3">{{ __('Zip') }}</x-common.forms.label>
-                    <x-common.forms.input id="zip" class="w-2/3" type="text" name="patient[persona][address][zip]"
-                        :value="old('patient.persona.address.zip')" placeholder="{{ __('Zip') }}" />
-                </div>
-                <div class="flex flex-row items-center justify-start w-1/4">
-                    <x-common.forms.label for="country" class="w-1/3">{{ __('Country') }}</x-common.forms.label>
-                    <x-common.forms.select id="country" name="patient[persona][address][country]" class="w-2/3"
-                        :options="$items['countries']" :seloption="old('patient.persona.address.country')" />
-                </div>
-            </div>
-
-            <!-- GENDER -->
-            <div class="flex flex-row flex-wrap items-center justify-start pb-8 mb-8">
-                <div class="flex flex-row items-center justify-start w-1/4">
-                    <x-common.forms.label for="gender" class="w-1/3">{{ __('Gender') }}</x-common.forms.label>
-                    <x-common.forms.select id="gender" name="patient[persona][gender]" class="w-2/3"
-                        :options="$items['genders']" :seloption="old('patient.persona.gender')" />
-                </div>
-                <div class="flex flex-row items-center justify-start w-1/4">
-                    <x-common.forms.label for="date_of_birth" class="w-1/3">{{ __('Birthday') }}</x-common.forms.label>
-                    <div class="w-2/3 text-left">
-                        <x-common.forms.input id="date_of_birth" class="w-3/12 text-center" type="text"
-                            name="patient[persona][date_of_birth][month]"
-                            :value="old('patient.persona.date_of_birth.month')" placeholder="{{ __('MM') }}" />
-                        <x-common.forms.label for="date_of_birth" class="w-1/12 text-center">-</x-common.forms.label>
-                        <x-common.forms.input id="date_of_birth" class="w-3/12 text-center" type="text"
-                            name="patient[persona][date_of_birth][day]"
-                            :value="old('patient.persona.date_of_birth.day')" placeholder="{{ __('DD') }}" />
-                        <x-common.forms.label for="date_of_birth" class="w-1/12 text-center">-</x-common.forms.label>
-                        <x-common.forms.input id="date_of_birth" class="w-4/12 text-center" type="text"
-                            name="patient[persona][date_of_birth][year]"
-                            :value="old('patient.persona.date_of_birth.year')" placeholder="{{ __('YYYY') }}" />
-                    </div>
-                </div>
-                <div class="flex flex-row items-center justify-start w-2/4">&nbsp;</div>
-            </div>
-
-
-
         </div>
 
         <!-- BUTTONS -->
-        <x-common.pageheader formsave formcancel="patients.list" />
-
+        <x-common.pageheader formsave formcancel="{{ route('patients.list') }}" class="pt-16 pb-4" />
 
     </form>
     @endsection

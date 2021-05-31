@@ -9,7 +9,6 @@ use App\Models\Common\Persona;
 use App\Models\Common\Phone;
 use App\Models\Lists\Items;
 use App\Models\Patients\Patient;
-use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
