@@ -10,7 +10,8 @@
         @csrf
         @method('PUT')
 
-        <x-common.pageheader formsave formcancel="patients.list" class="pt-10 pb-16">
+        <x-common.pageheader formsave formcancel="{{ route('patients.show', ['patient' => $patient->patID]) }}"
+            class="pt-10 pb-16">
             {{ $pageH2 }}
         </x-common.pageheader>
 
@@ -115,7 +116,8 @@
         <x-common.persona.decease class="w-full mb-0" item="patient.persona" :values="$patient->persona" />
 
         <!-- BUTTONS -->
-        <x-common.pageheader formsave formcancel="patients.list" class="pt-16 pb-10" />
+        <x-common.pageheader formsave formcancel="{{ route('patients.show', ['patient' => $patient->patID]) }}"
+            class="pt-16 pb-10" />
     </form>
     @endsection
 

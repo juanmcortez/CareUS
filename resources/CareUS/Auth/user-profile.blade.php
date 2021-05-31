@@ -10,7 +10,7 @@
         @method('PUT')
 
         <!-- BUTTONS -->
-        <x-common.pageheader formsave formcancel="dashboard.index" class="pt-10 pb-16">
+        <x-common.pageheader formsave formcancel="{{ route('dashboard.index') }}" class="pt-10 pb-16">
             {{ $pageH2 }}
         </x-common.pageheader>
 
@@ -32,7 +32,7 @@
         <x-common.forms.input type="hidden" name="user[id]" :value="auth()->user()->id" />
 
         <!-- BUTTONS -->
-        <x-common.pageheader formsave formcancel="dashboard.index" class="pt-16 pb-10" />
+        <x-common.pageheader formsave formcancel="{{ route('dashboard.index') }}" class="pt-16 pb-10" />
     </form>
 
     @endsection

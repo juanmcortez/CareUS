@@ -10,7 +10,7 @@
         @method('POST')
 
         <!-- BUTTONS -->
-        <x-common.pageheader formsave formcancel="patients.list" class="pt-10 pb-16">
+        <x-common.pageheader formsave formcancel="{{ route('patients.list') }}" class="pt-10 pb-16">
             {{ $pageH2 }}
         </x-common.pageheader>
 
@@ -154,7 +154,7 @@
         </div>
 
         <!-- BUTTONS -->
-        <x-common.pageheader formsave formcancel="patients.list" class="pt-16 pb-4" />
+        <x-common.pageheader formsave formcancel="{{ route('patients.list') }}" class="pt-16 pb-4" />
 
     </form>
     @endsection

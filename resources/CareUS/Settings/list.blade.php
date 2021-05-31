@@ -6,7 +6,9 @@
     @endpush
 
     @section('content')
-    <x-common.pageheader formcancel="dashboard.index" class="pt-10 pb-16">{{ $pageH2 }}</x-common.pageheader>
+    <x-common.pageheader formcancel="{{ route('dashboard.index') }}" class="pt-10 pb-16">
+        {{ $pageH2 }}
+    </x-common.pageheader>
 
     <div class="flex flex-col xl:flex-row">
 
@@ -38,7 +40,7 @@
         @endempty
     </div>
 
-    <x-common.pageheader formcancel="dashboard.index" class="pt-16 pb-10" />
+    <x-common.pageheader formcancel="{{ route('dashboard.index') }}" class="pt-16 pb-10" />
     @endsection
 
     @push('scripts')

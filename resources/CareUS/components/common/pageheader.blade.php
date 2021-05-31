@@ -19,7 +19,7 @@
 
         @if($formcancel)
         <x-common.forms.button icon="times-circle" color="red" type="button"
-            onclick="window.location='{{ route($formcancel) }}'">
+            onclick="window.location='{{ $formcancel }}'">
             {{ __('Cancel') }}
         </x-common.forms.button>
         @endif
