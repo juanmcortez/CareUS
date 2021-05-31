@@ -6,13 +6,13 @@
         <div class="flex flex-col flex-wrap items-center justify-start w-11/12">
             @if (!empty($status))
             <p class="inline-block w-full text-sm leading-loose align-middle">
-                <i class="mr-2 text-{{ $type }}-600 fas fa-exclamation-triangle animate-pulse"></i>
-                {{ __($status) }}
+                <i class="mr-2 text-{{ $type }}-600 fas fa-{{ $icon }} animate-pulse"></i>
+                {!! __($status) !!}
             </p>
             @else
             @foreach ($message->all() as $error)
             <p class="inline-block w-full text-sm leading-loose align-middle">
-                <i class="mr-2 text-{{ $type }}-600 fas fa-exclamation-triangle animate-pulse"></i>
+                <i class="mr-2 text-{{ $type }}-600 fas fa-{{ $icon }} animate-pulse"></i>
                 {!! __($error) !!}
             </p>
             @endforeach

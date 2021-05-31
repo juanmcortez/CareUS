@@ -138,7 +138,8 @@ class PatientController extends Controller
         $eaddrs->save();
 
         /* ***** Redirect to ledger view **** */
-        return redirect(route('patients.show', ['patient' => $patient->patID]))->with('success', 'Patient created successfully');
+        return redirect(route('patients.show', ['patient' => $patient->patID]))
+            ->with('success', __('Patient <strong>:name</strong> created successfully', ["name" => $patient->persona->formated_name]));
     }
 
     /**
@@ -178,7 +179,64 @@ class PatientController extends Controller
      */
     public function update(ValidatePatientRequest $request, Patient $patient)
     {
-        dd($request->validationData());
+        /* ***** PREPARE data ***** */
+        $completeData       = $request->all();
+        $patientData        = $completeData['patient'];
+        $personaData        = $completeData['patient']['persona'];
+        $personaPhones      = $completeData['patient']['persona']['phone'];
+        $personaAddress     = $completeData['patient']['persona']['address'];
+        $contactItems       = $completeData['patient']['contact'];
+        $employerItems      = $completeData['patient']['employment'];
+
+        /* ***** PREPARE Dates ***** */
+        $dob = $personaData['date_of_birth']['year'] . '-' . $personaData['date_of_birth']['month'] . '-' . $personaData['date_of_birth']['day'];
+        if (!empty($personaData['decease_date']['year']) && !empty($personaData['decease_date']['year']) && !empty($personaData['decease_date']['year'])) {
+            $dod = $personaData['decease_date']['year'] . '-' . $personaData['decease_date']['month'] . '-' . $personaData['decease_date']['day'];
+        } else {
+            $dod = null;
+        }
+
+        // This removes arrays that might cause issues when mass assign
+        unset($patientData['persona']);
+        unset($personaData['date_of_birth']);
+        unset($personaData['decease_date']);
+        unset($personaData['phone']);
+        unset($personaData['address']);
+
+        // Update values
+        $personaData['date_of_birth'] = $dob;
+        ($dod != null) ? $personaData['decease_date'] = $dod : $personaData['decease_date'] = null;
+
+        /* ***** SAVE Patient model **** */
+        $updatepatient = Patient::findOrFail($patient->patID)->update($patientData);
+
+        /* ***** SAVE Patient - Persona model **** */
+        $updatepersona = Persona::where('owner_id', $patient->patID)->where('owner_type', 'patient')->update($personaData);
+
+        /* ***** SAVE Patient - Persona - Phone model **** */
+        foreach ($patient->persona->phone as $idx => $phone) {
+            $phone->update($personaPhones[$idx]);
+        }
+
+        /* ***** SAVE Patient - Persona - Address model **** */
+        $patient->persona->address->update($personaAddress);
+
+        /* ***** SAVE Patient - Contact - Persona/Phone/Address model **** */
+        foreach ($patient->contact as $idx => $contact) {
+            $contact->update($contactItems[$idx]);
+
+            $contact->phone->first()->update($contactItems[$idx]['phone']);
+
+            $contact->address->update($contactItems[$idx]['address']);
+        }
+
+        $patient->employment->first()->update($employerItems);
+        $patient->employment->first()->phone->first()->update($employerItems['phone']);
+        $patient->employment->first()->address->update($employerItems['address']);
+
+        /* ***** Redirect to ledger view **** */
+        return redirect(route('patients.show', ['patient' => $patient->patID]))
+            ->with('success', __('Patient <strong>:name</strong> updated successfully', ["name" => $patient->persona->formated_name]));
     }
 
     /**

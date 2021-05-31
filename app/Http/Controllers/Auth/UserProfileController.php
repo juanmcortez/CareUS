@@ -33,7 +33,7 @@ class UserProfileController extends Controller
      * @param  \App\Models\Patients\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(ValidateUserRequest $request)
+    public function update(ValidateUserRequest $request, User $user)
     {
         /* ***** PREPARE data ***** */
         $completeData       = $request->all();
@@ -47,23 +47,16 @@ class UserProfileController extends Controller
         unset($userData['persona']);
         unset($personaData['date_of_birth']);
 
+        $personaData['date_of_birth'] = $dob;
+
         /* ***** SAVE User model **** */
-        $user = User::where('id', $userData['id']);
-        $user->update($userData);
+        $updateuser = User::where('id', $userData['id'])->update($userData);
 
         /* ***** SAVE User - Persona model **** */
-        $persona = Persona::where('owner_id', $userData['id'])->where('owner_type', 'user');
-        $persona->update([
-            'title'         => $personaData['title'],
-            'first_name'    => $personaData['first_name'],
-            'middle_name'   => $personaData['middle_name'],
-            'last_name'     => $personaData['last_name'],
-            'gender'        => $personaData['gender'],
-            'date_of_birth' => $dob,
-            'language'      => $personaData['language'],
-        ]);
+        $updatepersona = Persona::where('owner_id', $userData['id'])->where('owner_type', 'user')->update($personaData);
 
         /* ***** Redirect to ledger view **** */
-        return redirect()->route('user.settings')->with('status', 'User updated successfully');
+        return redirect()->route('user.settings', ["user" => $user->id])
+            ->with('success', __('User <strong>:name</strong> updated successfully', ["name" => $user->persona->formated_name]));
     }
 }

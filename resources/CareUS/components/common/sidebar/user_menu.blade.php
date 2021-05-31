@@ -24,7 +24,7 @@
     </div>
 
     <div class="flex flex-col w-full py-5 pl-5 text-left border-t border-gunmetal-400">
-        <a href="{{ route('user.settings') }}"
+        <a href="{{ route('user.settings', ["user" => auth()->user()->id]) }}"
             class="text-sm text-left {{ request()->routeIs('user.settings') ? 'text-burntsienna-100' : 'text-burntsienna-400' }} hover:text-burntsienna-600">
             <i class="w-4 text-xs fas fa-user-cog"></i>
             @empty(Auth()->user()->persona->first_name)

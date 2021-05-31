@@ -60,6 +60,7 @@ class Persona extends Model
         'owner_type',
         'owner_id',
         'patient',
+        'phone',
         'address',
         'deleted_at',
         'created_at',
@@ -72,7 +73,6 @@ class Persona extends Model
      */
     protected $dates = [
         'date_of_birth',
-        'decease_date',
         'decease_date',
         'updated_at',
     ];
@@ -107,7 +107,7 @@ class Persona extends Model
      */
     public function getUpdatedAtLanguageAttribute()
     {
-        return ucfirst($this->updated_at->translatedFormat('M d, Y'));
+        return ucfirst($this->updated_at->translatedFormat('M d, Y - H:i'));
     }
 
 

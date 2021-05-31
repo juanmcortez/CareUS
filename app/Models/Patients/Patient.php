@@ -36,6 +36,8 @@ class Patient extends Model
      */
     protected $hidden = [
         'persona',
+        'contact',
+        'employment',
         'deleted_at',
         'updated_at',
     ];
@@ -47,6 +49,7 @@ class Patient extends Model
      */
     protected $dates = [
         'created_at',
+        'updated_at',
     ];
 
     /**

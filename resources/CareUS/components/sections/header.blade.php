@@ -34,6 +34,11 @@
 <x-common.alert type="bdazzledblue" icon="info-circle" :status="session('status')" />
 @endif
 
+<!-- SUCESS -->
+@if (\Session::has('success'))
+<x-common.alert type="green" icon="check-square" :status="session('success')" />
+@endif
+
 <!-- ERRORS -->
 @if ($errors->any())
 <x-common.alert type="red" icon="exclamation-triangle" :message="$errors" />

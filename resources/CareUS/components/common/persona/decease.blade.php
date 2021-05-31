@@ -12,9 +12,15 @@ $nam_dyear = preg_replace( '/'.preg_quote('][', '/').'/', '[', str_replace('.', 
 1);
 $nam_dreas = preg_replace( '/'.preg_quote('][', '/').'/', '[', str_replace('.', '][', $item.'.decease_reason').']', 1);
 
-$val_dmont = ($values) ? date('m', strtotime($values->decease_date)) : old($item.'.decease_date.month');
-$val_ddate = ($values) ? date('d', strtotime($values->decease_date)) : old($item.'.decease_date.month');
-$val_dyear = ($values) ? date('Y', strtotime($values->decease_date)) : old($item.'.decease_date.month');
+if($values) {
+$val_dmont = ($values->decease_date) ? date('m', strtotime($values->decease_date)) : '';
+$val_ddate = ($values->decease_date) ? date('d', strtotime($values->decease_date)) : '';
+$val_dyear = ($values->decease_date) ? date('Y', strtotime($values->decease_date)) : '';
+} else {
+$val_dmont = old($item.'.decease_date.month');
+$val_ddate = old($item.'.decease_date.month');
+$val_dyear = old($item.'.decease_date.month');
+}
 $val_dreas = ($values) ? $values->decease_reason : old($item.'.decease_reason');
 @endphp
 
