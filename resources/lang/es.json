@@ -815,6 +815,8 @@
     ":name settings": "Configuración de :name",
     "<strong>:name</strong>'s settings": "Configuración de <strong>:name</strong>",
     "Last login: :date": "Últ. vez: :date",
-    "User updated successfully": "Se actualizó el usuario correctamente",
+    "Patient <strong>:name</strong> created successfully": "Se creó correctamente el paciente <strong>:name</strong>",
+    "Patient <strong>:name</strong> updated successfully": "Se actualizó correctamente el paciente <strong>:name</strong>",
+    "User <strong>:name</strong> updated successfully": "Se actualizó correctamente el usuario <strong>:name</strong>",
     ":name profile": "Perfil de :name"
 }
