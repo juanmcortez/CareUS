@@ -6,7 +6,7 @@
     @endpush
 
     @section('content')
-    <x-common.pageheader>{{ $pageH2 }}</x-common.pageheader>
+    <x-common.pageheader class="pt-10 pb-16">{{ $pageH2 }}</x-common.pageheader>
 
     <div class="flex flex-row flex-wrap w-full">
         <div class="w-3/12 pb-4 text-sm">

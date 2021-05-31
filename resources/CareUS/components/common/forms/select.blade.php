@@ -1,6 +1,6 @@
 @props([ 'options' => '', 'seloption' => '' ])
 <select
-    {{ $attributes->merge(['type' => 'submit', 'class' => 'w-full p-2 text-sm duration-150 ease-in-out border-0 border-t-0 border-b-2 border-l-0 border-r-0 outline-none text-burntsienna-500 bg-burntsienna-300 focus:bg-burntsienna-100 placeholder-burntsienna-500 focus:placeholder-burntsienna-300 border-burntsienna-700 mb-1transition focus:text-gunmetal-700 placeholder-opacity-30 tabular-nums']) }}>
+    {{ $attributes->merge(['type' => 'submit', 'class' => 'p-2 mb-1 text-sm tabular-nums border-0 border-b-2 border-burntsienna-700 outline-none transition duration-150 ease-in-out text-burntsienna-500 bg-burntsienna-300 placeholder-burntsienna-500 placeholder-opacity-30 focus:bg-burntsienna-100 focus:placeholder-burntsienna-300 focus:text-gunmetal-700 tabular-nums']) }}>
     <option value="">{{ __('Select an option') }}</option>
     @foreach ($options as $option)
     @if(!$seloption)

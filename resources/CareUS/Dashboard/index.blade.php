@@ -5,7 +5,7 @@
     @endpush
 
     @section('content')
-    <x-common.pageheader>{{ $pageH2 }}</x-common.pageheader>
+    <x-common.pageheader class="pt-10 pb-16">{{ $pageH2 }}</x-common.pageheader>
 
     Content
     @endsection

@@ -6,7 +6,7 @@
     @endpush
 
     @section('content')
-    <x-common.pageheader download csv>{{ $pageH2 }}</x-common.pageheader>
+    <x-common.pageheader download csv class="pt-10 pb-16">{{ $pageH2 }}</x-common.pageheader>
 
     <table class="table w-full mb-10 text-sm table-auto">
         <thead class="text-bdazzledblue-400">
