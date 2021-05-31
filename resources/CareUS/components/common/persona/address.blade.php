@@ -22,8 +22,6 @@ $val_state = ($values) ? $values->state : old($item.'.state');
 $val_count = ($values) ? $values->country : old($item.'.country');
 @endphp
 
-{{ $item }}
-
 <div {{ $attributes->merge([ 'class' => 'flex flex-row flex-wrap' ]) }}>
     <div class="flex flex-row items-center justify-start w-6/12">
         <x-common.forms.label for="street" class="w-2/12 text-right">{{ __('Address') }}</x-common.forms.label>
