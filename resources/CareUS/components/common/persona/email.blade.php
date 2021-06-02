@@ -1,6 +1,7 @@
 @props([
 'item' => 'user.persona',
 'values' => [],
+'place' => 'user',
 ])
 
 @php
@@ -15,6 +16,6 @@ $val_email = ($values) ? $values->email : old($item.'.email');
             {{ __('E-mail') }}
         </x-common.forms.label>
         <x-common.forms.input id="email" class="w-8/12" type="text" name="{{ $nam_email }}" :value="$val_email"
-            placeholder="{{ __('patient@email.com') }}" />
+            placeholder="{{ __($place.'@email.com') }}" />
     </div>
 </div>
