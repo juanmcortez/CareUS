@@ -607,7 +607,7 @@ class ListsItemsSeeder extends Seeder
     private function createInsuranceRelationship()
     {
         $data_array = [
-            ['list_item_title' => 'Self', 'list_item_value' => 'self', 'list_item_default' => true],
+            ['list_item_title' => 'Self', 'list_item_value' => 'self'],
             ['list_item_title' => 'Spouse', 'list_item_value' => 'spouse'],
             ['list_item_title' => 'Child', 'list_item_value' => 'child'],
             ['list_item_title' => 'Other', 'list_item_value' => 'other'],
