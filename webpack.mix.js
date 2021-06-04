@@ -13,12 +13,13 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/careus.js', 'public/js')
     .extract(['alpinejs', 'lodash', 'axios', 'jQuery'])
-    .sass('resources/sass/careus.scss', 'public/css')
+    .postCss('resources/css/careus.css', 'public/css')
+    .sass('resources/sass/theme.scss', 'public/css')
     .sass('resources/sass/careus_print.scss', 'public/css')
     .options({
         fileLoaderDirs: {
-            images: 'public/images',
-            fonts: 'public/fonts'
+            images: 'images',
+            fonts: 'fonts'
         },
         postCss: [
             require('postcss-import'),
