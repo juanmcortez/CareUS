@@ -66,10 +66,9 @@
                 </div>
 
                 @foreach ($patient->subscriber as $insdx => $subscriber)
-                @if(!is_null($subscriber->company_id))
+                @if(!is_null($subscriber->insurance))
                 <div class="flex flex-row font-bold text-burntsienna-500">
-                    <div class="w-3/12">{{ __($instypes[$insdx]->list_item_title.' Ins.') }}
-                    </div>
+                    <div class="w-3/12">{{ __($instypes[$insdx]->list_item_title.' Ins.') }}</div>
                     <div class="w-3/12">{{ __('Ins. Policy') }}</div>
                     <div class="w-3/12">{{ __('Ins. Group') }}</div>
                     <div class="w-3/12">{{ __('Phone') }}</div>

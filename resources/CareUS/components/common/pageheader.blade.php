@@ -13,10 +13,9 @@
     <div class="flex flex-row items-center justify-end w-6/12">
 
         @if($formedit)
-        <a href="{{ $formedit }}" title="{{ __('Edit') }}"
-            class="flex items-center justify-center w-10 h-10 ml-4 transition-colors duration-150 ease-in-out rounded-full shadow cursor-pointer bg-palecerulean-400 text-palecerulean-900 hover:bg-palecerulean-900 hover:text-palecerulean-400">
-            <i class="text-sm fas fa-edit"></i>
-        </a>
+        <x-common.forms.buttonlink href="{{ $formedit }}" icon="edit" color="palecerulean">
+            {{ __('Edit') }}
+        </x-common.forms.buttonlink>
         @endif
 
         @if($formsave)
@@ -26,10 +25,9 @@
         @endif
 
         @if($formcancel)
-        <x-common.forms.button icon="times-circle" color="red" type="button"
-            onclick="window.location='{{ $formcancel }}'">
+        <x-common.forms.buttonlink href="{{ $formcancel }}" icon="times-circle" color="red">
             {{ __('Cancel') }}
-        </x-common.forms.button>
+        </x-common.forms.buttonlink>
         @endif
 
         @if(request()->routeIs('patients.list'))
