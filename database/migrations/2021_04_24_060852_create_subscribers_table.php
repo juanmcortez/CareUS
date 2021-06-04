@@ -28,7 +28,7 @@ class CreateSubscribersTable extends Migration
 
             $table->string('ins_relation', 16)->default('self')->nullable();
             $table->integer('patient_copay')->default(0)->nullable();
-            $table->boolean('accept_assignment')->default(false)->nullable();
+            $table->string('accept_assignment')->default('no')->nullable();
             $table->string('secondary_medical_type', 32)->nullable();
 
             $table->date('effective_date')->default(now(config('app.timezone')))->nullable();
