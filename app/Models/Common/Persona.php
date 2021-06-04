@@ -181,7 +181,7 @@ class Persona extends Model
      */
     public function subscriber()
     {
-        return $this->belongsToMany(Subscriber::class, 'owner_id', 'subID')->withDefault();
+        return $this->belongsToMany(Subscriber::class, 'owner_id', 'subID');
     }
 
 

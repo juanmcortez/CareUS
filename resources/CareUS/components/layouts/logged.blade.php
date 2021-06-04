@@ -23,6 +23,7 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/careus.css') }}" rel="stylesheet" />
+    <link href="{{ mix('css/theme.css') }}" rel="stylesheet" />
     <link href="{{ mix('css/careus_print.css') }}" rel="stylesheet" media="print" />
 
     @stack('styles')
