@@ -176,20 +176,20 @@ return [
         'patient.persona.first_name'                    => '<strong>Nombre</strong>',
         'patient.persona.middle_name'                   => '<strong>Seg. Nombr</strong>',
         /* ***** PHONE ***** */
-        'patient.persona.phone.0.type'                  => '<strong>Teléfono #1 - tipo</strong>',
-        'patient.persona.phone.0.international_code'    => '<strong>Teléfono #1 - código internacional</strong>',
-        'patient.persona.phone.0.area_code'             => '<strong>Teléfono #1 - código de area</strong>',
-        'patient.persona.phone.0.initial_digits'        => '<strong>Teléfono #1 - número</strong>',
-        'patient.persona.phone.0.last_digits'           => '<strong>Teléfono #1 - número</strong>',
-        'patient.persona.phone.0.extension'             => '<strong>Teléfono #1 - extension</strong>',
-        'patient.persona.phone.1.type'                  => '<strong>Teléfono #2 - tipo</strong>',
-        'patient.persona.phone.1.international_code'    => '<strong>Teléfono #2 - código internacional</strong>',
-        'patient.persona.phone.1.area_code'             => '<strong>Teléfono #2 - código de area</strong>',
-        'patient.persona.phone.1.initial_digits'        => '<strong>Teléfono #2 - número</strong>',
-        'patient.persona.phone.1.last_digits'           => '<strong>Teléfono #2 - número</strong>',
-        'patient.persona.phone.1.extension'             => '<strong>Teléfono #2 - extension</strong>',
+        'patient.persona.phone.0.type'                  => '<strong>Teléfono #1 - Tipo</strong>',
+        'patient.persona.phone.0.international_code'    => '<strong>Teléfono #1 - Código internacional</strong>',
+        'patient.persona.phone.0.area_code'             => '<strong>Teléfono #1 - Código de area</strong>',
+        'patient.persona.phone.0.initial_digits'        => '<strong>Teléfono #1 - Número</strong>',
+        'patient.persona.phone.0.last_digits'           => '<strong>Teléfono #1 - Número</strong>',
+        'patient.persona.phone.0.extension'             => '<strong>Teléfono #1 - Extensión</strong>',
+        'patient.persona.phone.1.type'                  => '<strong>Teléfono #2 - Tipo</strong>',
+        'patient.persona.phone.1.international_code'    => '<strong>Teléfono #2 - Código internacional</strong>',
+        'patient.persona.phone.1.area_code'             => '<strong>Teléfono #2 - Código de area</strong>',
+        'patient.persona.phone.1.initial_digits'        => '<strong>Teléfono #2 - Número</strong>',
+        'patient.persona.phone.1.last_digits'           => '<strong>Teléfono #2 - Número</strong>',
+        'patient.persona.phone.1.extension'             => '<strong>Teléfono #2 - Extensión</strong>',
         /* ***** EMAIL ***** */
-        'patient.persona.email'                         => '<strong>E-mail</strong>',
+        'patient.persona.email'                         => '<strong>Correo Electrónico</strong>',
         /* ***** ADDRESS ***** */
         'patient.persona.address.street'                => '<strong>Dirección</strong>',
         'patient.persona.address.street_extended'       => '<strong>Dirección extendida</strong>',
@@ -225,20 +225,20 @@ return [
         /* ***** CONTACTS ***** */
         'patient.contact.*.contact_type'                => '<strong>Contact type</strong>',
         // Name
-        'patient.contact.*.title'                       => '<strong>Title</strong>',
+        'patient.contact.*.title'                       => '<strong>Título</strong>',
         'patient.contact.*.last_name'                   => '<strong>Last name</strong>',
         'patient.contact.*.first_name'                  => '<strong>First name</strong>',
         'patient.contact.*.middle_name'                 => '<strong>Middle name</strong>',
-        // Phone
-        'patient.contact.*.phone.type'                  => '<strong>Teléfono - tipo</strong>',
-        'patient.contact.*.phone.international_code'    => '<strong>Teléfono - código internacional</strong>',
-        'patient.contact.*.phone.area_code'             => '<strong>Teléfono - código de area</strong>',
-        'patient.contact.*.phone.initial_digits'        => '<strong>Teléfono - número</strong>',
-        'patient.contact.*.phone.last_digits'           => '<strong>Teléfono - número</strong>',
-        'patient.contact.*.phone.extension'             => '<strong>Teléfono - extension</strong>',
+        // Teñéfono
+        'patient.contact.*.phone.type'                  => '<strong>Teléfono - Tipo</strong>',
+        'patient.contact.*.phone.international_code'    => '<strong>Teléfono - Código internacional</strong>',
+        'patient.contact.*.phone.area_code'             => '<strong>Teléfono - Código de area</strong>',
+        'patient.contact.*.phone.initial_digits'        => '<strong>Teléfono - Número</strong>',
+        'patient.contact.*.phone.last_digits'           => '<strong>Teléfono - Número</strong>',
+        'patient.contact.*.phone.extension'             => '<strong>Teléfono - Extensión</strong>',
         // Email
-        'patient.contact.*.email'                       => '<strong>E-mail</strong>',
-        // Address
+        'patient.contact.*.email'                       => '<strong>Correo Electrónico</strong>',
+        // Dirección
         'patient.contact.*.address.street'              => '<strong>Dirección</strong>',
         'patient.contact.*.address.street_extended'     => '<strong>Dirección extendida</strong>',
         'patient.contact.*.address.city'                => '<strong>Ciudad</strong>',
@@ -255,16 +255,16 @@ return [
         'patient.employer.last_name'                    => '<strong>Apellido</strong>',
         'patient.employer.first_name'                   => '<strong>Nombre</strong>',
         'patient.employer.middle_name'                  => '<strong>Seg. Nombre</strong>',
-        // Phone
-        'patient.employer.phone.type'                   => '<strong>Teléfono - tipo</strong>',
-        'patient.employer.phone.international_code'     => '<strong>Teléfono - código internacional</strong>',
-        'patient.employer.phone.area_code'              => '<strong>Teléfono - código de area</strong>',
-        'patient.employer.phone.initial_digits'         => '<strong>Teléfono - número</strong>',
-        'patient.employer.phone.last_digits'            => '<strong>Teléfono - número</strong>',
-        'patient.employer.phone.extension'              => '<strong>Teléfono - extension</strong>',
+        // Teñéfono
+        'patient.employer.phone.type'                   => '<strong>Teléfono - Tipo</strong>',
+        'patient.employer.phone.international_code'     => '<strong>Teléfono - Código internacional</strong>',
+        'patient.employer.phone.area_code'              => '<strong>Teléfono - Código de area</strong>',
+        'patient.employer.phone.initial_digits'         => '<strong>Teléfono - Número</strong>',
+        'patient.employer.phone.last_digits'            => '<strong>Teléfono - Número</strong>',
+        'patient.employer.phone.extension'              => '<strong>Teléfono - Extensión</strong>',
         // Email
-        'patient.employer.email'                        => '<strong>E-mail</strong>',
-        // Address
+        'patient.employer.email'                        => '<strong>Correo Electrónico</strong>',
+        // Dirección
         'patient.employer.address.street'               => '<strong>Dirección</strong>',
         'patient.employer.address.street_extended'      => '<strong>Dirección extendida</strong>',
         'patient.employer.address.city'                 => '<strong>Ciudad</strong>',
@@ -277,11 +277,153 @@ return [
         'user.persona.last_name'                        => '<strong>Apellido</strong>',
         'user.persona.first_name'                       => '<strong>Nombre</strong>',
         'user.persona.middle_name'                      => '<strong>Seg. Nombr</strong>',
-        'user.persona.email'                            => '<strong>E-mail</strong>',
+        'user.persona.email'                            => '<strong>Correo Electrónico</strong>',
         'user.persona.gender'                           => '<strong>Género</strong>',
         'user.persona.date_of_birth.month'              => '<strong>Mes de nacimiento</strong>',
         'user.persona.date_of_birth.day'                => '<strong>Día de nacimiento</strong>',
         'user.persona.date_of_birth.year'               => '<strong>Año de nacimiento</strong>',
         'user.persona.language'                         => '<strong>Idioma</strong>',
+
+        /* ***** SUBSCRIBERS ***** */
+        // Insurance
+        'patient.subscriber.0.company_id'               => '<strong>Seg. Primario - Empresa</strong>',
+        'patient.subscriber.0.policy_number'            => '<strong>Seg. Primario - Política</strong>',
+        'patient.subscriber.0.group_number'             => '<strong>Seg. Primario - Grupo</strong>',
+        'patient.subscriber.0.plan_name'                => '<strong>Seg. Primario - Plan</strong>',
+
+        'patient.subscriber.0.effective_date.month'     => '<strong>Seg. Primario - Mes inicio de cobertura</strong>',
+        'patient.subscriber.0.effective_date.day'       => '<strong>Seg. Primario - Día inicio de cobertura</strong>',
+        'patient.subscriber.0.effective_date.year'      => '<strong>Seg. Primario - Año inicio de cobertura</strong>',
+
+        'patient.subscriber.0.termination_date.month'   => '<strong>Seg. Primario - Mes fin de cobertura</strong>',
+        'patient.subscriber.0.termination_date.day'     => '<strong>Seg. Primario - Día fin de cobertura</strong>',
+        'patient.subscriber.0.termination_date.year'    => '<strong>Seg. Primario - Año fin de cobertura</strong>',
+
+        'patient.subscriber.0.ins_relation'              => '<strong>Seg. Primario - Relación</strong>',
+        'patient.subscriber.0.patient_copay'             => '<strong>Seg. Primario - Copago</strong>',
+        'patient.subscriber.0.accept_assignment'         => '<strong>Seg. Primario - Aceptar Asig.</strong>',
+        'patient.subscriber.0.secondary_medical_type'    => '<strong>Seg. Primario - Tipo Médico Sec.</strong>',
+        // Abonado name
+        'patient.subscriber.0.persona.title'                     => '<strong>Seg. Primario - Abonado</strong>',
+        'patient.subscriber.0.persona.last_name'                 => '<strong>Seg. Primario - Apellido abonado</strong>',
+        'patient.subscriber.0.persona.first_name'                => '<strong>Seg. Primario - Nombre abonado</strong>',
+        'patient.subscriber.0.persona.middle_name'               => '<strong>Seg. Primario - Seg. nombre abonado</strong>',
+        // Teléfono abonado
+        'patient.subscriber.0.persona.phone.type'                   => '<strong>Seg. Primario - Teléfono abonado - Tipo</strong>',
+        'patient.subscriber.0.persona.phone.international_code'     => '<strong>Seg. Primario - Teléfono abonado - Código internacional</strong>',
+        'patient.subscriber.0.persona.phone.area_code'              => '<strong>Seg. Primario - Teléfono abonado - Código de área</strong>',
+        'patient.subscriber.0.persona.phone.initial_digits'         => '<strong>Seg. Primario - Teléfono abonado - Número</strong>',
+        'patient.subscriber.0.persona.phone.last_digits'            => '<strong>Seg. Primario - Teléfono abonado - Número</strong>',
+        'patient.subscriber.0.persona.phone.extension'              => '<strong>Seg. Primario - Teléfono abonado - Extensión</strong>',
+        // Correo electrónico abonado
+        'patient.subscriber.0.persona.email'                     => '<strong>Seg. Primario - Correo electrónico abonado</strong>',
+        // Abonado address
+        'patient.subscriber.0.persona.address.street'            => '<strong>Seg. Primario - Dirección abonado</strong>',
+        'patient.subscriber.0.persona.address.street_extended'   => '<strong>Seg. Primario - Dirección extendida abonado</strong>',
+        'patient.subscriber.0.persona.address.city'              => '<strong>Seg. Primario - Ciudad abonado</strong>',
+        'patient.subscriber.0.persona.address.state'             => '<strong>Seg. Primario - Estado abonado</strong>',
+        'patient.subscriber.0.persona.address.zip'               => '<strong>Seg. Primario - Código postal abonado</strong>',
+        'patient.subscriber.0.persona.address.country'           => '<strong>Seg. Primario - País abonado</strong>',
+        // Género abonado
+        'patient.subscriber.0.persona.gender'                    => '<strong>Seg. Primario - Género abonado</strong>',
+        'patient.subscriber.0.persona.date_of_birth.month'       => '<strong>Seg. Primario - Mes de nacimiento abonado</strong>',
+        'patient.subscriber.0.persona.date_of_birth.day'         => '<strong>Seg. Primario - Día de nacimiento abonado</strong>',
+        'patient.subscriber.0.persona.date_of_birth.year'        => '<strong>Seg. Primario - Año de nacimiento abonado</strong>',
+
+        'patient.subscriber.0.persona.social_security'           => '<strong>Seg. Primario - Seguridad Social abonado</strong>',
+
+
+        'patient.subscriber.1.company_id'               => '<strong>Seg. Secundario - Empresa</strong>',
+        'patient.subscriber.1.policy_number'            => '<strong>Seg. Secundario - Política</strong>',
+        'patient.subscriber.1.group_number'             => '<strong>Seg. Secundario - Grupo</strong>',
+        'patient.subscriber.1.plan_name'                => '<strong>Seg. Secundario - Plan</strong>',
+
+        'patient.subscriber.1.effective_date.month'     => '<strong>Seg. Secundario - Mes inicio de cobertura</strong>',
+        'patient.subscriber.1.effective_date.day'       => '<strong>Seg. Secundario - Día inicio de cobertura</strong>',
+        'patient.subscriber.1.effective_date.year'      => '<strong>Seg. Secundario - Año inicio de cobertura</strong>',
+
+        'patient.subscriber.1.termination_date.month'   => '<strong>Seg. Secundario - Mes fin de cobertura</strong>',
+        'patient.subscriber.1.termination_date.day'     => '<strong>Seg. Secundario - Día fin de cobertura</strong>',
+        'patient.subscriber.1.termination_date.year'    => '<strong>Seg. Secundario - Año fin de cobertura</strong>',
+
+        'patient.subscriber.1.ins_relation'              => '<strong>Seg. Secundario - Relación</strong>',
+        'patient.subscriber.1.patient_copay'             => '<strong>Seg. Secundario - Copago</strong>',
+        'patient.subscriber.1.accept_assignment'         => '<strong>Seg. Secundario - Aceptar Asig.</strong>',
+        'patient.subscriber.1.secondary_medical_type'    => '<strong>Seg. Secundario - Tipo Médico Sec.</strong>',
+
+        'patient.subscriber.1.persona.title'                     => '<strong>Seg. Secundario - Abonado</strong>',
+        'patient.subscriber.1.persona.last_name'                 => '<strong>Seg. Secundario - Apellido abonado</strong>',
+        'patient.subscriber.1.persona.first_name'                => '<strong>Seg. Secundario - Nombre abonado</strong>',
+        'patient.subscriber.1.persona.middle_name'               => '<strong>Seg. Secundario - Seg. nombre abonado</strong>',
+
+        'patient.subscriber.1.persona.phone.type'                   => '<strong>Seg. Secundario - Teléfono abonado - Tipo</strong>',
+        'patient.subscriber.1.persona.phone.international_code'     => '<strong>Seg. Secundario - Teléfono abonado - Código internacional</strong>',
+        'patient.subscriber.1.persona.phone.area_code'              => '<strong>Seg. Secundario - Teléfono abonado - Código de área</strong>',
+        'patient.subscriber.1.persona.phone.initial_digits'         => '<strong>Seg. Secundario - Teléfono abonado - Número</strong>',
+        'patient.subscriber.1.persona.phone.last_digits'            => '<strong>Seg. Secundario - Teléfono abonado - Número</strong>',
+        'patient.subscriber.1.persona.phone.extension'              => '<strong>Seg. Secundario - Teléfono abonado - Extensión</strong>',
+
+        'patient.subscriber.1.persona.email'                     => '<strong>Seg. Secundario - Correo electrónico abonado</strong>',
+
+        'patient.subscriber.1.persona.address.street'            => '<strong>Seg. Secundario - Dirección abonado</strong>',
+        'patient.subscriber.1.persona.address.street_extended'   => '<strong>Seg. Secundario - Dirección extendida abonado</strong>',
+        'patient.subscriber.1.persona.address.city'              => '<strong>Seg. Secundario - Ciudad abonado</strong>',
+        'patient.subscriber.1.persona.address.state'             => '<strong>Seg. Secundario - Estado abonado</strong>',
+        'patient.subscriber.1.persona.address.zip'               => '<strong>Seg. Secundario - Código postal abonado</strong>',
+        'patient.subscriber.1.persona.address.country'           => '<strong>Seg. Secundario - País abonado</strong>',
+
+        'patient.subscriber.1.persona.gender'                    => '<strong>Seg. Secundario - Género abonado</strong>',
+        'patient.subscriber.1.persona.date_of_birth.month'       => '<strong>Seg. Secundario - Mes de nacimiento abonado</strong>',
+        'patient.subscriber.1.persona.date_of_birth.day'         => '<strong>Seg. Secundario - Día de nacimiento abonado</strong>',
+        'patient.subscriber.1.persona.date_of_birth.year'        => '<strong>Seg. Secundario - Año de nacimiento abonado</strong>',
+
+        'patient.subscriber.1.persona.social_security'           => '<strong>Seg. Secundario - Seguridad Social abonado</strong>',
+
+
+        'patient.subscriber.2.company_id'               => '<strong>Seg. Terciario - Empresa</strong>',
+        'patient.subscriber.2.policy_number'            => '<strong>Seg. Terciario - Política</strong>',
+        'patient.subscriber.2.group_number'             => '<strong>Seg. Terciario - Grupo</strong>',
+        'patient.subscriber.2.plan_name'                => '<strong>Seg. Terciario - Plan</strong>',
+
+        'patient.subscriber.2.effective_date.month'     => '<strong>Seg. Terciario - Mes inicio de cobertura</strong>',
+        'patient.subscriber.2.effective_date.day'       => '<strong>Seg. Terciario - Día inicio de cobertura</strong>',
+        'patient.subscriber.2.effective_date.year'      => '<strong>Seg. Terciario - Año inicio de cobertura</strong>',
+
+        'patient.subscriber.2.termination_date.month'   => '<strong>Seg. Terciario - Mes fin de cobertura</strong>',
+        'patient.subscriber.2.termination_date.day'     => '<strong>Seg. Terciario - Día fin de cobertura</strong>',
+        'patient.subscriber.2.termination_date.year'    => '<strong>Seg. Terciario - Año fin de cobertura</strong>',
+
+        'patient.subscriber.2.ins_relation'              => '<strong>Seg. Terciario - Relación</strong>',
+        'patient.subscriber.2.patient_copay'             => '<strong>Seg. Terciario - Copago</strong>',
+        'patient.subscriber.2.accept_assignment'         => '<strong>Seg. Terciario - Aceptar Asig.</strong>',
+        'patient.subscriber.2.secondary_medical_type'    => '<strong>Seg. Terciario - Tipo Médico Sec.</strong>',
+
+        'patient.subscriber.2.persona.title'                     => '<strong>Seg. Terciario - Abonado</strong>',
+        'patient.subscriber.2.persona.last_name'                 => '<strong>Seg. Terciario - Apellido abonado</strong>',
+        'patient.subscriber.2.persona.first_name'                => '<strong>Seg. Terciario - Nombre abonado</strong>',
+        'patient.subscriber.2.persona.middle_name'               => '<strong>Seg. Terciario - Seg. nombre abonado</strong>',
+
+        'patient.subscriber.2.persona.phone.type'                   => '<strong>Seg. Terciario - Teléfono abonado - Tipo</strong>',
+        'patient.subscriber.2.persona.phone.international_code'     => '<strong>Seg. Terciario - Teléfono abonado - Código internacional</strong>',
+        'patient.subscriber.2.persona.phone.area_code'              => '<strong>Seg. Terciario - Teléfono abonado - Código de área</strong>',
+        'patient.subscriber.2.persona.phone.initial_digits'         => '<strong>Seg. Terciario - Teléfono abonado - Número</strong>',
+        'patient.subscriber.2.persona.phone.last_digits'            => '<strong>Seg. Terciario - Teléfono abonado - Número</strong>',
+        'patient.subscriber.2.persona.phone.extension'              => '<strong>Seg. Terciario - Teléfono abonado - Extensión</strong>',
+
+        'patient.subscriber.2.persona.email'                     => '<strong>Seg. Terciario - Correo electrónico abonado</strong>',
+
+        'patient.subscriber.2.persona.address.street'            => '<strong>Seg. Terciario - Dirección abonado</strong>',
+        'patient.subscriber.2.persona.address.street_extended'   => '<strong>Seg. Terciario - Dirección extendida abonado</strong>',
+        'patient.subscriber.2.persona.address.city'              => '<strong>Seg. Terciario - Ciudad abonado</strong>',
+        'patient.subscriber.2.persona.address.state'             => '<strong>Seg. Terciario - Estado abonado</strong>',
+        'patient.subscriber.2.persona.address.zip'               => '<strong>Seg. Terciario - Código postal abonado</strong>',
+        'patient.subscriber.2.persona.address.country'           => '<strong>Seg. Terciario - País abonado</strong>',
+
+        'patient.subscriber.2.persona.gender'                    => '<strong>Seg. Terciario - Género abonado</strong>',
+        'patient.subscriber.2.persona.date_of_birth.month'       => '<strong>Seg. Terciario - Mes de nacimiento abonado</strong>',
+        'patient.subscriber.2.persona.date_of_birth.day'         => '<strong>Seg. Terciario - Día de nacimiento abonado</strong>',
+        'patient.subscriber.2.persona.date_of_birth.year'        => '<strong>Seg. Terciario - Año de nacimiento abonado</strong>',
+
+        'patient.subscriber.2.persona.social_security'           => '<strong>Seg. Terciario - Seguridad Social abonado</strong>',
     ],
 ];

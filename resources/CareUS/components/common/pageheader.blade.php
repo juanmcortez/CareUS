@@ -4,12 +4,20 @@
 'csv' => false,
 'formsave' => false,
 'formcancel' => false,
+'formedit' => false,
 ])
 <div {{ $attributes->merge([ 'class' => "flex flex-row items-center justify-between w-full" ]) }}>
     <h2 class="flex flex-row items-center justify-start w-6/12 text-3xl font-bold text-bdazzledblue-800">
         {{ $slot }}
     </h2>
     <div class="flex flex-row items-center justify-end w-6/12">
+
+        @if($formedit)
+        <a href="{{ $formedit }}" title="{{ __('Edit') }}"
+            class="flex items-center justify-center w-10 h-10 ml-4 transition-colors duration-150 ease-in-out rounded-full shadow cursor-pointer bg-palecerulean-400 text-palecerulean-900 hover:bg-palecerulean-900 hover:text-palecerulean-400">
+            <i class="text-sm fas fa-edit"></i>
+        </a>
+        @endif
 
         @if($formsave)
         <x-common.forms.button icon="save" color="green">

@@ -8,7 +8,7 @@
         {{ __($option->list_item_title) }}
     </option>
     @else
-    <option value="{{ $option->list_item_value }}" @if($option->list_item_value == $seloption) selected @endif>
+    <option value="{{ $option->list_item_value }}" @if($option->list_item_value === $seloption) selected @endif>
         {{ __($option->list_item_title) }}
     </option>
     @endempty
