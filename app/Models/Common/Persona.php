@@ -28,6 +28,7 @@ class Persona extends Model
         'middle_name',
         'last_name',
         'email',
+        'language',
         'date_of_birth',
         'gender',
         'social_security',
@@ -37,6 +38,8 @@ class Persona extends Model
         'referral',
         'vfc',
         'family_size',
+        'marital',
+        'marital_details',
         'financial_review',
         'migrant_seasonal',
         'interpreter',
@@ -178,7 +181,7 @@ class Persona extends Model
      */
     public function subscriber()
     {
-        return $this->belongsTo(Subscriber::class, 'owner_id', 'subID')->withDefault();
+        return $this->belongsToMany(Subscriber::class, 'owner_id', 'subID')->withDefault();
     }
 
 
