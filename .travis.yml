@@ -19,6 +19,7 @@ before_script:
   - composer dump-autoload
   - sudo chgrp -R www-data storage bootstrap/cache
   - sudo chmod -R ug+rwx storage bootstrap/cache
+  - touch database/test.sqlite
   - php artisan migrate
   - php artisan db:seed
   - php artisan storage:link
