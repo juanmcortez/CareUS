@@ -33,6 +33,7 @@ class Subscriber extends Model
         'policy_number',
         'group_number',
         'plan_name',
+        'ins_relation',
         'patient_copay',
         'accept_assignment',
         'secondary_medical_type',
@@ -50,7 +51,6 @@ class Subscriber extends Model
         'owner_type',
         'owner_id',
         'persona',
-        'insurance',
         'deleted_at',
         'created_at',
     ];
@@ -97,6 +97,19 @@ class Subscriber extends Model
     public function getUpdatedAtLanguageAttribute()
     {
         return ucfirst($this->updated_at->translatedFormat('M d, Y - H:i'));
+    }
+
+
+    /**
+     * Returns a list of the available insurances
+     * to be passed to the select component.
+     *
+     * @return array
+     */
+    public function getInsuranceListItems()
+    {
+        $insurances = new Company();
+        return $insurances->all(['company_name as list_item_title', 'insID as list_item_value']);
     }
 
 

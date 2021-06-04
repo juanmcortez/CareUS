@@ -32,6 +32,7 @@ class SubscriberFactory extends Factory
             'policy_number'         => random_int(10000, 9999999),
             'accept_assignment'     => $this->faker->randomElement([false, true]),
             'effective_date'        => $this->faker->dateTimeBetween($randomInit, 'now'),
+            'ins_relation'          => $this->faker->randomElement(['child', 'other', 'self', 'spouse']),
         ];
     }
 
@@ -43,12 +44,12 @@ class SubscriberFactory extends Factory
     public function createSubscriberPersona()
     {
         return $this->afterCreating(
-            function (Subscriber $subscriner) {
+            function (Subscriber $subscriber) {
                 PersonaFactory::new()
                     ->count(1)
                     ->createAddressPhone(1)
                     ->create([
-                        'owner_id'      => $subscriner->subID,
+                        'owner_id'      => $subscriber->subID,
                         'owner_type'    => 'subscriber',
                     ]);
             }

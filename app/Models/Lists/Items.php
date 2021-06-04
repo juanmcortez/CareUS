@@ -176,7 +176,15 @@ class Items extends Model
             ->orderBy('list_item_title')
             ->get();
 
-        return compact('titles', 'states', 'countries', 'genders', 'phonetypes', 'maritals', 'languages', 'ethnicities', 'races', 'referrals', 'vfcs', 'contacttypes', 'insrelation', 'yesno', 'secmedtype');
+        $inscomtype = $this->select('list_item_value', 'list_item_title', 'list_item_default')
+            ->Where('list_item_type', 'child')
+            ->where('list_item_name', 'insurancetype')
+            ->orderBy('list_item_title')
+            ->get();
+
+
+
+        return compact('titles', 'states', 'countries', 'genders', 'phonetypes', 'maritals', 'languages', 'ethnicities', 'races', 'referrals', 'vfcs', 'contacttypes', 'insrelation', 'yesno', 'secmedtype', 'inscomtype');
     }
 
 

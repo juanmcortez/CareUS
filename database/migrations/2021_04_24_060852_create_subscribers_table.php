@@ -20,17 +20,18 @@ class CreateSubscribersTable extends Migration
             $table->unsignedBigInteger('owner_id');
 
             $table->enum('level', ['primary', 'secondary', 'tertiary'])->default('primary');
-            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('company_id')->nullable();
 
             $table->string('policy_number', 16)->nullable();
             $table->string('group_number', 16)->nullable();
             $table->string('plan_name', 32)->nullable();
 
-            $table->integer('patient_copay')->default(0);
-            $table->boolean('accept_assignment')->default(false);
+            $table->string('ins_relation', 16)->default('self')->nullable();
+            $table->integer('patient_copay')->default(0)->nullable();
+            $table->boolean('accept_assignment')->default(false)->nullable();
             $table->string('secondary_medical_type', 32)->nullable();
 
-            $table->date('effective_date')->default(now(config('app.timezone')));
+            $table->date('effective_date')->default(now(config('app.timezone')))->nullable();
             $table->date('termination_date')->nullable();
 
             $table->softDeletes();
