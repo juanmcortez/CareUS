@@ -10,7 +10,7 @@ services:
   - mysql
 
 before_script:
-  - cp .env.example .env
+  - cp .env.testing .env
   - touch database/test.sqlite
   # - mysql -u root -e 'CREATE DATABASE laravel;'
   - composer self-update
