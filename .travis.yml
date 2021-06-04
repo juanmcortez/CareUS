@@ -30,5 +30,4 @@ branches:
     - main
 
 script:
-  # - php artisan serve
-  # - vendor/bin/phpunit
+  - php artisan test
