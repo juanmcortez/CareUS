@@ -13,9 +13,15 @@ $nam_byear = preg_replace( '/'.preg_quote('][', '/').'/', '[', str_replace('.', 
 1);
 $nam_gendr = preg_replace( '/'.preg_quote('][', '/').'/', '[', str_replace('.', '][', $item.'.gender').']', 1);
 
-$val_bmont = ($values) ? date('m', strtotime($values->date_of_birth)) : old($item.'.date_of_birth.month');
-$val_bdate = ($values) ? date('d', strtotime($values->date_of_birth)) : old($item.'.date_of_birth.day');
-$val_byear = ($values) ? date('Y', strtotime($values->date_of_birth)) : old($item.'.date_of_birth.year');
+if($values && !is_null($values->date_of_birth)) {
+$val_bmont = date('m', strtotime($values->date_of_birth));
+$val_bdate = date('d', strtotime($values->date_of_birth));
+$val_byear = date('Y', strtotime($values->date_of_birth));
+} else {
+$val_bmont = ($values) ? null : old($item.'.date_of_birth.month');
+$val_bdate = ($values) ? null : old($item.'.date_of_birth.day');
+$val_byear = ($values) ? null : old($item.'.date_of_birth.year');
+}
 $val_gendr = ($values) ? $values->gender : old($item.'.gender');
 @endphp
 

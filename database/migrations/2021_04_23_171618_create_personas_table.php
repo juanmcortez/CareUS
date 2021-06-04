@@ -26,8 +26,8 @@ class CreatePersonasTable extends Migration
 
             $table->string('email', 64)->nullable();
 
-            $table->date('date_of_birth')->default(now(config('app.timezone')));
-            $table->string('gender', 12)->default('male');
+            $table->date('date_of_birth')->default(now(config('app.timezone')))->nullable();
+            $table->string('gender', 12)->default('male')->nullable();
 
             $table->string('social_security', 16)->nullable();
             $table->string('driver_license', 16)->nullable();

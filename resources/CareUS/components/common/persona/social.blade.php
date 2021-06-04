@@ -2,6 +2,7 @@
 'item' => 'user.persona',
 'values' => [],
 'showpatlvlacc' => false,
+'showdrvrlcnss' => true,
 ])
 
 @php
@@ -34,6 +35,7 @@ $val_drvlc = ($values) ? $values->persona->driver_license : old($item.'.persona.
         <x-common.forms.input id="social_security" class="w-8/12" type="text" name="{{ $nam_sclse }}"
             :value="$val_sclse" placeholder="{{ __('000-00-0000') }}" />
     </div>
+    @if($showdrvrlcnss)
     <div class="flex flex-row items-center justify-start w-3/12">
         <x-common.forms.label for="driver_license" class="w-4/12 text-right">
             {{ __('Driver License') }}
@@ -41,4 +43,5 @@ $val_drvlc = ($values) ? $values->persona->driver_license : old($item.'.persona.
         <x-common.forms.input id="driver_license" class="w-8/12" type="text" name="{{ $nam_drvlc }}" :value="$val_drvlc"
             placeholder="{{ __('AAA00000000A') }}" />
     </div>
+    @endif
 </div>

@@ -4,12 +4,19 @@
 'csv' => false,
 'formsave' => false,
 'formcancel' => false,
+'formedit' => false,
 ])
 <div {{ $attributes->merge([ 'class' => "flex flex-row items-center justify-between w-full" ]) }}>
     <h2 class="flex flex-row items-center justify-start w-6/12 text-3xl font-bold text-bdazzledblue-800">
         {{ $slot }}
     </h2>
     <div class="flex flex-row items-center justify-end w-6/12">
+
+        @if($formedit)
+        <x-common.forms.buttonlink href="{{ $formedit }}" icon="edit" color="palecerulean">
+            {{ __('Edit') }}
+        </x-common.forms.buttonlink>
+        @endif
 
         @if($formsave)
         <x-common.forms.button icon="save" color="green">
@@ -18,10 +25,9 @@
         @endif
 
         @if($formcancel)
-        <x-common.forms.button icon="times-circle" color="red" type="button"
-            onclick="window.location='{{ $formcancel }}'">
+        <x-common.forms.buttonlink href="{{ $formcancel }}" icon="times-circle" color="red">
             {{ __('Cancel') }}
-        </x-common.forms.button>
+        </x-common.forms.buttonlink>
         @endif
 
         @if(request()->routeIs('patients.list'))

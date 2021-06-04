@@ -402,8 +402,8 @@ class ListsItemsSeeder extends Seeder
     private function createYesNo()
     {
         $data_array = [
-            ['list_item_title' => 'Yes', 'list_item_value' => true],
-            ['list_item_title' => 'No', 'list_item_value' => false],
+            ['list_item_title' => 'Yes', 'list_item_value' => 'yes'],
+            ['list_item_title' => 'No', 'list_item_value' => 'no'],
         ];
         $parent = ItemsFactory::new()->create(['list_item_master' => 'yesno', 'list_item_name' => 'Yes/No']);
         // create child items
@@ -607,7 +607,7 @@ class ListsItemsSeeder extends Seeder
     private function createInsuranceRelationship()
     {
         $data_array = [
-            ['list_item_title' => 'Self', 'list_item_value' => 'self', 'list_item_default' => true],
+            ['list_item_title' => 'Self', 'list_item_value' => 'self'],
             ['list_item_title' => 'Spouse', 'list_item_value' => 'spouse'],
             ['list_item_title' => 'Child', 'list_item_value' => 'child'],
             ['list_item_title' => 'Other', 'list_item_value' => 'other'],

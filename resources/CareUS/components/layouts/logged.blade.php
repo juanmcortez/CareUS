@@ -54,8 +54,8 @@
 </head>
 
 <body class="flex w-full min-h-screen font-sans text-sm antialiased text-gunmetal-700 bg-bdazzledblue-50" @auth
-    x-data="{ sidebar: localStorage.getItem('status') }"
-    x-init="$watch('sidebar', (newvalue) => localStorage.setItem('status', newvalue))" @endauth>
+    x-data="{ sidebar: localStorage.getItem('sidebar_status') }"
+    x-init="$watch('sidebar', (newvalue) => localStorage.setItem('sidebar_status', newvalue))" @endauth>
 
     <noscript>
         <h2>{{ __('Javascript needed for this website usage.') }}</h2>

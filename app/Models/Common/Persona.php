@@ -28,6 +28,7 @@ class Persona extends Model
         'middle_name',
         'last_name',
         'email',
+        'language',
         'date_of_birth',
         'gender',
         'social_security',
@@ -37,6 +38,8 @@ class Persona extends Model
         'referral',
         'vfc',
         'family_size',
+        'marital',
+        'marital_details',
         'financial_review',
         'migrant_seasonal',
         'interpreter',
@@ -60,6 +63,7 @@ class Persona extends Model
         'owner_type',
         'owner_id',
         'patient',
+        'phone',
         'address',
         'deleted_at',
         'created_at',
@@ -72,7 +76,6 @@ class Persona extends Model
      */
     protected $dates = [
         'date_of_birth',
-        'decease_date',
         'decease_date',
         'updated_at',
     ];
@@ -107,7 +110,7 @@ class Persona extends Model
      */
     public function getUpdatedAtLanguageAttribute()
     {
-        return ucfirst($this->updated_at->translatedFormat('M d, Y'));
+        return ucfirst($this->updated_at->translatedFormat('M d, Y - H:i'));
     }
 
 
@@ -178,7 +181,7 @@ class Persona extends Model
      */
     public function subscriber()
     {
-        return $this->belongsTo(Subscriber::class, 'owner_id', 'subID')->withDefault();
+        return $this->belongsToMany(Subscriber::class, 'owner_id', 'subID')->withDefault();
     }
 
 

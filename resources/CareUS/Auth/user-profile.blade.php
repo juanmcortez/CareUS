@@ -5,7 +5,7 @@
     @endpush
 
     @section('content')
-    <form class="w-full" method="POST" action="{{ route('user.update') }}">
+    <form class="w-full" method="POST" action="{{ route('user.update', ['user' => auth()->user()->id]) }}">
         @csrf
         @method('PUT')
 

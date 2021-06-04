@@ -114,7 +114,7 @@ class Company extends Model
      */
     public function subscriber()
     {
-        return $this->belongsTo(Subscriber::class, 'company_id', 'insID')->withDefault();
+        return $this->belongsToMany(Subscriber::class, 'company_id', 'insID')->withDefault();
     }
 
 
