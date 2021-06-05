@@ -69,6 +69,7 @@ return [
         // public_path('storage') => storage_path('app/public'),
         public_path('images') => storage_path('app/public/images'),
         public_path('fonts') => storage_path('app/public/fonts'),
+        public_path('vendor') => storage_path('app/public/fonts/vendor'),
         public_path('documents') => storage_path('app/documents'),
     ],
 
