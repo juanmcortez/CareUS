@@ -12,6 +12,8 @@ services:
 before_script:
   - cp .env.testing .env
   - touch database/test.sqlite
+  - mkdir public/fonts
+  - mkdir public/fonts/vendor
   # - mysql -u root -e 'CREATE DATABASE laravel;'
   - composer self-update
   - composer install --no-interaction
