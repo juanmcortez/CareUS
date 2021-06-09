@@ -717,6 +717,7 @@
     "Contact Us": "Nous Contacter",
     "Copyright": "Droits d'auteur",
     "Patient's list": "Liste des patients",
+    "Ledger": "Registre",
     "Ledger: :patient_name": "Registre: :patient_name",
     "Search": "Rechercher",
     "Patient": "Patiente",
@@ -735,6 +736,7 @@
     "External ID": "ID Externe",
     "Birthdate": "Date Naiss.",
     "E-mail": "E-mail",
+    "E mail": "E-mail",
     "patient@email.com": "patiente@email.com",
     "contact@email.com": "contacte@email.com",
     "employer@email.com": "employeur@email.com",
@@ -889,5 +891,6 @@
     "Walk-In": "Entrer",
     "Eligible": "Éligible",
     "Ineligible": "Inéligible",
-    "Homeless": "Sans Abri"
+    "Homeless": "Sans Abri",
+    "Documents": "Documents"
 }

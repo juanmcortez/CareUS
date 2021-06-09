@@ -4,6 +4,7 @@ namespace App\Models\Patients;
 
 use App\Models\Common\Persona;
 use App\Models\Insurances\Subscriber;
+use App\Models\Lists\Items;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -38,6 +39,7 @@ class Patient extends Model
         'persona',
         'contact',
         'employment',
+        'subscriber',
         'deleted_at',
         'updated_at',
     ];
@@ -83,6 +85,44 @@ class Patient extends Model
     public function getUpdatedAtLanguageAttribute()
     {
         return ucfirst($this->updated_at->translatedFormat('M d, Y - H:i'));
+    }
+
+
+    /**
+     * Get the title of a list option
+     *
+     * @param string $list
+     * @param string $value
+     *
+     * @return string
+     */
+    public function getOptionTitle($list, $value)
+    {
+        $option = Items::where('list_item_type', 'child')
+            ->where('list_item_name', $list)
+            ->where('list_item_value', $value)
+            ->first();
+        return (isset($option->list_item_title)) ? $option->list_item_title : null;
+    }
+
+
+    /**
+     * Get the title of a sub list option
+     *
+     * @param string $list
+     * @param string $parent
+     * @param string $value
+     *
+     * @return string
+     */
+    public function getSubOptionTitle($list, $parent, $value)
+    {
+        $option = Items::where('list_item_type', 'sub_child')
+            ->where('list_item_master', $list)
+            ->where('list_item_name', $parent)
+            ->where('list_item_value', $value)
+            ->first();
+        return (isset($option->list_item_title)) ? $option->list_item_title : null;
     }
 
 

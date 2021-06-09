@@ -25,8 +25,12 @@
         </thead>
         <tbody>
             @foreach ($personas as $idx => $persona)
-            <tr
-                class="flex flex-row flex-nowrap items-center justify-around text-center transition-colors duration-150 ease-in-out shadow-sm @if($idx % 2 == 1) bg-gunmetal-50 @else bg-gunmetal-100 @endif text-gunmetal-400 hover:bg-bdazzledblue-200 hover:text-burntsienna-600">
+            <tr class="flex flex-row flex-nowrap items-center justify-around text-center transition-colors duration-150 ease-in-out shadow-sm
+                @if($idx % 2 == 1)
+                @if ($persona->decease_date) bg-red-200 hover:bg-red-100 @else bg-gunmetal-50 hover:bg-bdazzledblue-200 @endif
+                @else
+                @if ($persona->decease_date) bg-red-200 hover:bg-red-100 @else bg-gunmetal-100 hover:bg-bdazzledblue-200 @endif
+                @endif text-gunmetal-400 hover:text-burntsienna-600 ">
                 <td class="w-1/12 py-5">{{ $persona->patient->patID }}</td>
                 <td class="flex flex-row flex-wrap items-center justify-start w-3/12 p-5 py-5">
                     <i class="mr-2 text-3xl fa fa-user-circle"></i>

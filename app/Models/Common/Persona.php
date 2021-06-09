@@ -166,6 +166,17 @@ class Persona extends Model
 
 
     /**
+     * Return the age when died of the persona
+     *
+     * @return int
+     */
+    public function getDeceaseAgeAttribute()
+    {
+        return __(':AGE yrs.', ['AGE' => Carbon::parse($this->decease_date)->diff(parse($this->date_of_birth))->format('%y')]);
+    }
+
+
+    /**
      * Persona - Patient relationship
      * Only 1 persona model allowed per patient.
      */
