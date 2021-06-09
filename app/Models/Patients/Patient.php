@@ -38,6 +38,7 @@ class Patient extends Model
         'persona',
         'contact',
         'employment',
+        'subscriber',
         'deleted_at',
         'updated_at',
     ];

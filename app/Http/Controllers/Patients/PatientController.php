@@ -218,7 +218,13 @@ class PatientController extends Controller
 
         $instypes = $items['inscomtype'];
 
-        return view('Patients.show', compact('pageTitle', 'pageH2', 'patient', 'instypes'));
+        $balancetable = [
+            ['Insurance', 0, 0, 0, 0, 0, 0, 0],
+            ['Patient', 0, 0, 0, 0, 0, 0, 0],
+            ['Account', 0, 0, 0, 0, 0, 0, 0],
+        ];
+
+        return view('Patients.show', compact('pageTitle', 'pageH2', 'patient', 'instypes', 'balancetable'));
     }
 
     /**
@@ -282,6 +288,7 @@ class PatientController extends Controller
 
         /* ***** SAVE Patient model **** */
         $updatepatient = Patient::findOrFail($patient->patID)->update($patientData);
+        Patient::findOrFail($patient->patID)->touch();
 
         /* ***** SAVE Patient - Persona model **** */
         $updatepersona = Persona::where('owner_id', $patient->patID)->where('owner_type', 'patient')->update($personaData);
