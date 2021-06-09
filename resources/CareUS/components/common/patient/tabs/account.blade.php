@@ -42,10 +42,6 @@
 
 <div class="flex flex-row flex-wrap justify-end w-4/12">
     <div class="flex flex-col w-11/12 bg-bdazzledblue-200">
-        <p class="flex flex-row w-full my-5 text-gunmetal-300">
-            <span class="w-6/12 pr-1 font-bold text-right ">{{ __('Last Update on') }}</span>
-            <span class="w-6/12 overflow-hidden ">{{ $patient->persona->updated_at_language }}</span>
-        </p>
         <h3>{{ __('Notes') }}</h3>
     </div>
 </div>

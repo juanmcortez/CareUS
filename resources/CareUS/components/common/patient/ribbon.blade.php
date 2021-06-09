@@ -73,7 +73,7 @@
     <p class="flex flex-row w-full ">
         <span class="w-3/12 pr-1 font-bold text-right ">{{ __('Address') }}</span>
         <span class="w-9/12 overflow-hidden ">
-            {{ $patient->persona->address->street }} {{ $patient->persona->address->street_extended }}
+            {{ $patient->persona->address->street }} - {{ $patient->persona->address->street_extended }}
         </span>
     </p>
     <p class="flex flex-row w-full mt-2 ">

@@ -15,7 +15,11 @@
             {{ $pageH2 }}
         </x-common.pageheader>
 
-        <div class="flex flex-col" x-data="{ activeTab: 1}">
+        <div class="flex flex-row flex-wrap w-full py-3 rounded-lg bg-bdazzledblue-200">
+            <x-common.patient.ribbon :patient="$patient" />
+        </div>
+
+        <div class="flex flex-col mt-10" x-data="{ activeTab: 1}">
             <div class="flex flex-row items-center justify-center w-full">
                 <a @click.prevent="activeTab=1"
                     :class="activeTab===1 ? 'text-bdazzledblue-400 bg-gunmetal-50 font-semibold' : 'text-gunmetal-50 bg-bdazzledblue-400'"
