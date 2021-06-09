@@ -83,10 +83,6 @@
             <p class="w-5/12 pr-1 font-semibold text-right">{{ __('E-mail') }}</p>
             <p class="w-7/12">{{ $patient->persona->email }}</p>
         </div>
-        <div class="flex flex-row flex-wrap w-6/12">&nbsp;</div>
-        <div class="flex flex-row flex-wrap w-3/12 text-gunmetal-300">
-            <p class="w-5/12 pr-1 font-semibold text-right">{{ __('Last Update on') }}</p>
-            <p class="w-7/12">{{ $patient->persona->updated_at_language }}</p>
-        </div>
+        <div class="flex flex-row flex-wrap w-9/12">&nbsp;</div>
     </div>
 </div>
