@@ -31,7 +31,7 @@ class CreateSubscribersTable extends Migration
             $table->string('accept_assignment')->default('no')->nullable();
             $table->string('secondary_medical_type', 32)->nullable();
 
-            $table->date('effective_date')->default(now(config('app.timezone')))->nullable();
+            $table->date('effective_date')->nullable();
             $table->date('termination_date')->nullable();
 
             $table->softDeletes();
