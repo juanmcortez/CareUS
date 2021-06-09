@@ -715,6 +715,7 @@
     "Contact Us": "Contáctenos",
     "Copyright": "Derechos de autor",
     "Patient's list": "Listado de pacientes",
+    "Ledger": "Libro Mayor",
     "Ledger: :patient_name": "Libro Mayor: :patient_name",
     "Search": "Buscar",
     "Patient": "Paciente",
@@ -890,5 +891,7 @@
     "Walk-In": "Entrar",
     "Eligible": "Elegible",
     "Ineligible": "Inelegible",
-    "Homeless": "Sin hogar"
+    "Homeless": "Sin hogar",
+    "Documents": "Documentos",
+    "City, State Zip": "Cdad, Estd - Cód"
 }
