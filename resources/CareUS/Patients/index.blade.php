@@ -33,7 +33,11 @@
                 @endif text-gunmetal-400 hover:text-burntsienna-600 ">
                 <td class="w-1/12 py-5">{{ $persona->patient->patID }}</td>
                 <td class="flex flex-row flex-wrap items-center justify-start w-3/12 p-5 py-5">
+                    @isset($persona->profile_picture)
+                    <img alt="{{ $persona->formated_name }}" src="{{ $persona->profile_picture }}" />
+                    @else
                     <i class="mr-2 text-3xl fa fa-user-circle"></i>
+                    @endisset
                     {{ $persona->formated_name }}
                 </td>
                 <td class="w-2/12 py-5">{{ $persona->date_of_birth_language }}</td>

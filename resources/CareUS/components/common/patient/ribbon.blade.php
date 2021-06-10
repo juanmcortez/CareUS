@@ -7,7 +7,7 @@
         @isset($patient->persona->profile_picture)
         <img alt="{{ $patient->persona->formated_name }}" src="{{ $patient->persona->profile_picture }}" />
         @else
-        <i class="text-5xl fas fa-user"></i>
+        <i class="text-6xl fas fa-user-circle"></i>
         @endisset
     </div>
 </div>
