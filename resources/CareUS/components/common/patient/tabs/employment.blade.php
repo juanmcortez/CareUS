@@ -22,7 +22,9 @@
         <div class="flex flex-row flex-wrap w-3/12">
             <p class="w-5/12 pr-1 font-semibold text-right">{{ __('Employer') }}</p>
             <p class="w-7/12">
+                @isset($employment->last_name)
                 {{ __($patient->getOptionTitle('title', $employment->title)).' '.$employment->formated_name }}
+                @endisset
             </p>
         </div>
         <div class="flex flex-row flex-wrap w-9/12">&nbsp;</div>
@@ -33,7 +35,11 @@
             <p class="w-5/12 pr-1 font-semibold text-right">
                 {{ __($patient->getOptionTitle('phonetype', $employment->phone->first()->type)) }}
             </p>
-            <p class="w-7/12">{{ $employment->phone->first()->formated_phone }}</p>
+            <p class="w-7/12">
+                @isset($employment->phone->first()->initial_digits)
+                {{ $employment->phone->first()->formated_phone }}
+                @endisset
+            </p>
         </div>
         <div class="flex flex-row flex-wrap w-3/12">
             <p class="w-5/12 pr-1 font-semibold text-right">{{ __('E-mail') }}</p>
@@ -56,14 +62,20 @@
         <div class="flex flex-row flex-wrap w-3/12">
             <p class="w-5/12 pr-1 font-semibold text-right">{{ __('City, State Zip') }}</p>
             <p class="w-7/12">
+                @isset($employment->address->street)
                 {{ $employment->address->city }},
                 {{ __($patient->getSubOptionTitle('countries', $employment->address->country, $employment->address->state)) }}
                 {{ $employment->address->zip }}
+                @endisset
             </p>
         </div>
         <div class="flex flex-row flex-wrap w-3/12">
             <p class="w-5/12 pr-1 font-semibold text-right">{{ __('Country') }}</p>
-            <p class="w-7/12">{{ __($patient->getOptionTitle('countries', $employment->address->country)) }}</p>
+            <p class="w-7/12">
+                @isset($employment->address->street)
+                {{ __($patient->getOptionTitle('countries', $employment->address->country)) }}
+                @endisset
+            </p>
         </div>
     </div>
     @endforeach
