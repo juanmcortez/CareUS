@@ -1,4 +1,5 @@
-const colors = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors');
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
     purge: {
@@ -26,12 +27,14 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Poppins'],
+                sans: ['Poppins', ...defaultTheme.fontFamily.sans],
             },
             fontSize: {
                 'xxs': ['0.625rem', '0.75rem'],
             },
             colors: {
+                ...colors,
+
                 'burntsienna-50': '#fef8f6',
                 'burntsienna-100': '#fdf0ed',
                 'burntsienna-200': '#fbdad3',
