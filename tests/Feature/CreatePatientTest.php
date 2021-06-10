@@ -2,8 +2,10 @@
 
 namespace Tests\Feature;
 
+use App\Models\Insurances\Company;
 use App\Models\Patients\Patient;
 use App\Models\Users\User;
+use Database\Seeders\ListsItemsSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -40,6 +42,10 @@ class CreatePatient extends TestCase
     {
         $this->withoutExceptionHandling();
 
+        $this->seed(ListsItemsSeeder::class);
+
+        $insurances = Company::factory(25)->createAddressPhone()->create();
+
         $user = User::factory()->createUserDemographics()->create();
 
         $response = $this->actingAs($user)->get('/patients/new');
@@ -54,6 +60,10 @@ class CreatePatient extends TestCase
 
     public function test_edit_mew_patient()
     {
+        $this->seed(ListsItemsSeeder::class);
+
+        $insurances = Company::factory(25)->createAddressPhone()->create();
+
         $user = User::factory()->createUserDemographics()->create();
 
         $response = $this->actingAs($user)->get('/patients/new');
