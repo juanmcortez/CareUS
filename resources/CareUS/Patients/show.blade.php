@@ -49,9 +49,9 @@
             <a @click.prevent="ledgerTab=7"
                 :class="ledgerTab===7 ? 'text-bdazzledblue-400 bg-gunmetal-50 font-semibold' : 'text-gunmetal-50 bg-bdazzledblue-400'"
                 class="w-2/12 py-3 mx-1 tracking-wider text-center transition-colors duration-150 ease-in-out rounded-t cursor-pointer hover:text-gunmetal-50 hover:bg-bdazzledblue-500">
-                {{ __('Documents') }}
+                {{ __('Docs') }}
             </a>
-            <div class="flex flex-row w-4/12 py-3 mx-1 text-xs tracking-wider text-center text-gunmetal-300">
+            <div class="flex flex-row w-5/12 py-3 mx-1 text-xs tracking-wider text-center text-gunmetal-300">
                 <p class="w-5/12 pr-1 font-semibold text-right">{{ __('Last Update on') }}</p>
                 <p class="w-7/12 text-left">{{ $patient->persona->updated_at_language }}</p>
             </div>
