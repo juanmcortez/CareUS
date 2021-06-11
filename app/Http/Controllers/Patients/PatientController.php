@@ -84,6 +84,15 @@ class PatientController extends Controller
         /* ***** SAVE Patient model **** */
         $patient = Patient::create($patientData);
 
+        /* ***** HANDLE Profile Photo ***** */
+        if ($request->hasFile('patient.persona.profile_photo')) {
+            $filename = 'patID_' . $patient->patID . '_' . time() . '.' . $request->file('patient.persona.profile_photo')->extension();
+            $storeimage = $request->file('patient.persona.profile_photo')->storeAs('images/patients', $filename, 'public');
+            if ($storeimage) {
+                $personaData['profile_photo'] = 'images/patients/' . $filename;
+            }
+        }
+
         /* ***** SAVE Patient - Persona model **** */
         $persona = Persona::make($personaData);
         $persona->owner_id = $patient->patID;
@@ -289,6 +298,15 @@ class PatientController extends Controller
         /* ***** SAVE Patient model **** */
         $updatepatient = Patient::findOrFail($patient->patID)->update($patientData);
         Patient::findOrFail($patient->patID)->touch();
+
+        /* ***** HANDLE Profile Photo ***** */
+        if ($request->hasFile('patient.persona.profile_photo')) {
+            $filename = 'patID_' . $patient->patID . '_' . time() . '.' . $request->file('patient.persona.profile_photo')->extension();
+            $storeimage = $request->file('patient.persona.profile_photo')->storeAs('images/patients', $filename, 'public');
+            if ($storeimage) {
+                $personaData['profile_photo'] = 'images/patients/' . $filename;
+            }
+        }
 
         /* ***** SAVE Patient - Persona model **** */
         $updatepersona = Persona::where('owner_id', $patient->patID)->where('owner_type', 'patient')->update($personaData);

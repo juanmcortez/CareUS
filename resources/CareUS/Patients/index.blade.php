@@ -33,8 +33,10 @@
                 @endif text-gunmetal-400 hover:text-burntsienna-600 ">
                 <td class="w-1/12 py-5">{{ $persona->patient->patID }}</td>
                 <td class="flex flex-row flex-wrap items-center justify-start w-3/12 p-5 py-5">
-                    @isset($persona->profile_picture)
-                    <img alt="{{ $persona->formated_name }}" src="{{ $persona->profile_picture }}" />
+                    @isset($persona->profile_photo)
+                    <div class="w-8 h-8 mr-2 overflow-hidden border-2 rounded-full border-burntsienna-400">
+                        <img alt="{{ $persona->formated_name }}" src="{{ secure_asset($persona->profile_photo) }}" />
+                    </div>
                     @else
                     <i class="mr-2 text-3xl fa fa-user-circle"></i>
                     @endisset

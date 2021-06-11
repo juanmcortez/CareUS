@@ -4,8 +4,8 @@
 <div class="flex flex-row items-center justify-center w-1/12">
     <div
         class="flex flex-row items-center justify-center w-20 h-20 overflow-hidden border-4 rounded-full text-burntsienna-400 bg-burntsienna-200 border-burntsienna-400">
-        @isset($patient->persona->profile_picture)
-        <img alt="{{ $patient->persona->formated_name }}" src="{{ $patient->persona->profile_picture }}" />
+        @isset($patient->persona->profile_photo)
+        <img alt="{{ $patient->persona->formated_name }}" src="{{ secure_asset($patient->persona->profile_photo) }}" />
         @else
         <i class="text-6xl fas fa-user-circle"></i>
         @endisset

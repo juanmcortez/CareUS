@@ -27,6 +27,8 @@ class ValidatePatientRequest extends FormRequest
         return [
             'patient.externalID'                            => 'required|string|between:1,16',
             'patient.patient_level_accession'               => 'nullable|string|between:1,16',
+            /* ***** PROFILE ****- */
+            'patient.persona.profile_photo'                 => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
             /* ***** NAME ***** */
             'patient.persona.title'                         => 'nullable|between:1,8',
             'patient.persona.last_name'                     => 'required|string|between:3,32',
