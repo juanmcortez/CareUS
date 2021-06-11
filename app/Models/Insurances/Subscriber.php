@@ -78,6 +78,16 @@ class Subscriber extends Model
 
 
     /**
+     * This touches parent models when updated.
+     *
+     * @var array
+     */
+    protected $touches = [
+        'patient'
+    ];
+
+
+    /**
      * Return created_at formated
      * when calling created_at_language
      *
