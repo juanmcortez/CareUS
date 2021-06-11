@@ -69,10 +69,14 @@
     <div class="flex flex-row flex-wrap w-full pt-5 mt-5 border-t-2 border-gunmetal-50 text-gunmetal-400">
         @foreach ($patient->persona->phone as $pdx => $personalphone)
         <div class="flex flex-row flex-wrap w-3/12">
+            @isset($personalphone->initial_digits)
             <p class="w-5/12 pr-1 font-semibold text-right">
                 {{ __($patient->getOptionTitle('phonetype', $personalphone->type)) }}
             </p>
-            <p class="w-7/12">{{ $personalphone->formated_phone }}</p>
+            <p class="w-7/12">
+                {{ $personalphone->formated_phone }}
+            </p>
+            @endisset
         </div>
         @endforeach
         <div class="flex flex-row flex-wrap w-6/12">&nbsp;</div>

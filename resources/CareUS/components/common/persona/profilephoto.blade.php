@@ -17,13 +17,14 @@ $val_proph = ($values) ? $values->profile_photo : old($item.'.profile_photo');
         </x-common.forms.label>
         @isset($val_proph)
         <div class="flex flex-row items-center justify-center w-1/12 text-center">
-            <span class="flex w-10 h-10 overflow-hidden text-center border-4 rounded-full border-burntsienna-400">
+            <span
+                class="flex flex-row items-center justify-center w-10 h-10 overflow-hidden text-center border-4 rounded-full border-burntsienna-400">
                 <img src="{{ secure_asset($val_proph) }}" />
             </span>
         </div>
         @else
         <i class="w-1/12 mx-2 text-3xl text-center fa fa-user-circle text-burntsienna-400"></i>
         @endisset
-        <input type="file" class="w-9/12" name="{{ $nam_proph }}" />
+        <input id="profile_photo" type="file" class="w-9/12" name="{{ $nam_proph }}" />
     </div>
 </div>

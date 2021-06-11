@@ -30,14 +30,14 @@ $val_pextn = ($values) ? $values->extension : old($item.'.extension');
 <div {{ $attributes->merge([ 'class' => 'flex flex-row flex-wrap' ]) }}>
     @isset($phoneList)
     <div class="flex flex-row items-center justify-start w-3/12">
-        <x-common.forms.label for="title" class="w-4/12 text-right">
+        <x-common.forms.label for="type" class="w-4/12 text-right">
             @if($idx!=(-1))
             {{ __('Phone #:index', ['index' => $idx+1]) }}
             @else
             {{ __('Phone') }}
             @endif
         </x-common.forms.label>
-        <x-common.forms.select id="title" class="w-8/12" name="{{ $nam_ptype }}" :options="$phoneList"
+        <x-common.forms.select id="type" class="w-8/12" name="{{ $nam_ptype }}" :options="$phoneList"
             :seloption="$val_ptype" />
     </div>
     @endisset

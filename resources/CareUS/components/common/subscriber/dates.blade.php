@@ -54,7 +54,7 @@ $val_terye = ($values) ? null : old($item.'.termination_date.year');
         </div>
     </div>
     <div class="flex flex-row items-center justify-start w-3/12">
-        <x-common.forms.label for="effective_date" class="w-4/12 text-right">
+        <x-common.forms.label for="termination_date" class="w-4/12 text-right">
             {{ __('Termination Date') }}
         </x-common.forms.label>
         <div id="date_of_birth" class="inline-flex justify-between w-8/12">
