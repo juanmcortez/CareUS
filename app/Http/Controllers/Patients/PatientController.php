@@ -11,6 +11,7 @@ use App\Models\Insurances\Subscriber;
 use App\Models\Lists\Items;
 use App\Models\Patients\Patient;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class PatientController extends Controller
 {
@@ -87,11 +88,13 @@ class PatientController extends Controller
 
         /* ***** HANDLE Profile Photo ***** */
         if ($request->hasFile('patient.persona.profile_photo')) {
-            $newfileloc = Storage::putFile(env('PAT_FILE_STO'), $request->file('patient.persona.profile_photo'));
-            $expldename = explode(DIRECTORY_SEPARATOR, $newfileloc);
-            $storedname = $expldename[array_key_last($expldename)];
-            if ($storedname) {
-                $personaData['profile_photo'] = env('PAT_FILE_LOC') . DIRECTORY_SEPARATOR . $storedname;
+            // Get the uploaded image and resize it with aspect ratio change it to jpg in 75% quality
+            $modifyupload = Image::make($request->file('patient.persona.profile_photo')->path())->fit(100)->encode('jpg', 75);
+            // Create the new name
+            $newfilenam = md5(uniqid(time(), true)) . '.jpg';
+            // Store the file in the system and prepare reference for db
+            if (Storage::put(env('PAT_FILE_STO') . DIRECTORY_SEPARATOR . $newfilenam, $modifyupload)) {
+                $personaData['profile_photo'] = env('PAT_FILE_LOC') . DIRECTORY_SEPARATOR . $newfilenam;
             }
         }
 
@@ -303,11 +306,20 @@ class PatientController extends Controller
 
         /* ***** HANDLE Profile Photo ***** */
         if ($request->hasFile('patient.persona.profile_photo')) {
-            $newfileloc = Storage::putFile(env('PAT_FILE_STO'), $request->file('patient.persona.profile_photo'));
-            $expldename = explode(DIRECTORY_SEPARATOR, $newfileloc);
-            $storedname = $expldename[array_key_last($expldename)];
-            if ($storedname) {
-                $personaData['profile_photo'] = env('PAT_FILE_LOC') . DIRECTORY_SEPARATOR . $storedname;
+            // Get the uploaded image and resize it with aspect ratio change it to jpg in 75% quality
+            $modifyupload = Image::make($request->file('patient.persona.profile_photo')->path())->fit(100)->encode('jpg', 75);
+            // Create the new name
+            $newfilenam = md5(uniqid(time(), true)) . '.jpg';
+            // Store the file in the system and prepare reference for db
+            if (Storage::put(env('PAT_FILE_STO') . DIRECTORY_SEPARATOR . $newfilenam, $modifyupload)) {
+                // Delete the old image
+                if (Patient::findOrFail($patient->patID)->persona->profile_photo) {
+                    $oldprofpho = Patient::findOrFail($patient->patID)->persona->profile_photo;
+                    $oldprofpho = explode(env('PAT_FILE_LOC') . DIRECTORY_SEPARATOR, $oldprofpho);
+                    Storage::delete(env('PAT_FILE_STO') . DIRECTORY_SEPARATOR . $oldprofpho[1]);
+                }
+                // New image location
+                $personaData['profile_photo'] = env('PAT_FILE_LOC') . DIRECTORY_SEPARATOR . $newfilenam;
             }
         }
 
