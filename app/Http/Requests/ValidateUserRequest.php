@@ -24,6 +24,8 @@ class ValidateUserRequest extends FormRequest
     public function rules()
     {
         return [
+            /* ***** PROFILE ****- */
+            'user.persona.profile_photo'                => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
             /* ***** NAME ***** */
             'user.persona.title'                        => 'nullable|min:1|max:8',
             'user.persona.last_name'                    => 'required|string|min:1|max:32',

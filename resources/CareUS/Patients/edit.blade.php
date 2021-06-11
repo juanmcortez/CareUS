@@ -6,7 +6,8 @@
     @endpush
 
     @section('content')
-    <form class="w-full" method="POST" action="{{ route('patients.update', ['patient' => $patient->patID]) }}">
+    <form class="w-full" method="POST" enctype="multipart/form-data"
+        action="{{ route('patients.update', ['patient' => $patient->patID]) }}">
         @csrf
         @method('PUT')
 
@@ -101,8 +102,11 @@
 
                     <hr class="w-full mb-8 border-none" />
 
-                    <x-common.persona.language class="w-full mb-0" item="patient.persona" :values="$patient->persona"
+                    <x-common.persona.language class="w-full mb-4" item="patient.persona" :values="$patient->persona"
                         :langList="$items['languages']" />
+
+                    <x-common.persona.profilephoto class="w-full mb-0" item="patient.persona"
+                        :values="$patient->persona" />
 
                 </div>
 

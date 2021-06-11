@@ -5,7 +5,8 @@
     @endpush
 
     @section('content')
-    <form class="w-full" method="POST" action="{{ route('user.update', ['user' => auth()->user()->id]) }}">
+    <form class="w-full" method="POST" enctype="multipart/form-data"
+        action="{{ route('user.update', ['user' => auth()->user()->id]) }}">
         @csrf
         @method('PUT')
 
@@ -25,16 +26,18 @@
             :genderList="$items['genders']" />
 
         {{-- language --}}
-        <x-common.persona.language class="w-full mb-0" :values="auth()->user()->persona"
+        <x-common.persona.language class="w-full mb-4" :values="auth()->user()->persona"
             :langList="$items['languages']" />
 
+        {{-- Profile pic --}}
+        <x-common.persona.profilephoto class="w-full mb-0" :values="auth()->user()->persona" />
+
         {{-- Hidden --}}
-        <x-common.forms.input type="hidden" name="user[id]" :value="auth()->user()->id" />
+        <input type="hidden" name="user[id]" value="{{ auth()->user()->id }}" />
 
         <!-- BUTTONS -->
         <x-common.pageheader formsave formcancel="{{ route('dashboard.index') }}" class="pt-16 pb-10" />
     </form>
-
     @endsection
 
     @push('scripts')

@@ -23,6 +23,7 @@ class Persona extends Model
     protected $fillable = [
         'owner_type',
         'owner_id',
+        'profile_photo',
         'title',
         'first_name',
         'middle_name',

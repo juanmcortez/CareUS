@@ -1,8 +1,16 @@
 <div class="w-full h-auto mb-32">
 
+    @if(Auth()->user()->persona->profile_photo)
     <img alt="@empty(Auth()->user()->persona->last_name) {{ Auth()->user()->email }} @else {{ Auth()->user()->persona->formated_name }} @endempty"
-        src="{{ secure_asset('images/users/usertmp.jpg') }}"
+        src="{{ secure_asset(Auth()->user()->persona->profile_photo) }}"
         class="mx-auto mb-5 border-4 rounded-full h-28 w-28 border-burntsienna-400" />
+    @else
+    <div
+        class="mx-auto mb-5 border-4 rounded-full h-28 w-28 text-burntsienna-400 bg-burntsienna-200 border-burntsienna-400">
+        <i class="mt-1 text-8xl fa fa-user-circle"></i>
+    </div>
+
+    @endif
 
     <h3 class="mb-2 text-xl font-semibold">
         @empty(Auth()->user()->persona->last_name)

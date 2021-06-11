@@ -23,8 +23,10 @@ $val_secmd = ($values) ? $values->secondary_medical_type : old($item.'.secondary
 <div {{ $attributes->merge([ 'class' => 'flex flex-row flex-wrap' ]) }}>
     @isset($relList)
     <div class="flex flex-row items-center justify-start w-3/12">
-        <x-common.forms.label for="company_id" class="w-4/12 text-right">{{ __('Relationship') }}</x-common.forms.label>
-        <x-common.forms.select id="company_id" class="w-8/12" name="{{ $nam_inrel }}" :options="$relList"
+        <x-common.forms.label for="ins_relation" class="w-4/12 text-right">
+            {{ __('Relationship') }}
+        </x-common.forms.label>
+        <x-common.forms.select id="ins_relation" class="w-8/12" name="{{ $nam_inrel }}" :options="$relList"
             :seloption="$val_inrel" />
     </div>
     @endisset

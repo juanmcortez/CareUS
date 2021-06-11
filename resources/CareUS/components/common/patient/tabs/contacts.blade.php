@@ -6,7 +6,9 @@
                 {{ __($patient->getOptionTitle('contacttype', $contact->contact_type)) }}
             </p>
             <p class="w-7/12">
+                @isset($contact->last_name)
                 {{ __($patient->getOptionTitle('title', $contact->title)).' '.$contact->formated_name }}
+                @endisset
             </p>
         </div>
         <div class="flex flex-row flex-wrap w-9/12">&nbsp;</div>
@@ -17,7 +19,11 @@
             <p class="w-5/12 pr-1 font-semibold text-right">
                 {{ __($patient->getOptionTitle('phonetype', $contact->phone->first()->type)) }}
             </p>
-            <p class="w-7/12">{{ $contact->phone->first()->formated_phone }}</p>
+            <p class="w-7/12">
+                @isset($contact->phone->first()->initial_digits)
+                {{ $contact->phone->first()->formated_phone }}
+                @endisset
+            </p>
         </div>
         <div class="flex flex-row flex-wrap w-3/12">
             <p class="w-5/12 pr-1 font-semibold text-right">{{ __('E-mail') }}</p>
@@ -41,14 +47,20 @@
         <div class="flex flex-row flex-wrap w-3/12">
             <p class="w-5/12 pr-1 font-semibold text-right">{{ __('City, State Zip') }}</p>
             <p class="w-7/12">
+                @isset($contact->address->street)
                 {{ $contact->address->city }},
                 {{ __($patient->getSubOptionTitle('countries', $contact->address->country, $contact->address->state)) }}
                 {{ $contact->address->zip }}
+                @endisset
             </p>
         </div>
         <div class="flex flex-row flex-wrap w-3/12">
             <p class="w-5/12 pr-1 font-semibold text-right">{{ __('Country') }}</p>
-            <p class="w-7/12">{{ __($patient->getOptionTitle('countries', $contact->address->country)) }}</p>
+            <p class="w-7/12">
+                @isset($contact->address->street)
+                {{ __($patient->getOptionTitle('countries', $contact->address->country)) }}
+                @endisset
+            </p>
         </div>
     </div>
 

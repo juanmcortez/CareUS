@@ -35,7 +35,9 @@
                 </td>
                 <td class="w-2/12 py-5 border-r tabular-nums
                     @if($sdx % 2 == 0) border-palecerulean-300 @else border-palecerulean-200 @endif">
+                    @isset($subscriber->insurance['company_name'])
                     {{ ucfirst($subscriber->effective_date->translatedFormat('M d, Y')) }}
+                    @endisset
                 </td>
                 <td class="w-2/12 py-5 border-r tabular-nums
                     @if($sdx % 2 == 0) border-palecerulean-300 @else border-palecerulean-200 @endif">

@@ -5,7 +5,7 @@
     @endpush
 
     @section('content')
-    <form class="w-full" method="POST" action="{{ route('patients.store') }}">
+    <form class="w-full" method="POST" enctype="multipart/form-data" action="{{ route('patients.store') }}">
         @csrf
         @method('POST')
 
@@ -74,8 +74,12 @@
 
                     <hr class="w-full mb-8 border-none" />
 
-                    <x-common.persona.language class="w-full mb-0" item="patient.persona"
+                    <x-common.persona.language class="w-full mb-4" item="patient.persona"
                         :langList="$items['languages']" />
+
+                    <x-common.persona.profilephoto class="w-full mb-0" item="patient.persona" />
+
+
                 </div>
 
                 {{-- Demographics --}}
