@@ -49,13 +49,22 @@ class UserProfileController extends Controller
 
         $personaData['date_of_birth'] = $dob;
 
-        /* ***** SAVE User model **** */
+        /* ***** SAVE User model ***** */
         $updateuser = User::where('id', $userData['id'])->update($userData);
 
-        /* ***** SAVE User - Persona model **** */
+        /* ***** HANDLE Profile Photo ***** */
+        if ($request->file('user.persona.profile_photo')) {
+            $filename = 'user_' . $userData['id'] . '_' . time() . '.' . $request->file('user.persona.profile_photo')->extension();
+            $storeimage = $request->file('user.persona.profile_photo')->storeAs('images/users', $filename, 'public');
+            if ($storeimage) {
+                $personaData['profile_photo'] = 'images/users/' . $filename;
+            }
+        }
+
+        /* ***** SAVE User - Persona model ***** */
         $updatepersona = Persona::where('owner_id', $userData['id'])->where('owner_type', 'user')->update($personaData);
 
-        /* ***** Redirect to ledger view **** */
+        /* ***** Redirect to user view ***** */
         return redirect()->route('user.settings', ["user" => $user->id])
             ->with('success', __('User <strong>:name</strong> updated successfully', ["name" => $user->persona->formated_name]));
     }
