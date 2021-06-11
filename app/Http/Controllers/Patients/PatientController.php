@@ -10,6 +10,7 @@ use App\Models\Common\Phone;
 use App\Models\Insurances\Subscriber;
 use App\Models\Lists\Items;
 use App\Models\Patients\Patient;
+use Illuminate\Support\Facades\Storage;
 
 class PatientController extends Controller
 {
@@ -86,10 +87,11 @@ class PatientController extends Controller
 
         /* ***** HANDLE Profile Photo ***** */
         if ($request->hasFile('patient.persona.profile_photo')) {
-            $filename = 'patID_' . $patient->patID . '_' . time() . '.' . $request->file('patient.persona.profile_photo')->extension();
-            $storeimage = $request->file('patient.persona.profile_photo')->storeAs('images/patients', $filename, 'public');
-            if ($storeimage) {
-                $personaData['profile_photo'] = 'images/patients/' . $filename;
+            $newfileloc = Storage::putFile(env('PAT_FILE_STO'), $request->file('patient.persona.profile_photo'));
+            $expldename = explode(DIRECTORY_SEPARATOR, $newfileloc);
+            $storedname = $expldename[array_key_last($expldename)];
+            if ($storedname) {
+                $personaData['profile_photo'] = env('PAT_FILE_LOC') . DIRECTORY_SEPARATOR . $storedname;
             }
         }
 
@@ -301,10 +303,11 @@ class PatientController extends Controller
 
         /* ***** HANDLE Profile Photo ***** */
         if ($request->hasFile('patient.persona.profile_photo')) {
-            $filename = 'patID_' . $patient->patID . '_' . time() . '.' . $request->file('patient.persona.profile_photo')->extension();
-            $storeimage = $request->file('patient.persona.profile_photo')->storeAs('images/patients', $filename, 'public');
-            if ($storeimage) {
-                $personaData['profile_photo'] = 'images/patients/' . $filename;
+            $newfileloc = Storage::putFile(env('PAT_FILE_STO'), $request->file('patient.persona.profile_photo'));
+            $expldename = explode(DIRECTORY_SEPARATOR, $newfileloc);
+            $storedname = $expldename[array_key_last($expldename)];
+            if ($storedname) {
+                $personaData['profile_photo'] = env('PAT_FILE_LOC') . DIRECTORY_SEPARATOR . $storedname;
             }
         }
 

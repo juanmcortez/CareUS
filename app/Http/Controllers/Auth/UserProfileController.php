@@ -7,8 +7,8 @@ use App\Http\Requests\ValidateUserRequest;
 use App\Models\Common\Persona;
 use App\Models\Lists\Items;
 use App\Models\Users\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserProfileController extends Controller
 {
@@ -54,10 +54,11 @@ class UserProfileController extends Controller
 
         /* ***** HANDLE Profile Photo ***** */
         if ($request->file('user.persona.profile_photo')) {
-            $filename = 'user_' . $userData['id'] . '_' . time() . '.' . $request->file('user.persona.profile_photo')->extension();
-            $storeimage = $request->file('user.persona.profile_photo')->storeAs('images/users', $filename, 'public');
-            if ($storeimage) {
-                $personaData['profile_photo'] = 'images/users/' . $filename;
+            $newfileloc = Storage::putFile(env('USR_FILE_STO'), $request->file('user.persona.profile_photo'));
+            $expldename = explode(DIRECTORY_SEPARATOR, $newfileloc);
+            $storedname = $expldename[array_key_last($expldename)];
+            if ($storedname) {
+                $personaData['profile_photo'] = env('USR_FILE_LOC') . DIRECTORY_SEPARATOR . $storedname;
             }
         }
 
