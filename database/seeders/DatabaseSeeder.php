@@ -2,13 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Common\Persona;
 use App\Models\Insurances\Company;
 use App\Models\Patients\Patient;
 use App\Models\Users\User;
 use Database\Factories\Common\PersonaFactory;
 use Illuminate\Database\Seeder;
-use SebastianBergmann\Environment\Console;
+use Illuminate\Support\Facades\App;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,7 +20,11 @@ class DatabaseSeeder extends Seeder
     {
         Company::factory(25)->createAddressPhone()->create();
 
-        $randPatTot = random_int(500, 5000);
+        if (App::environment('testing')) {
+            $randPatTot = 50;
+        } else {
+            $randPatTot = random_int(250, 2500);
+        }
         $this->command->info("Creating $randPatTot patients.");
         $this->command->info("Creating " . ($randPatTot * 3) . " contacts.");
         $this->command->info("Creating " . ($randPatTot * 2) . " insurance subscriptions.");
