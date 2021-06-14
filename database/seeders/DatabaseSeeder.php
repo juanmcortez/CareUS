@@ -8,6 +8,7 @@ use App\Models\Patients\Patient;
 use App\Models\Users\User;
 use Database\Factories\Common\PersonaFactory;
 use Illuminate\Database\Seeder;
+use SebastianBergmann\Environment\Console;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,9 +20,15 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Company::factory(25)->createAddressPhone()->create();
-        Patient::factory(100)->createPatientDemographics()->create();
+
+        $randPatTot = random_int(500, 5000);
+        $this->command->info("Creating $randPatTot patients.");
+        $this->command->info("Creating " . ($randPatTot * 3) . " contacts.");
+        $this->command->info("Creating " . ($randPatTot * 2) . " insurance subscriptions.");
+        Patient::factory($randPatTot)->createPatientDemographics()->create();
 
         // Temp user
+        $this->command->info("Creating user.");
         $user = User::factory([
             'email'         => 'juanm.cortez@gmail.com',
             'password'      => bcrypt('123456789'),
