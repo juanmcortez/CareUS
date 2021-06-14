@@ -280,8 +280,8 @@ class ListsItemsSeeder extends Seeder
             ['list_item_title' => 'United Arab Emirates', 'list_item_value' => 'AE'],
             ['list_item_title' => 'United Kingdom', 'list_item_value' => 'GB'],*/
             ['list_item_title' => 'United States', 'list_item_value' => 'US', 'list_item_default' => true],
-            ['list_item_title' => 'United States Minor Outlying Islands', 'list_item_value' => 'UM'],
-            /*['list_item_title' => 'Uruguay', 'list_item_value' => 'UY'],
+            /*['list_item_title' => 'United States Minor Outlying Islands', 'list_item_value' => 'UM'],
+            ['list_item_title' => 'Uruguay', 'list_item_value' => 'UY'],
             ['list_item_title' => 'Uzbekistan', 'list_item_value' => 'UZ'],
             ['list_item_title' => 'Vanuatu', 'list_item_value' => 'VU'],
             ['list_item_title' => 'Venezuela, Bolivarian Republic of', 'list_item_value' => 'VE'],

@@ -302,7 +302,6 @@ class PatientController extends Controller
 
         /* ***** SAVE Patient model **** */
         $updatepatient = Patient::findOrFail($patient->patID)->update($patientData);
-        Patient::findOrFail($patient->patID)->touch();
 
         /* ***** HANDLE Profile Photo ***** */
         if ($request->hasFile('patient.persona.profile_photo')) {

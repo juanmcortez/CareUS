@@ -60,6 +60,16 @@ class Address extends Model
 
 
     /**
+     * This touches parent models when updated.
+     *
+     * @var array
+     */
+    protected $touches = [
+        'persona'
+    ];
+
+
+    /**
      * Return created_at formated
      * when calling created_at_language
      *

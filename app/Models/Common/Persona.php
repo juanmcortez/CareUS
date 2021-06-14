@@ -6,6 +6,7 @@ use App\Models\Common\Address;
 use App\Models\Common\Phone;
 use App\Models\Insurances\Subscriber;
 use App\Models\Patients\Patient;
+use App\Models\Users\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -92,6 +93,16 @@ class Persona extends Model
 
 
     /**
+     * This touches parent models when updated.
+     *
+     * @var array
+     */
+    protected $touches = [
+        'user', 'patient'
+    ];
+
+
+    /**
      * Return created_at formated
      * when calling created_at_language
      *
@@ -174,6 +185,16 @@ class Persona extends Model
     public function getDeceaseAgeAttribute()
     {
         return __(':AGE yrs.', ['AGE' => Carbon::parse($this->decease_date)->diff(parse($this->date_of_birth))->format('%y')]);
+    }
+
+
+    /**
+     * Persona - User relationship
+     * Only 1 persona model allowed per user.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'owner_id', 'id')->withDefault();
     }
 
 

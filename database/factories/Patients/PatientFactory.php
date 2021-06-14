@@ -24,9 +24,12 @@ class PatientFactory extends Factory
      */
     public function definition()
     {
+        $date = $this->faker->dateTimeBetween('-180 days', now());
         return [
             'externalID'                => random_int(100000, 999999999999),
             'patient_level_accession'   => $this->faker->randomElement(['', random_int(100000, 999999999999)]),
+            'created_at'                => $date,
+            'updated_at'                => $date,
         ];
     }
 
