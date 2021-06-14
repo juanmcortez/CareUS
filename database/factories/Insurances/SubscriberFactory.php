@@ -30,7 +30,7 @@ class SubscriberFactory extends Factory
             'level'                 => $this->faker->randomElement(['primary', 'secondary', 'tertiary']),
             'company_id'            => random_int(1, 25), // we are creating 25 insurance companies
             'policy_number'         => random_int(10000, 9999999),
-            'accept_assignment'     => $this->faker->randomElement([false, true]),
+            'accept_assignment'     => $this->faker->randomElement(['yes', 'no']),
             'effective_date'        => $this->faker->dateTimeBetween($randomInit, 'now'),
             'ins_relation'          => $this->faker->randomElement(['child', 'other', 'self', 'spouse']),
         ];
