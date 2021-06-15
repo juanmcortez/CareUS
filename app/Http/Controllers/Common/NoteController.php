@@ -18,7 +18,12 @@ class NoteController extends Controller
      */
     public function index()
     {
-        //
+        $pageH2 = __("Notes");
+        $pageTitle = $pageH2 . ' | ' . config('app.name');
+
+        $notes = Note::where('user_id', Auth::id())->paginate(5);
+
+        return view('User.notes', compact('pageTitle', 'pageH2', 'notes'));
     }
 
     /**
