@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\UserProfileController;
 use App\Http\Controllers\Common\LocalizationController;
+use App\Http\Controllers\Common\NoteController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Patients\PatientController;
 use App\Http\Controllers\Settings\ItemsController;
@@ -39,11 +40,17 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('patients')->name('patients.')->group(function () {
         Route::get('/list', [PatientController::class, 'index'])->name('list');
+
         Route::get('/new', [PatientController::class, 'create'])->name('create');
         Route::post('/new', [PatientController::class, 'store'])->name('store');
-        Route::get('/{patient}/ledger', [PatientController::class, 'show'])->name('show');
+
+        Route::get('/{patient}/{ledgerTab?}', [PatientController::class, 'show'])->name('show');
+
         Route::get('/{patient}/edit/demographics', [PatientController::class, 'edit'])->name('edit');
         Route::put('/{patient}/edit/demographics', [PatientController::class, 'update'])->name('update');
+
+        Route::post('/{patient}/new/note', [NoteController::class, 'store'])->name('new.note');
+        Route::delete('/{patient}/delete/{note}', [NoteController::class, 'destroy'])->name('delete.note');
     });
 
     Route::prefix('practice')->name('practice.')->group(function () {
@@ -57,7 +64,8 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::prefix('user')->name('user.')->group(function () {
-        Route::get('/notes', [DashboardController::class, 'index'])->name('notes');
+        Route::get('/notes', [NoteController::class, 'index'])->name('notes');
+
         Route::get('/{user}/settings', [UserProfileController::class, 'index'])->name('settings');
         Route::put('/{user}/settings', [UserProfileController::class, 'update'])->name('update');
     });

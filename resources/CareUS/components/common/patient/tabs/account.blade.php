@@ -41,7 +41,32 @@
 </div>
 
 <div class="flex flex-row flex-wrap justify-end w-4/12">
-    <div class="flex flex-col w-11/12 bg-bdazzledblue-200">
-        <h3>{{ __('Notes') }}</h3>
+    <div class="flex flex-col w-11/12 p-5 bg-bdazzledblue-200 text-gunmetal-400">
+        @if($patient->notes->first())
+        <p class="text-xs text-right text-gunmetal-300">
+            {!! __('Last note written by <strong>:name</strong> on <strong>:date</strong>',
+            [
+            'name'=> $patient->notes->first()->user->persona->formated_name,
+            'date' => $patient->notes->first()->created_at_language
+            ]
+            ) !!}
+        </p>
+        <h3 class="mt-3 text-xl font-semibold">{{ $patient->notes->first()->title }}</h3>
+        <p class="mt-3">{{ $patient->notes->first()->body }}</p>
+        <p class="mt-3 text-right">
+            <a @click.prevent="ledgerTab='notes'" class="w-auto text-xs cursor-pointer">
+                {{ __('More') }}
+                <i class="text-xxs fas fa-chevron-right"></i>
+            </a>
+        </p>
+        @else
+        <p class="text-gunmetal-300">{{ __('No notes available.') }}</p>
+        <p class="mt-3 text-right">
+            <a @click.prevent="ledgerTab='notes'" class="w-auto text-xs cursor-pointer">
+                {{ __('More') }}
+                <i class="text-xxs fas fa-chevron-right"></i>
+            </a>
+        </p>
+        @endif
     </div>
 </div>

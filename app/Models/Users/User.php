@@ -2,6 +2,7 @@
 
 namespace App\Models\Users;
 
+use App\Models\Common\Note;
 use App\Models\Common\Persona;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -59,5 +60,15 @@ class User extends Authenticatable
     public function persona()
     {
         return $this->hasOne(Persona::class, 'owner_id', 'id')->where('owner_type', 'user');
+    }
+
+
+    /**
+     * Notes - Patient relationship
+     * Many notes model allowed per patient.
+     */
+    public function notes()
+    {
+        return $this->hasMany(Note::class, 'user_id', 'id');
     }
 }

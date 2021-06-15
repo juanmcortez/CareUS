@@ -408,6 +408,9 @@ return [
         'patient.subscriber.2.persona.date_of_birth.year'        => '<strong>Tertiary Ins. - Subscriber birthday year</strong>',
 
         'patient.subscriber.2.persona.social_security'           => '<strong>Tertiary Ins. - Subscriber social Security</strong>',
+
+        'note.title'                                             => '<strong>Title</strong>',
+        'note.body'                                              => '<strong>Note</strong>',
     ],
 
 ];
