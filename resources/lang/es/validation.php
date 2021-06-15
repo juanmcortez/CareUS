@@ -425,5 +425,8 @@ return [
         'patient.subscriber.2.persona.date_of_birth.year'        => '<strong>Seg. Terciario - Año de nacimiento abonado</strong>',
 
         'patient.subscriber.2.persona.social_security'           => '<strong>Seg. Terciario - Seguridad Social abonado</strong>',
+
+        'note.title'                                             => '<strong>Título</strong>',
+        'note.body'                                              => '<strong>Nota</strong>',
     ],
 ];
