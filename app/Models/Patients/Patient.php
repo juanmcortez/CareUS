@@ -2,6 +2,7 @@
 
 namespace App\Models\Patients;
 
+use App\Models\Common\Note;
 use App\Models\Common\Persona;
 use App\Models\Insurances\Subscriber;
 use App\Models\Lists\Items;
@@ -163,5 +164,15 @@ class Patient extends Model
     public function subscriber()
     {
         return $this->hasMany(Subscriber::class, 'owner_id', 'patID')->where('owner_type', 'patient');
+    }
+
+
+    /**
+     * Patient - Notes relationship
+     * Many notes models allowed per patient.
+     */
+    public function notes()
+    {
+        return $this->hasMany(Note::class, 'owner_id', 'patID')->where('owner_type', 'patient');
     }
 }
