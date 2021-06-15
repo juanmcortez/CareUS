@@ -222,7 +222,7 @@ class PatientController extends Controller
      * @param  \App\Models\Patients\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function show(Patient $patient)
+    public function show(Patient $patient, $ledgerTab = 'ledger')
     {
         $pageH2 =  __("Ledger: :patient_name", ['patient_name' => $patient->persona->formated_name]);
         $pageTitle = $pageH2 . ' | ' . config('app.name');
@@ -238,7 +238,7 @@ class PatientController extends Controller
             ['Account', 0, 0, 0, 0, 0, 0, 0],
         ];
 
-        return view('Patients.show', compact('pageTitle', 'pageH2', 'patient', 'instypes', 'balancetable'));
+        return view('Patients.show', compact('pageTitle', 'pageH2', 'patient', 'instypes', 'balancetable', 'ledgerTab'));
     }
 
     /**
