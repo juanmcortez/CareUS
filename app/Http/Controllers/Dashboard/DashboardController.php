@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Common\Note;
 use App\Models\Common\Persona;
 use App\Models\Patients\Patient;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -35,6 +37,7 @@ class DashboardController extends Controller
         $editgrow30     = round((($editlast30 - $editprev30) / $editprev30) * 100, 2);
 
         $patienttotals  = Patient::count();
+        $notestotal     = Note::where('user_id', Auth::id())->count();
         $totalimages    = Persona::where('owner_type', 'patient')->whereNotNull('profile_photo')->count();
 
         $stats = [
@@ -43,6 +46,7 @@ class DashboardController extends Controller
             'patientgrow30' => $patientgrow30,
             'editlast30'    => $editlast30,
             'editgrow30'    => $editgrow30,
+            'notestotal'    => $notestotal,
             'totalimages'   => $totalimages,
         ];
 
